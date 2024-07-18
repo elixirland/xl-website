@@ -13,8 +13,8 @@ defmodule XlWebsiteWeb.AppComponents do
           height="240"
           class="h-[240px] bg-contain bg-center"
         />
-        <div class="p-4 flex flex-col h-[180px]">
-          <h1 class="text-3xl mb-1.5 font-medium">
+        <div class="p-5 flex flex-col h-[180px]">
+          <h1 class="text-3xl mb-1.5 font-semibold">
             <%= @repo.name %>
           </h1>
           <p><%= @repo.description %></p>
