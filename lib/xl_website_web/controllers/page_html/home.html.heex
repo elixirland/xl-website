@@ -1,9 +1,25 @@
 <.flash_group flash={@flash} />
-<section class="flex items-center justify-center h-[70vh] min-h-[400px]">
+<section class="flex flex-col items-center justify-center h-[80vh] min-h-[400px]">
   <heading class="px-8">
-    <h1
-      class="pt-8 text-7xl text-center font-bold tracking-wide mb-4 text-violet-950"
-    >Elixirland</h1>
-    <p class="text-2xl text-center text-violet-950">Compact Elixir challenges with idiomatic example solutions</p>
+    <h1 class="pt-8 text-7xl text-center font-bold tracking-wide mb-5 text-violet-950">
+      Elixirland
+    </h1>
+    <p class="text-2xl text-center text-violet-950">
+      Elixir challenges with idiomatic example solutions
+    </p>
   </heading>
+  <div class="mt-[100px] flex gap-2.5 items-center">
+    <.link
+      href={~p"/challenges"}
+      class="bg-[#613399] shadow-md text-white px-3.5 py-2 text-xl rounded-lg hover:bg-[#6a33ae] font-medium"
+    >
+      Explore
+    </.link>
+    <.link
+      href="https://hexdocs.pm/elixir/introduction.html"
+      class="text-neutral-700 px-3.5 py-2 text-xl hover:underline underline-offset-2"
+    >
+      Elixir docs<.icon name="hero-arrow-up-right" class="h-3 w-3 stroke-2 ml-1" />
+    </.link>
+  </div>
 </section>
