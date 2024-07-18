@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Elixirland.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(XlWebsite.Repo, :manual)

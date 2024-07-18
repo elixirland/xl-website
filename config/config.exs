@@ -7,17 +7,17 @@
 # General application configuration
 import Config
 
-config :elixirland,
-  ecto_repos: [Elixirland.Repo]
+config :xl_website,
+  ecto_repos: [XlWebsite.Repo]
 
 # Configures the endpoint
-config :elixirland, ElixirlandWeb.Endpoint,
+config :xl_website, XlWebsiteWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [
-    formats: [html: ElixirlandWeb.ErrorHTML, json: ElixirlandWeb.ErrorJSON],
+    formats: [html: XlWebsiteWeb.ErrorHTML, json: XlWebsiteWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Elixirland.PubSub,
+  pubsub_server: XlWebsite.PubSub,
   live_view: [signing_salt: "oRQvN/EO"]
 
 # Configures the mailer
@@ -27,7 +27,7 @@ config :elixirland, ElixirlandWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :elixirland, Elixirland.Mailer, adapter: Swoosh.Adapters.Local
+config :xl_website, XlWebsite.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

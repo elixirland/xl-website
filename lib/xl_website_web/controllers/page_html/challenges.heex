@@ -1,0 +1,16 @@
+<.flash_group flash={@flash} />
+<div class="max-w-[1200px] m-auto px-8">
+  <heading class="flex items-end">
+    <h1 class="pt-8 text-4xl text-[#66626c] font-medium">Challenges</h1>
+    <div class="text-xl text-[#66626c] font-medium  ml-auto">
+      <%= case Enum.count(@repos) do %>
+        <% 1 -> %> 1 Challenge
+        <% count -> %><%= count %> Challenges
+      <% end %>
+    </div>
+  </heading>
+  <p class="max-w-[800px] pt-4 text-lg text-neutral-600 tracking-wide">Challenges live in their own GitHub repositories. Each repository contains a challenge description. including a set of requirements, along with an example implementation in idiomatic Elixir.</p>
+  <div class="flex flex-wrap gap-4 my-8">
+    <.assignment :for={repo <- @repos} repo={repo} />
+  </div>
+</div>

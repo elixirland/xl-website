@@ -1,9 +1,9 @@
-defmodule Elixirland.MixProject do
+defmodule XlWebsite.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :elixirland,
+      app: :xl_website,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule Elixirland.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Elixirland.Application, []},
+      mod: {XlWebsite.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -49,7 +49,9 @@ defmodule Elixirland.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:timex, "~> 3.0"},
+      {:earmark, "~> 1.4.4"}
     ]
   end
 
