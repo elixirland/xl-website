@@ -1,7 +1,7 @@
 defmodule XlWebsite.Parser do
   alias XlWebsite.Challenge
 
-  @challenge_repo_prefix "xla-"
+  @challenge_repo_prefix "xlc-"
   @topic_hash_map %{
     "api" => "API",
     "postgresql" => "PostgreSQL"

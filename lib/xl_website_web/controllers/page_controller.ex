@@ -53,8 +53,8 @@ defmodule XlWebsiteWeb.PageController do
       {
         "id": 828145138,
         "node_id": "R_kgDOMVx98g",
-        "name": "xla-book-club",
-        "full_name": "elixirland/xla-book-club",
+        "name": "xlc-book-club",
+        "full_name": "elixirland/xlc-book-club",
         "private": false,
         "owner": {
           "login": "elixirland",
