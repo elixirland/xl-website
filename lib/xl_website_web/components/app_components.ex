@@ -3,18 +3,18 @@ defmodule XlWebsiteWeb.AppComponents do
 
   attr :repo, :map
 
-  def assignment(assigns) do
+  def challenge(assigns) do
     ~H"""
     <.link href={@repo.html_url}>
       <article class="w-[360px] bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg">
         <img
-          src={"/images/book-club.png"}
-          width="400"
+          src={"/images/#{@repo.name}.webp"}
+          width="360"
           height="240"
-          class="h-[240px] bg-contain bg-center"
+          class="h-[240px] bg-cover bg-center"
         />
         <div class="p-5 flex flex-col h-[180px]">
-          <h1 class="text-3xl mb-1.5 font-semibold">
+          <h1 class="text-3xl mb-1.5 font-bold">
             <%= @repo.name %>
           </h1>
           <p><%= @repo.description %></p>

@@ -11,6 +11,6 @@
   </heading>
   <p class="max-w-[800px] pt-4 text-lg text-neutral-600 tracking-wide">Challenges live in their own GitHub repositories. Each repository contains a challenge description, including a set of requirements, along with an example implementation in idiomatic Elixir.</p>
   <div class="flex flex-wrap gap-4 my-8">
-    <.assignment :for={repo <- @repos} repo={repo} />
+    <.challenge :for={repo <- @repos} repo={repo} />
   </div>
 </div>
