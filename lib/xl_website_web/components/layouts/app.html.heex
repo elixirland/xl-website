@@ -1,19 +1,21 @@
 <header class="h-[60px] bg-[#5d3390] sticky top-0">
   <div class="h-full flex items-center max-w-[1200px] m-auto px-7">
-  <.link
-    href={~p"/"}
-    class="text-white mr-6 text-xl font-semibold tracking-wide"
-  >Elixirland</.link>
-  <menu class="text text-white flex gap-3">
-    <.link
-      href={~p"/challenges"}
-      class={@page_title == "Challenges" && "underline underline-offset-2"}
-    >Challenges</.link>
-    <.link
-      href={~p"/about"}
-      class={@page_title == "About" && "underline underline-offset-2"}
-    >About</.link>
-  </menu>
+    <.link href={~p"/"} class="text-white mr-6 text-xl font-semibold tracking-wide">
+      Elixirland
+    </.link>
+    <nav>
+      <menu class="text text-white flex gap-3">
+        <.link
+          href={~p"/challenges"}
+          class={@page_title == "Challenges" && "underline underline-offset-2"}
+        >
+          Challenges
+        </.link>
+        <.link href={~p"/about"} class={@page_title == "About" && "underline underline-offset-2"}>
+          About
+        </.link>
+      </menu>
+    </nav>
   </div>
 </header>
 <main>
