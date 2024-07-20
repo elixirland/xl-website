@@ -187,6 +187,8 @@ defmodule XlWebsiteWeb.PageController do
     """
   end
 
+  def readme(_), do: "\n\n## Description\n\nChallenge not found."
+
   # TODO: Replace hard-coded repo info with actual repo info
 
   def get_repos() do

@@ -16,9 +16,44 @@ defmodule XlWebsiteWeb.PageControllerTest do
 
     test "renders hard-coded challenges", %{conn: conn} do
       conn = get(conn, "/challenges")
-      assert html_response(conn, 200) =~ "Book Club"
-      assert html_response(conn, 200) =~ "Simple Chat Room"
-      assert html_response(conn, 200) =~ "Username Generator"
+
+      resp = html_response(conn, 200)
+
+      assert resp =~ "Book Club"
+      assert resp =~ "Simple Chat Room"
+      assert resp =~ "Username Generator"
+    end
+  end
+
+  describe "GET /challenges/:slug" do
+    test "renders book club page", %{conn: conn} do
+      conn = get(conn, "/challenges/book-club")
+
+      resp = html_response(conn, 200)
+
+      assert resp =~ "Book Club"
+      assert resp =~ "Description"
+      assert resp =~ "Example solution"
+    end
+
+    test "renders simple-chat-room page", %{conn: conn} do
+      conn = get(conn, "/challenges/simple-chat-room")
+
+      resp = html_response(conn, 200)
+
+      assert resp =~ "Simple Chat Room"
+      assert resp =~ "Description"
+      assert resp =~ "Example solution"
+    end
+
+    test "renders username-generator page", %{conn: conn} do
+      conn = get(conn, "/challenges/username-generator")
+
+      resp = html_response(conn, 200)
+
+      assert resp =~ "Username Generator"
+      assert resp =~ "Description"
+      assert resp =~ "Example solution"
     end
   end
 
