@@ -9,7 +9,6 @@ defmodule XlWebsiteWeb.PageController do
   def home(conn, _params) do
     conn
     |> assign(:page_title, @home)
-    |> assign(:page_name, @home)
     |> render(:home)
   end
 
@@ -20,7 +19,6 @@ defmodule XlWebsiteWeb.PageController do
 
     conn
     |> assign(:page_title, @challenges)
-    |> assign(:page_name, @challenges)
     |> assign(:repos, github_repos)
     |> render(:challenges)
   end
@@ -28,7 +26,6 @@ defmodule XlWebsiteWeb.PageController do
   def about(conn, _params) do
     conn
     |> assign(:page_title, @about)
-    |> assign(:page_name, @about)
     |> render(:about)
   end
 
