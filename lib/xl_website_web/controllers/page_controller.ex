@@ -29,21 +29,6 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:about)
   end
 
-  # def get_repos() do
-  #   Finch.build(:get, "https://api.github.com/users/elixirland/repos")
-  #   |> Finch.request(XlWebsite.Finch)
-  #   |> case do
-  #     {:ok, %Finch.Response{status: 200, body: body}} ->
-  #       Jason.decode!(body)
-  #     {:ok, %Finch.Response{status: 403}} ->
-  #       {:error, "Forbidden"}
-  #     {:ok, %Finch.Response{status: 404}} ->
-  #       %{error: "Not found"}
-  #     {:error, reason} ->
-  #       %{error: reason}
-  #   end
-  # end
-
   def get_repos() do
     """
     [

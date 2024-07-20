@@ -14,9 +14,11 @@ defmodule XlWebsiteWeb.PageControllerTest do
       assert html_response(conn, 200) =~ "Challenges"
     end
 
-    test "renders Book Club challenge", %{conn: conn} do
+    test "renders hard-coded challenges", %{conn: conn} do
       conn = get(conn, "/challenges")
       assert html_response(conn, 200) =~ "Book Club"
+      assert html_response(conn, 200) =~ "Simple Chat Room"
+      assert html_response(conn, 200) =~ "Username Generator"
     end
   end
 
