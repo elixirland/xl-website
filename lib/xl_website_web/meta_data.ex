@@ -15,6 +15,19 @@ defmodule XlWebsiteWeb.MetaData do
       name="description"
       content="Elixir challenges with idiomatix example solutions."
     >
+    <meta
+      property="og:title"
+      content="Elixirland"
+    >
+    <meta
+      property="og:url"
+      content="https://elixirland.dev"
+    >
+    <meta
+      property="og:description"
+      content="Elixir challenges with idiomatix example solutions."
+    >
+
     """
   end
 
@@ -24,6 +37,23 @@ defmodule XlWebsiteWeb.MetaData do
       name="description"
       content="Explore our Elixir challenges."
     >
+    <link
+      rel="canonical"
+      content="https://elixirland.dev/challenges"
+    />
+    <meta
+      property="og:title"
+      content="Elixirland Challenges"
+    >
+    <meta
+      property="og:url"
+      content="https://elixirland.dev/challenges"
+    >
+    <meta
+      property="og:description"
+      content="Elixir challenges with idiomatix example solutions."
+    >
+
     """
   end
 
@@ -33,6 +63,19 @@ defmodule XlWebsiteWeb.MetaData do
       name="description"
       content="Learn more about Elixirland."
     >
+    <meta
+      property="og:title"
+      content="About Elixirland"
+    >
+    <meta
+      property="og:url"
+      content="https://elixirland.dev/about"
+    >
+    <meta
+      property="og:description"
+      content="Elixir challenges with idiomatix example solutions."
+    >
+
     """
   end
 end
