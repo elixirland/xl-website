@@ -1,5 +1,6 @@
 defmodule XlWebsite.Challenge do
   defstruct [
+    :slug,
     :name,
     :description,
     :full_name,

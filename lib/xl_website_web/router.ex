@@ -19,6 +19,7 @@ defmodule XlWebsiteWeb.Router do
 
     get "/", PageController, :home
     get "/challenges", PageController, :challenges
+    get "/challenges/:slug", PageController, :challenge
     get "/about", PageController, :about
   end
 

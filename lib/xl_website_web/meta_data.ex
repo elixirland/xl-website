@@ -5,11 +5,11 @@ defmodule XlWebsiteWeb.MetaData do
 
   def tags(assigns) do
     ~H"""
-    <.taggers page_title={@page_title}/>
+    <.meta_data page_title={@page_title}/>
     """
   end
 
-  defp taggers(assigns) when assigns.page_title == "Home" do
+  defp meta_data(assigns) when assigns.page_title == "Home" do
     ~H"""
     <meta
       name="description"
@@ -27,11 +27,10 @@ defmodule XlWebsiteWeb.MetaData do
       property="og:description"
       content="Elixir challenges with idiomatix example solutions."
     >
-
     """
   end
 
-  defp taggers(assigns) when assigns.page_title == "Challenges" do
+  defp meta_data(assigns) when assigns.page_title == "Challenges" do
     ~H"""
     <meta
       name="description"
@@ -57,7 +56,29 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
-  defp taggers(assigns) when assigns.page_title == "About" do
+  defp meta_data(assigns) when assigns.page_title == "Challenge" do
+    ~H"""
+    <meta
+      name="description"
+      content="Challenge details."
+    >
+    <meta
+      property="og:title"
+      content="Challenge details"
+    >
+    <meta
+      property="og:url"
+      content=""
+    >
+    <meta
+      property="og:description"
+      content="Challenge details."
+    >
+
+    """
+  end
+
+  defp meta_data(assigns) when assigns.page_title == "About" do
     ~H"""
     <meta
       name="description"
@@ -78,4 +99,6 @@ defmodule XlWebsiteWeb.MetaData do
 
     """
   end
+
+  defp meta_data(assigns), do: ~H""
 end

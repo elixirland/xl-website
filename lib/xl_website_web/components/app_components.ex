@@ -1,11 +1,11 @@
 defmodule XlWebsiteWeb.AppComponents do
-  use Phoenix.Component
+  use XlWebsiteWeb, :html
 
   attr :repo, :map
 
-  def challenge(assigns) do
+  def challenge_card(assigns) do
     ~H"""
-    <.link href={@repo.html_url}>
+    <.link href={~p"/challenges/#{@repo.slug}"}>
       <article class="w-[360px] bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg">
         <img
           src={"/images/#{@repo.name}.webp"}

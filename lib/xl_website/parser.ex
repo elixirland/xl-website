@@ -8,6 +8,25 @@ defmodule XlWebsite.Parser do
   }
   @topic_hash_keys Map.keys(@topic_hash_map)
 
+  def filter_description(readme) do
+    readme
+    # TODO: Refactor this to use a regex for reliability
+    |> String.split("\n\n## ")
+    |> Enum.filter(fn section ->
+      String.starts_with?(section, "Description")
+    end)
+    # TODO: Handle the case where there is no valid description heading
+    |> hd()
+    |> String.replace("Description\n", "")
+  end
+
+  def slug_to_name(slug) do
+    slug
+    |> String.split("-")
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(" ")
+  end
+
   def normalize_repos(repos) do
     repos
     |> filter_challenge_repos()
@@ -18,6 +37,7 @@ defmodule XlWebsite.Parser do
   defp build_challenge_structs(repos) do
     Enum.map(repos, fn repo ->
       %Challenge{
+        slug: build_slug(repo["name"]),
         name: parse_name(repo["name"]),
         description: repo["description"],
         full_name: repo["full_name"],
@@ -38,6 +58,13 @@ defmodule XlWebsite.Parser do
         @challenge_repo_prefix
       )
     end)
+  end
+
+  defp build_slug(name) do
+    name
+    |> String.replace_prefix(@challenge_repo_prefix, "")
+    |> String.downcase()
+    |> String.replace(" ", "-")
   end
 
   defp parse_name(name) do
