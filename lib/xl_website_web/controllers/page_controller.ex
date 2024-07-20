@@ -3,9 +3,9 @@ defmodule XlWebsiteWeb.PageController do
   alias XlWebsite.Parser
 
   @home "Home"
-  @challenges "Challenges"
+  @exercises "Exercises"
   @about "About"
-  @repo_prefix "xlc-"
+  @repo_prefix "xle-"
 
   def home(conn, _params) do
     conn
@@ -13,18 +13,18 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:home)
   end
 
-  def challenges(conn, _params) do
+  def exercises(conn, _params) do
     github_repos =
       get_repos()
       |> Parser.normalize_repos()
 
     conn
-    |> assign(:page_title, @challenges)
+    |> assign(:page_title, @exercises)
     |> assign(:repos, github_repos)
-    |> render(:challenges)
+    |> render(:exercises)
   end
 
-  def challenge(conn, %{"slug" => slug}) do
+  def exercise(conn, %{"slug" => slug}) do
     description =
       readme(slug)
       |> Parser.filter_description()
@@ -37,7 +37,7 @@ defmodule XlWebsiteWeb.PageController do
     |> assign(:slug, slug)
     |> assign(:repo_prefix, @repo_prefix)
     |> assign(:description, description)
-    |> render(:challenge)
+    |> render(:exercise)
   end
 
   def about(conn, _params) do
@@ -51,12 +51,12 @@ defmodule XlWebsiteWeb.PageController do
   def readme("username-generator") do
     """
     # Username Generator
-    This is an Elixirland challenge. Read an introduction to Elixirland here: https://github.com/elixirland.
+    This is an Elixirland exercise. Read an introduction to Elixirland here: https://github.com/elixirland.
 
     ## Status
     This repository is **NOT REVIEWED** and **WORK IN PROGRESS**. This status will be set to "reviewed" when enough feedback has been given on the code and documentation in the `solution` directory.
 
-    You can provide feedback by [opening an issue](https://github.com/elixirland/xlc-username-generator/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xlc-username-generator/discussions).
+    You can provide feedback by [opening an issue](https://github.com/elixirland/xle-username-generator/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xle-username-generator/discussions).
 
     ## Description
     ### Background
@@ -89,12 +89,12 @@ defmodule XlWebsiteWeb.PageController do
   def readme("simple-chat-room") do
     """
     # Simple Chat Room
-    This is an Elixirland challenge. Read an introduction to Elixirland here: https://github.com/elixirland.
+    This is an Elixirland exercise. Read an introduction to Elixirland here: https://github.com/elixirland.
 
     ## Status
     This repository is **NOT REVIEWED** and **WORK IN PROGRESS**. This status will be set to "reviewed" when enough feedback has been given on the code and documentation in the `solution` directory.
 
-    You can provide feedback by [opening an issue](https://github.com/elixirland/xlc-simple-chat-room/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xlc-simple-chat-room/discussions).
+    You can provide feedback by [opening an issue](https://github.com/elixirland/xle-simple-chat-room/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xle-simple-chat-room/discussions).
 
     ## Description
     ### Background
@@ -108,7 +108,7 @@ defmodule XlWebsiteWeb.PageController do
     ### Requirements
 
     ### Don't worry about
-    To keep the challenge simple, you do not have to implement the following:
+    To keep the exercise simple, you do not have to implement the following:
 
 
     ## How to get started
@@ -121,12 +121,12 @@ defmodule XlWebsiteWeb.PageController do
   def readme("book-club") do
     """
     # Book Club
-    This is an Elixirland challenge. Read an introduction to Elixirland here: https://github.com/elixirland.
+    This is an Elixirland exercise. Read an introduction to Elixirland here: https://github.com/elixirland.
 
     ## Status
     This repository is **NOT REVIEWED** and **WORK IN PROGRESS**. This status will be set to "reviewed" when enough feedback has been given on the code and documentation in the `solution` directory.
 
-    You can provide feedback by [opening an issue](https://github.com/elixirland/xlc-book-club/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xlc-book-club/discussions).
+    You can provide feedback by [opening an issue](https://github.com/elixirland/xle-book-club/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xle-book-club/discussions).
 
     ## Description
     ### Background
@@ -173,7 +173,7 @@ defmodule XlWebsiteWeb.PageController do
       - Includes instructions how to use the endpoints
 
     ### Don't worry about
-    To keep the challenge simple, you do not have to implement the following:
+    To keep the exercise simple, you do not have to implement the following:
 
       - Client authentication and/or authorization
       - Rate limiting
@@ -187,7 +187,7 @@ defmodule XlWebsiteWeb.PageController do
     """
   end
 
-  def readme(_), do: "\n\n## Description\n\nChallenge not found."
+  def readme(_), do: "\n\n## Description\n\nExercise not found."
 
   # TODO: Replace hard-coded repo info with actual repo info
 
@@ -323,7 +323,7 @@ defmodule XlWebsiteWeb.PageController do
           "site_admin": false
         },
         "html_url": "https://github.com/elixirland/xl-faker",
-        "description": "A package for generating fake data, convenient for use in Elixirland challenges.",
+        "description": "A package for generating fake data, convenient for use in Elixirland exercises.",
         "fork": false,
         "url": "https://api.github.com/repos/elixirland/xl-faker",
         "forks_url": "https://api.github.com/repos/elixirland/xl-faker/forks",
@@ -431,7 +431,7 @@ defmodule XlWebsiteWeb.PageController do
           "site_admin": false
         },
         "html_url": "https://github.com/elixirland/xl-template",
-        "description": "Template for challenge repositories",
+        "description": "Template for exercise repositories",
         "fork": false,
         "url": "https://api.github.com/repos/elixirland/xl-template",
         "forks_url": "https://api.github.com/repos/elixirland/xl-template/forks",
@@ -509,8 +509,8 @@ defmodule XlWebsiteWeb.PageController do
       {
         "id": 828145138,
         "node_id": "R_kgDOMVx98g",
-        "name": "xlc-book-club",
-        "full_name": "elixirland/xlc-book-club",
+        "name": "xle-book-club",
+        "full_name": "elixirland/xle-book-club",
         "private": false,
         "owner": {
           "login": "elixirland",
@@ -532,53 +532,53 @@ defmodule XlWebsiteWeb.PageController do
           "type": "User",
           "site_admin": false
         },
-        "html_url": "https://github.com/elixirland/xlc-book-club",
+        "html_url": "https://github.com/elixirland/xle-book-club",
         "description": "Build an simple Phoenix API for a book club.",
         "fork": false,
-        "url": "https://api.github.com/repos/elixirland/xlc-book-club",
-        "forks_url": "https://api.github.com/repos/elixirland/xlc-book-club/forks",
-        "keys_url": "https://api.github.com/repos/elixirland/xlc-book-club/keys{/key_id}",
-        "collaborators_url": "https://api.github.com/repos/elixirland/xlc-book-club/collaborators{/collaborator}",
-        "teams_url": "https://api.github.com/repos/elixirland/xlc-book-club/teams",
-        "hooks_url": "https://api.github.com/repos/elixirland/xlc-book-club/hooks",
-        "issue_events_url": "https://api.github.com/repos/elixirland/xlc-book-club/issues/events{/number}",
-        "events_url": "https://api.github.com/repos/elixirland/xlc-book-club/events",
-        "assignees_url": "https://api.github.com/repos/elixirland/xlc-book-club/assignees{/user}",
-        "branches_url": "https://api.github.com/repos/elixirland/xlc-book-club/branches{/branch}",
-        "tags_url": "https://api.github.com/repos/elixirland/xlc-book-club/tags",
-        "blobs_url": "https://api.github.com/repos/elixirland/xlc-book-club/git/blobs{/sha}",
-        "git_tags_url": "https://api.github.com/repos/elixirland/xlc-book-club/git/tags{/sha}",
-        "git_refs_url": "https://api.github.com/repos/elixirland/xlc-book-club/git/refs{/sha}",
-        "trees_url": "https://api.github.com/repos/elixirland/xlc-book-club/git/trees{/sha}",
-        "statuses_url": "https://api.github.com/repos/elixirland/xlc-book-club/statuses/{sha}",
-        "languages_url": "https://api.github.com/repos/elixirland/xlc-book-club/languages",
-        "stargazers_url": "https://api.github.com/repos/elixirland/xlc-book-club/stargazers",
-        "contributors_url": "https://api.github.com/repos/elixirland/xlc-book-club/contributors",
-        "subscribers_url": "https://api.github.com/repos/elixirland/xlc-book-club/subscribers",
-        "subscription_url": "https://api.github.com/repos/elixirland/xlc-book-club/subscription",
-        "commits_url": "https://api.github.com/repos/elixirland/xlc-book-club/commits{/sha}",
-        "git_commits_url": "https://api.github.com/repos/elixirland/xlc-book-club/git/commits{/sha}",
-        "comments_url": "https://api.github.com/repos/elixirland/xlc-book-club/comments{/number}",
-        "issue_comment_url": "https://api.github.com/repos/elixirland/xlc-book-club/issues/comments{/number}",
-        "contents_url": "https://api.github.com/repos/elixirland/xlc-book-club/contents/{+path}",
-        "compare_url": "https://api.github.com/repos/elixirland/xlc-book-club/compare/{base}...{head}",
-        "merges_url": "https://api.github.com/repos/elixirland/xlc-book-club/merges",
-        "archive_url": "https://api.github.com/repos/elixirland/xlc-book-club/{archive_format}{/ref}",
-        "downloads_url": "https://api.github.com/repos/elixirland/xlc-book-club/downloads",
-        "issues_url": "https://api.github.com/repos/elixirland/xlc-book-club/issues{/number}",
-        "pulls_url": "https://api.github.com/repos/elixirland/xlc-book-club/pulls{/number}",
-        "milestones_url": "https://api.github.com/repos/elixirland/xlc-book-club/milestones{/number}",
-        "notifications_url": "https://api.github.com/repos/elixirland/xlc-book-club/notifications{?since,all,participating}",
-        "labels_url": "https://api.github.com/repos/elixirland/xlc-book-club/labels{/name}",
-        "releases_url": "https://api.github.com/repos/elixirland/xlc-book-club/releases{/id}",
-        "deployments_url": "https://api.github.com/repos/elixirland/xlc-book-club/deployments",
+        "url": "https://api.github.com/repos/elixirland/xle-book-club",
+        "forks_url": "https://api.github.com/repos/elixirland/xle-book-club/forks",
+        "keys_url": "https://api.github.com/repos/elixirland/xle-book-club/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/elixirland/xle-book-club/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/elixirland/xle-book-club/teams",
+        "hooks_url": "https://api.github.com/repos/elixirland/xle-book-club/hooks",
+        "issue_events_url": "https://api.github.com/repos/elixirland/xle-book-club/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/elixirland/xle-book-club/events",
+        "assignees_url": "https://api.github.com/repos/elixirland/xle-book-club/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/elixirland/xle-book-club/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/elixirland/xle-book-club/tags",
+        "blobs_url": "https://api.github.com/repos/elixirland/xle-book-club/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/elixirland/xle-book-club/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/elixirland/xle-book-club/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/elixirland/xle-book-club/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/elixirland/xle-book-club/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/elixirland/xle-book-club/languages",
+        "stargazers_url": "https://api.github.com/repos/elixirland/xle-book-club/stargazers",
+        "contributors_url": "https://api.github.com/repos/elixirland/xle-book-club/contributors",
+        "subscribers_url": "https://api.github.com/repos/elixirland/xle-book-club/subscribers",
+        "subscription_url": "https://api.github.com/repos/elixirland/xle-book-club/subscription",
+        "commits_url": "https://api.github.com/repos/elixirland/xle-book-club/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/elixirland/xle-book-club/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/elixirland/xle-book-club/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/elixirland/xle-book-club/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/elixirland/xle-book-club/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/elixirland/xle-book-club/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/elixirland/xle-book-club/merges",
+        "archive_url": "https://api.github.com/repos/elixirland/xle-book-club/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/elixirland/xle-book-club/downloads",
+        "issues_url": "https://api.github.com/repos/elixirland/xle-book-club/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/elixirland/xle-book-club/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/elixirland/xle-book-club/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/elixirland/xle-book-club/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/elixirland/xle-book-club/labels{/name}",
+        "releases_url": "https://api.github.com/repos/elixirland/xle-book-club/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/elixirland/xle-book-club/deployments",
         "created_at": "2024-07-13T08:52:23Z",
         "updated_at": "2024-07-19T11:25:04Z",
         "pushed_at": "2024-07-19T11:25:01Z",
-        "git_url": "git://github.com/elixirland/xlc-book-club.git",
-        "ssh_url": "git@github.com:elixirland/xlc-book-club.git",
-        "clone_url": "https://github.com/elixirland/xlc-book-club.git",
-        "svn_url": "https://github.com/elixirland/xlc-book-club",
+        "git_url": "git://github.com/elixirland/xle-book-club.git",
+        "ssh_url": "git@github.com:elixirland/xle-book-club.git",
+        "clone_url": "https://github.com/elixirland/xle-book-club.git",
+        "svn_url": "https://github.com/elixirland/xle-book-club",
         "homepage": "",
         "size": 403,
         "stargazers_count": 1,
@@ -615,8 +615,8 @@ defmodule XlWebsiteWeb.PageController do
       {
         "id": 830974554,
         "node_id": "R_kgDOMYeqWg",
-        "name": "xlc-simple-chat-room",
-        "full_name": "elixirland/xlc-simple-chat-room",
+        "name": "xle-simple-chat-room",
+        "full_name": "elixirland/xle-simple-chat-room",
         "private": false,
         "owner": {
           "login": "elixirland",
@@ -638,53 +638,53 @@ defmodule XlWebsiteWeb.PageController do
           "type": "User",
           "site_admin": false
         },
-        "html_url": "https://github.com/elixirland/xlc-simple-chat-room",
+        "html_url": "https://github.com/elixirland/xle-simple-chat-room",
         "description": "Build a simple chat room with LiveView.",
         "fork": false,
-        "url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room",
-        "forks_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/forks",
-        "keys_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/keys{/key_id}",
-        "collaborators_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/collaborators{/collaborator}",
-        "teams_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/teams",
-        "hooks_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/hooks",
-        "issue_events_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/issues/events{/number}",
-        "events_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/events",
-        "assignees_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/assignees{/user}",
-        "branches_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/branches{/branch}",
-        "tags_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/tags",
-        "blobs_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/git/blobs{/sha}",
-        "git_tags_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/git/tags{/sha}",
-        "git_refs_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/git/refs{/sha}",
-        "trees_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/git/trees{/sha}",
-        "statuses_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/statuses/{sha}",
-        "languages_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/languages",
-        "stargazers_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/stargazers",
-        "contributors_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/contributors",
-        "subscribers_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/subscribers",
-        "subscription_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/subscription",
-        "commits_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/commits{/sha}",
-        "git_commits_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/git/commits{/sha}",
-        "comments_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/comments{/number}",
-        "issue_comment_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/issues/comments{/number}",
-        "contents_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/contents/{+path}",
-        "compare_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/compare/{base}...{head}",
-        "merges_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/merges",
-        "archive_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/{archive_format}{/ref}",
-        "downloads_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/downloads",
-        "issues_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/issues{/number}",
-        "pulls_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/pulls{/number}",
-        "milestones_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/milestones{/number}",
-        "notifications_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/notifications{?since,all,participating}",
-        "labels_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/labels{/name}",
-        "releases_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/releases{/id}",
-        "deployments_url": "https://api.github.com/repos/elixirland/xlc-simple-chat-room/deployments",
+        "url": "https://api.github.com/repos/elixirland/xle-simple-chat-room",
+        "forks_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/forks",
+        "keys_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/teams",
+        "hooks_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/hooks",
+        "issue_events_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/events",
+        "assignees_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/tags",
+        "blobs_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/languages",
+        "stargazers_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/stargazers",
+        "contributors_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/contributors",
+        "subscribers_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/subscribers",
+        "subscription_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/subscription",
+        "commits_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/merges",
+        "archive_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/downloads",
+        "issues_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/labels{/name}",
+        "releases_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/elixirland/xle-simple-chat-room/deployments",
         "created_at": "2024-07-19T11:24:22Z",
         "updated_at": "2024-07-19T11:27:59Z",
         "pushed_at": "2024-07-19T11:26:50Z",
-        "git_url": "git://github.com/elixirland/xlc-simple-chat-room.git",
-        "ssh_url": "git@github.com:elixirland/xlc-simple-chat-room.git",
-        "clone_url": "https://github.com/elixirland/xlc-simple-chat-room.git",
-        "svn_url": "https://github.com/elixirland/xlc-simple-chat-room",
+        "git_url": "git://github.com/elixirland/xle-simple-chat-room.git",
+        "ssh_url": "git@github.com:elixirland/xle-simple-chat-room.git",
+        "clone_url": "https://github.com/elixirland/xle-simple-chat-room.git",
+        "svn_url": "https://github.com/elixirland/xle-simple-chat-room",
         "homepage": "",
         "size": 0,
         "stargazers_count": 0,
@@ -720,8 +720,8 @@ defmodule XlWebsiteWeb.PageController do
       {
         "id": 830696485,
         "node_id": "R_kgDOMYNsJQ",
-        "name": "xlc-username-generator",
-        "full_name": "elixirland/xlc-username-generator",
+        "name": "xle-username-generator",
+        "full_name": "elixirland/xle-username-generator",
         "private": false,
         "owner": {
           "login": "elixirland",
@@ -743,53 +743,53 @@ defmodule XlWebsiteWeb.PageController do
           "type": "User",
           "site_admin": false
         },
-        "html_url": "https://github.com/elixirland/xlc-username-generator",
+        "html_url": "https://github.com/elixirland/xle-username-generator",
         "description": "Build a Hex package that generates random usernames.",
         "fork": false,
-        "url": "https://api.github.com/repos/elixirland/xlc-username-generator",
-        "forks_url": "https://api.github.com/repos/elixirland/xlc-username-generator/forks",
-        "keys_url": "https://api.github.com/repos/elixirland/xlc-username-generator/keys{/key_id}",
-        "collaborators_url": "https://api.github.com/repos/elixirland/xlc-username-generator/collaborators{/collaborator}",
-        "teams_url": "https://api.github.com/repos/elixirland/xlc-username-generator/teams",
-        "hooks_url": "https://api.github.com/repos/elixirland/xlc-username-generator/hooks",
-        "issue_events_url": "https://api.github.com/repos/elixirland/xlc-username-generator/issues/events{/number}",
-        "events_url": "https://api.github.com/repos/elixirland/xlc-username-generator/events",
-        "assignees_url": "https://api.github.com/repos/elixirland/xlc-username-generator/assignees{/user}",
-        "branches_url": "https://api.github.com/repos/elixirland/xlc-username-generator/branches{/branch}",
-        "tags_url": "https://api.github.com/repos/elixirland/xlc-username-generator/tags",
-        "blobs_url": "https://api.github.com/repos/elixirland/xlc-username-generator/git/blobs{/sha}",
-        "git_tags_url": "https://api.github.com/repos/elixirland/xlc-username-generator/git/tags{/sha}",
-        "git_refs_url": "https://api.github.com/repos/elixirland/xlc-username-generator/git/refs{/sha}",
-        "trees_url": "https://api.github.com/repos/elixirland/xlc-username-generator/git/trees{/sha}",
-        "statuses_url": "https://api.github.com/repos/elixirland/xlc-username-generator/statuses/{sha}",
-        "languages_url": "https://api.github.com/repos/elixirland/xlc-username-generator/languages",
-        "stargazers_url": "https://api.github.com/repos/elixirland/xlc-username-generator/stargazers",
-        "contributors_url": "https://api.github.com/repos/elixirland/xlc-username-generator/contributors",
-        "subscribers_url": "https://api.github.com/repos/elixirland/xlc-username-generator/subscribers",
-        "subscription_url": "https://api.github.com/repos/elixirland/xlc-username-generator/subscription",
-        "commits_url": "https://api.github.com/repos/elixirland/xlc-username-generator/commits{/sha}",
-        "git_commits_url": "https://api.github.com/repos/elixirland/xlc-username-generator/git/commits{/sha}",
-        "comments_url": "https://api.github.com/repos/elixirland/xlc-username-generator/comments{/number}",
-        "issue_comment_url": "https://api.github.com/repos/elixirland/xlc-username-generator/issues/comments{/number}",
-        "contents_url": "https://api.github.com/repos/elixirland/xlc-username-generator/contents/{+path}",
-        "compare_url": "https://api.github.com/repos/elixirland/xlc-username-generator/compare/{base}...{head}",
-        "merges_url": "https://api.github.com/repos/elixirland/xlc-username-generator/merges",
-        "archive_url": "https://api.github.com/repos/elixirland/xlc-username-generator/{archive_format}{/ref}",
-        "downloads_url": "https://api.github.com/repos/elixirland/xlc-username-generator/downloads",
-        "issues_url": "https://api.github.com/repos/elixirland/xlc-username-generator/issues{/number}",
-        "pulls_url": "https://api.github.com/repos/elixirland/xlc-username-generator/pulls{/number}",
-        "milestones_url": "https://api.github.com/repos/elixirland/xlc-username-generator/milestones{/number}",
-        "notifications_url": "https://api.github.com/repos/elixirland/xlc-username-generator/notifications{?since,all,participating}",
-        "labels_url": "https://api.github.com/repos/elixirland/xlc-username-generator/labels{/name}",
-        "releases_url": "https://api.github.com/repos/elixirland/xlc-username-generator/releases{/id}",
-        "deployments_url": "https://api.github.com/repos/elixirland/xlc-username-generator/deployments",
+        "url": "https://api.github.com/repos/elixirland/xle-username-generator",
+        "forks_url": "https://api.github.com/repos/elixirland/xle-username-generator/forks",
+        "keys_url": "https://api.github.com/repos/elixirland/xle-username-generator/keys{/key_id}",
+        "collaborators_url": "https://api.github.com/repos/elixirland/xle-username-generator/collaborators{/collaborator}",
+        "teams_url": "https://api.github.com/repos/elixirland/xle-username-generator/teams",
+        "hooks_url": "https://api.github.com/repos/elixirland/xle-username-generator/hooks",
+        "issue_events_url": "https://api.github.com/repos/elixirland/xle-username-generator/issues/events{/number}",
+        "events_url": "https://api.github.com/repos/elixirland/xle-username-generator/events",
+        "assignees_url": "https://api.github.com/repos/elixirland/xle-username-generator/assignees{/user}",
+        "branches_url": "https://api.github.com/repos/elixirland/xle-username-generator/branches{/branch}",
+        "tags_url": "https://api.github.com/repos/elixirland/xle-username-generator/tags",
+        "blobs_url": "https://api.github.com/repos/elixirland/xle-username-generator/git/blobs{/sha}",
+        "git_tags_url": "https://api.github.com/repos/elixirland/xle-username-generator/git/tags{/sha}",
+        "git_refs_url": "https://api.github.com/repos/elixirland/xle-username-generator/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/elixirland/xle-username-generator/git/trees{/sha}",
+        "statuses_url": "https://api.github.com/repos/elixirland/xle-username-generator/statuses/{sha}",
+        "languages_url": "https://api.github.com/repos/elixirland/xle-username-generator/languages",
+        "stargazers_url": "https://api.github.com/repos/elixirland/xle-username-generator/stargazers",
+        "contributors_url": "https://api.github.com/repos/elixirland/xle-username-generator/contributors",
+        "subscribers_url": "https://api.github.com/repos/elixirland/xle-username-generator/subscribers",
+        "subscription_url": "https://api.github.com/repos/elixirland/xle-username-generator/subscription",
+        "commits_url": "https://api.github.com/repos/elixirland/xle-username-generator/commits{/sha}",
+        "git_commits_url": "https://api.github.com/repos/elixirland/xle-username-generator/git/commits{/sha}",
+        "comments_url": "https://api.github.com/repos/elixirland/xle-username-generator/comments{/number}",
+        "issue_comment_url": "https://api.github.com/repos/elixirland/xle-username-generator/issues/comments{/number}",
+        "contents_url": "https://api.github.com/repos/elixirland/xle-username-generator/contents/{+path}",
+        "compare_url": "https://api.github.com/repos/elixirland/xle-username-generator/compare/{base}...{head}",
+        "merges_url": "https://api.github.com/repos/elixirland/xle-username-generator/merges",
+        "archive_url": "https://api.github.com/repos/elixirland/xle-username-generator/{archive_format}{/ref}",
+        "downloads_url": "https://api.github.com/repos/elixirland/xle-username-generator/downloads",
+        "issues_url": "https://api.github.com/repos/elixirland/xle-username-generator/issues{/number}",
+        "pulls_url": "https://api.github.com/repos/elixirland/xle-username-generator/pulls{/number}",
+        "milestones_url": "https://api.github.com/repos/elixirland/xle-username-generator/milestones{/number}",
+        "notifications_url": "https://api.github.com/repos/elixirland/xle-username-generator/notifications{?since,all,participating}",
+        "labels_url": "https://api.github.com/repos/elixirland/xle-username-generator/labels{/name}",
+        "releases_url": "https://api.github.com/repos/elixirland/xle-username-generator/releases{/id}",
+        "deployments_url": "https://api.github.com/repos/elixirland/xle-username-generator/deployments",
         "created_at": "2024-07-18T19:44:24Z",
         "updated_at": "2024-07-19T11:16:46Z",
         "pushed_at": "2024-07-19T11:16:42Z",
-        "git_url": "git://github.com/elixirland/xlc-username-generator.git",
-        "ssh_url": "git@github.com:elixirland/xlc-username-generator.git",
-        "clone_url": "https://github.com/elixirland/xlc-username-generator.git",
-        "svn_url": "https://github.com/elixirland/xlc-username-generator",
+        "git_url": "git://github.com/elixirland/xle-username-generator.git",
+        "ssh_url": "git@github.com:elixirland/xle-username-generator.git",
+        "clone_url": "https://github.com/elixirland/xle-username-generator.git",
+        "svn_url": "https://github.com/elixirland/xle-username-generator",
         "homepage": "",
         "size": 571,
         "stargazers_count": 0,

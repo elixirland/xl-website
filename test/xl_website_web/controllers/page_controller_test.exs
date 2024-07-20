@@ -4,18 +4,18 @@ defmodule XlWebsiteWeb.PageControllerTest do
   describe "GET /" do
     test "renders home page", %{conn: conn} do
       conn = get(conn, "/")
-      assert html_response(conn, 200) =~ "Elixir challenges with idiomatic example solutions"
+      assert html_response(conn, 200) =~ "Elixir exercises with idiomatic example solutions"
     end
   end
 
-  describe "GET /challenges" do
-    test "renders challenges page", %{conn: conn} do
-      conn = get(conn, "/challenges")
-      assert html_response(conn, 200) =~ "Challenges"
+  describe "GET /exercises" do
+    test "renders exercises page", %{conn: conn} do
+      conn = get(conn, "/exercises")
+      assert html_response(conn, 200) =~ "Exercises"
     end
 
-    test "renders hard-coded challenges", %{conn: conn} do
-      conn = get(conn, "/challenges")
+    test "renders hard-coded exercises", %{conn: conn} do
+      conn = get(conn, "/exercises")
 
       resp = html_response(conn, 200)
 
@@ -25,9 +25,9 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
   end
 
-  describe "GET /challenges/:slug" do
+  describe "GET /exercises/:slug" do
     test "renders book club page", %{conn: conn} do
-      conn = get(conn, "/challenges/book-club")
+      conn = get(conn, "/exercises/book-club")
 
       resp = html_response(conn, 200)
 
@@ -37,7 +37,7 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
 
     test "renders simple-chat-room page", %{conn: conn} do
-      conn = get(conn, "/challenges/simple-chat-room")
+      conn = get(conn, "/exercises/simple-chat-room")
 
       resp = html_response(conn, 200)
 
@@ -47,7 +47,7 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
 
     test "renders username-generator page", %{conn: conn} do
-      conn = get(conn, "/challenges/username-generator")
+      conn = get(conn, "/exercises/username-generator")
 
       resp = html_response(conn, 200)
 

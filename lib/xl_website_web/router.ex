@@ -18,8 +18,8 @@ defmodule XlWebsiteWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/challenges", PageController, :challenges
-    get "/challenges/:slug", PageController, :challenge
+    get "/exercises", PageController, :exercises
+    get "/exercises/:slug", PageController, :exercise
     get "/about", PageController, :about
   end
 

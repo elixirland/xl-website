@@ -3,9 +3,9 @@ defmodule XlWebsiteWeb.AppComponents do
 
   attr :repo, :map
 
-  def challenge_card(assigns) do
+  def exercise_card(assigns) do
     ~H"""
-    <.link href={~p"/challenges/#{@repo.slug}"}>
+    <.link href={~p"/exercises/#{@repo.slug}"}>
       <article class="w-[360px] bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg">
         <img
           src={"/images/#{@repo.name}.webp"}

@@ -1,7 +1,7 @@
 defmodule XlWebsite.Parser do
-  alias XlWebsite.Challenge
+  alias XlWebsite.Exercise
 
-  @challenge_repo_prefix "xlc-"
+  @exercise_repo_prefix "xle-"
   @topic_hash_map %{
     "api" => "API",
     "postgresql" => "PostgreSQL"
@@ -29,14 +29,14 @@ defmodule XlWebsite.Parser do
 
   def normalize_repos(repos) do
     repos
-    |> filter_challenge_repos()
-    |> build_challenge_structs()
+    |> filter_exercise_repos()
+    |> build_exercise_structs()
     |> Enum.sort_by(& &1.created_at, :desc)
   end
 
-  defp build_challenge_structs(repos) do
+  defp build_exercise_structs(repos) do
     Enum.map(repos, fn repo ->
-      %Challenge{
+      %Exercise{
         slug: build_slug(repo["name"]),
         name: parse_name(repo["name"]),
         description: repo["description"],
@@ -50,26 +50,26 @@ defmodule XlWebsite.Parser do
     end)
   end
 
-  defp filter_challenge_repos(repos) do
+  defp filter_exercise_repos(repos) do
     repos
     |> Enum.filter(fn repo ->
       String.starts_with?(
         repo["name"],
-        @challenge_repo_prefix
+        @exercise_repo_prefix
       )
     end)
   end
 
   defp build_slug(name) do
     name
-    |> String.replace_prefix(@challenge_repo_prefix, "")
+    |> String.replace_prefix(@exercise_repo_prefix, "")
     |> String.downcase()
     |> String.replace(" ", "-")
   end
 
   defp parse_name(name) do
     name
-    |> String.replace_prefix(@challenge_repo_prefix, "")
+    |> String.replace_prefix(@exercise_repo_prefix, "")
     |> String.split("-")
     |> Enum.map(&String.capitalize/1)
     |> Enum.join(" ")

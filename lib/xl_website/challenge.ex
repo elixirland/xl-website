@@ -1,4 +1,4 @@
-defmodule XlWebsite.Challenge do
+defmodule XlWebsite.Exercise do
   defstruct [
     :slug,
     :name,

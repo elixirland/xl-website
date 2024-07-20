@@ -13,7 +13,7 @@ defmodule XlWebsiteWeb.MetaData do
     ~H"""
     <meta
       name="description"
-      content="Elixir challenges with idiomatix example solutions."
+      content="Elixir exercises with idiomatix example solutions."
     >
     <meta
       property="og:title"
@@ -25,46 +25,46 @@ defmodule XlWebsiteWeb.MetaData do
     >
     <meta
       property="og:description"
-      content="Elixir challenges with idiomatix example solutions."
+      content="Elixir exercises with idiomatix example solutions."
     >
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "Challenges" do
+  defp meta_data(assigns) when assigns.page_title == "Exercises" do
     ~H"""
     <meta
       name="description"
-      content="Explore our Elixir challenges."
+      content="Explore our Elixir exercises."
     >
     <link
       rel="canonical"
-      content="https://elixirland.dev/challenges"
+      content="https://elixirland.dev/exercises"
     />
     <meta
       property="og:title"
-      content="Elixirland Challenges"
+      content="Elixirland Exercises"
     >
     <meta
       property="og:url"
-      content="https://elixirland.dev/challenges"
+      content="https://elixirland.dev/exercises"
     >
     <meta
       property="og:description"
-      content="Elixir challenges with idiomatix example solutions."
+      content="Elixir exercises with idiomatix example solutions."
     >
 
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "Challenge" do
+  defp meta_data(assigns) when assigns.page_title == "Exercise" do
     ~H"""
     <meta
       name="description"
-      content="Challenge details."
+      content="Exercise details."
     >
     <meta
       property="og:title"
-      content="Challenge details"
+      content="Exercise details"
     >
     <meta
       property="og:url"
@@ -72,7 +72,7 @@ defmodule XlWebsiteWeb.MetaData do
     >
     <meta
       property="og:description"
-      content="Challenge details."
+      content="Exercise details."
     >
 
     """
@@ -94,7 +94,7 @@ defmodule XlWebsiteWeb.MetaData do
     >
     <meta
       property="og:description"
-      content="Elixir challenges with idiomatix example solutions."
+      content="Elixir exercises with idiomatix example solutions."
     >
 
     """

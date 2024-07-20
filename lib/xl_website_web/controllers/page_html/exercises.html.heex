@@ -1,7 +1,7 @@
 <div class="max-w-[1200px] m-auto px-8">
   <section>
     <heading class="flex items-end">
-      <h1 class="pt-8 text-4xl text-[#66626c] font-medium">Challenges</h1>
+      <h1 class="pt-8 text-4xl text-[#66626c] font-medium">Exercises</h1>
       <div class="text-xl text-[#66626c] font-medium  ml-auto">
         <%= case Enum.count(@repos) do %>
           <% 1 -> %>
@@ -15,14 +15,14 @@
   <section>
     <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
       <p>
-        Challenges live in their own GitHub repositories. Each repository contains a challenge description, including a set of requirements, along with an example implementation in idiomatic Elixir.
+        Exercises live in their own GitHub repositories. Each repository contains a exercise description, including a set of requirements, along with an example implementation in idiomatic Elixir.
       </p>
       <p class="mt-3">
-        All challenges are designed to create production-ready code. Example solutions emphasize maintainability, readability, and, when necessary, performance.
+        All exercises are designed to create production-ready code. Example solutions emphasize maintainability, readability, and, when necessary, performance.
       </p>
     </div>
     <div class="flex flex-wrap gap-4 my-8">
-      <.challenge_card :for={repo <- @repos} repo={repo} />
+      <.exercise_card :for={repo <- @repos} repo={repo} />
     </div>
   </section>
 </div>
