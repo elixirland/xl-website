@@ -6,7 +6,9 @@ defmodule XlWebsiteWeb.AppComponents do
   def exercise_card(assigns) do
     ~H"""
     <.link href={~p"/exercises/#{@repo.slug}"}>
-      <article class="w-[360px] bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg">
+      <article class="w-[360px] bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
+        <%!-- TODO: Replace hard-coded "Coming soon" --%>
+        <span class="absolute top-2 right-2 bg-[#f7f7f7f7] drop-shadow py-1 px-2 font-medium rounded-md text-[0.8rem] tracking-wide">Coming soon</span>
         <img
           src={"/images/#{@repo.name}.webp"}
           width="360"
