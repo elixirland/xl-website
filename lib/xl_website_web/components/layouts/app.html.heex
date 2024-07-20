@@ -7,11 +7,11 @@
       <menu class="text text-white flex gap-3">
         <.link
           href={~p"/exercises"}
-          class={@page_title == "Exercises" && "underline underline-offset-2"}
+          class={assigns[:route] == "Exercises" && "underline underline-offset-2"}
         >
           Exercises
         </.link>
-        <.link href={~p"/about"} class={@page_title == "About" && "underline underline-offset-2"}>
+        <.link href={~p"/about"} class={assigns[:route] == "About" && "underline underline-offset-2"}>
           About
         </.link>
       </menu>

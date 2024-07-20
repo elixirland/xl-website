@@ -6,10 +6,12 @@ defmodule XlWebsiteWeb.PageController do
   @exercises "Exercises"
   @about "About"
   @repo_prefix "xle-"
+  @title_prefix "Elixirland - "
 
   def home(conn, _params) do
     conn
-    |> assign(:page_title, @home)
+    |> assign(:page_title, @title_prefix <> "Elixir exercises with idiomatic example solutions")
+    |> assign(:route, @home)
     |> render(:home)
   end
 
@@ -19,7 +21,8 @@ defmodule XlWebsiteWeb.PageController do
       |> Parser.normalize_repos()
 
     conn
-    |> assign(:page_title, @exercises)
+    |> assign(:page_title, @title_prefix <> @exercises)
+    |> assign(:route, @exercises)
     |> assign(:repos, github_repos)
     |> render(:exercises)
   end
@@ -32,7 +35,7 @@ defmodule XlWebsiteWeb.PageController do
     name = Parser.slug_to_name(slug)
 
     conn
-    |> assign(:page_title, name)
+    |> assign(:page_title, @title_prefix <> name)
     |> assign(:name, name)
     |> assign(:slug, slug)
     |> assign(:repo_prefix, @repo_prefix)
@@ -42,7 +45,8 @@ defmodule XlWebsiteWeb.PageController do
 
   def about(conn, _params) do
     conn
-    |> assign(:page_title, @about)
+    |> assign(:page_title, @title_prefix <> @about)
+    |> assign(:route, @about)
     |> render(:about)
   end
 
