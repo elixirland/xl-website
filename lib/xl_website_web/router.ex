@@ -21,6 +21,7 @@ defmodule XlWebsiteWeb.Router do
     get "/exercises", PageController, :exercises
     get "/exercises/:slug", PageController, :exercise
     get "/about", PageController, :about
+    get "/reviewing", PageController, :reviewing
   end
 
   # Other scopes may use custom stacks.

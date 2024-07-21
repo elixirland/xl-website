@@ -32,7 +32,9 @@ defmodule XlWebsiteWeb.PageControllerTest do
       resp = html_response(conn, 200)
 
       assert resp =~ "Book Club"
-      assert resp =~ "Description"
+      assert resp =~ "Introduction"
+      assert resp =~ "Task"
+      assert resp =~ "How to get started"
       assert resp =~ "Example solution"
     end
 
@@ -61,6 +63,13 @@ defmodule XlWebsiteWeb.PageControllerTest do
     test "renders about page", %{conn: conn} do
       conn = get(conn, "/about")
       assert html_response(conn, 200) =~ "About"
+    end
+  end
+
+  describe "GET /reviewing" do
+    test "renders reviewing page", %{conn: conn} do
+      conn = get(conn, "/reviewing")
+      assert html_response(conn, 200) =~ "How does reviewing work?"
     end
   end
 

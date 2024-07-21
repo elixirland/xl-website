@@ -1,8 +1,6 @@
 <div class="max-w-[1200px] m-auto p-7 pb-40">
   <div data-markdown="exercise">
     <h1><%= @name %></h1>
-    <h2>Description (under construction)</h2>
-    <hr>
     <div class="max-w-[800px]">
       <%= raw(Earmark.as_html!(@description)) %>
     </div>

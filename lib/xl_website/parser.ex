@@ -9,15 +9,18 @@ defmodule XlWebsite.Parser do
   @topic_hash_keys Map.keys(@topic_hash_map)
 
   def filter_description(readme) do
-    readme
-    # TODO: Refactor this to use a regex for reliability
-    |> String.split("\n\n## ")
-    |> Enum.filter(fn section ->
-      String.starts_with?(section, "Description")
-    end)
-    # TODO: Handle the case where there is no valid description heading
-    |> hd()
-    |> String.replace("Description\n", "")
+    readme =
+      readme
+      # TODO: Refactor this to use a regex for reliability
+      |> String.split("\n\n## ")
+      |> IO.inspect()
+      |> Enum.drop(2)
+      |> Enum.reverse()
+      |> Enum.drop(1)
+      |> Enum.reverse()
+      |> Enum.join("\n\n## ")
+
+    "\n\n## " <> readme
   end
 
   def slug_to_name(slug) do

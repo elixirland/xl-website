@@ -100,5 +100,27 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
+  defp meta_data(assigns) when assigns.page_title == "Reviewing" do
+    ~H"""
+    <meta
+      name="description"
+      content="How does reviewing work at Elixirland?"
+    >
+    <meta
+      property="og:title"
+      content="Elixirland reviewing process"
+    >
+    <meta
+      property="og:url"
+      content="https://elixirland.dev/reviewing"
+    >
+    <meta
+      property="og:description"
+      content="How does reviewing work at Elixirland?"
+    >
+
+    """
+  end
+
   defp meta_data(assigns), do: ~H""
 end

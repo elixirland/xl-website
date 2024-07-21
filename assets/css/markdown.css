@@ -54,4 +54,10 @@
   hr {
     margin-bottom: 8px;
   }
+
+  blockquote {
+    padding: 0.5rem 1rem;
+    border-left: 0.25rem solid #645cd0;
+    margin-block: 10px;
+  }
 }
