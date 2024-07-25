@@ -15,6 +15,19 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:home)
   end
 
+  def ecosystem(conn, _params) do
+    ecosystem_data =
+      File.read!("priv/ecosystem.json")
+      |> Jason.decode!()
+      |> Enum.sort_by(&Map.get(&1, "name"))
+
+    conn
+    |> assign(:page_title, @title_prefix <> "The Elixir ecosystem")
+    |> assign(:route, "Ecosystem")
+    |> assign(:ecosystem_data, ecosystem_data)
+    |> render(:ecosystem)
+  end
+
   def exercises(conn, _params) do
     github_repos =
       get_repos()

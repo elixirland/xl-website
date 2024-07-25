@@ -11,8 +11,6 @@
         <% end %>
       </div>
     </heading>
-  </section>
-  <section>
     <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
       <p>
         Exercises live in their own GitHub repositories. Each repository contains a exercise description, including a set of requirements, along with an example implementation in idiomatic Elixir.
@@ -21,6 +19,8 @@
         All exercises are designed to create production-ready code. Example solutions emphasize maintainability, readability, and, when necessary, performance.
       </p>
     </div>
+  </section>
+  <section>
     <div class="flex flex-wrap gap-4 my-8">
       <.exercise_card :for={repo <- @repos} repo={repo} />
     </div>

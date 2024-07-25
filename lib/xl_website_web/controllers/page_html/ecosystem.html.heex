@@ -1,0 +1,27 @@
+<div class="max-w-[1200px] m-auto px-8">
+  <heading>
+    <h1 class="pt-8 text-4xl text-[#66626c] font-medium">The Elixir Ecosystem</h1>
+    <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
+      <p>
+        The Elixir ecosystem is a collection of libraries, tools, and services that extend the capabilities of Elixir. Here is an overview of some of the most popular and widely-used projects in the Elixir ecosystem.
+      </p>
+    </div>
+  </heading>
+  <div class="flex flex-wrap gap-4 my-8">
+    <article
+      :for={item <- @ecosystem_data}
+      class="w-[360px] h-[300px] bg-white rounded-xl overflow-clip shadow-md flex flex-col"
+    >
+      <img
+        :if={item["thumbnail"]}
+        src={"/images/#{item["name"]}.webp"}
+        height="100"
+        class="h-[100px] bg-cover bg-center m-auto mt-5"
+      />
+      <div class="h-[160px] p-6 pt-0 mt-auto">
+        <h1 class="text-2xl font-semibold mb-1"><%= item["name"] %></h1>
+        <p><%= item["description"] %></p>
+      </div>
+    </article>
+  </div>
+</div>

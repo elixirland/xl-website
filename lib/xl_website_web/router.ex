@@ -18,6 +18,7 @@ defmodule XlWebsiteWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "ecosystem", PageController, :ecosystem
     get "/exercises", PageController, :exercises
     get "/exercises/:slug", PageController, :exercise
     get "/about", PageController, :about
