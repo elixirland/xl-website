@@ -13,7 +13,7 @@ defmodule XlWebsiteWeb.MetaData do
     ~H"""
     <meta
       name="description"
-      content="Elixir exercises with idiomatix example solutions."
+      content="Exercises with idiomatic example solutions for the Elixir ecosystem."
     >
     <meta
       property="og:title"
@@ -25,7 +25,7 @@ defmodule XlWebsiteWeb.MetaData do
     >
     <meta
       property="og:description"
-      content="Elixir exercises with idiomatix example solutions."
+      content="Exercises with idiomatic example solutions for the Elixir ecosystem."
     >
     """
   end
@@ -73,6 +73,28 @@ defmodule XlWebsiteWeb.MetaData do
     <meta
       property="og:description"
       content="Exercise details."
+    >
+
+    """
+  end
+
+  defp meta_data(assigns) when assigns.page_tiatle == "Ecosystem" do
+    ~H"""
+    <meta
+      name="description"
+      content="An overview of the Elixirland ecosystem."
+    >
+    <meta
+      property="og:title"
+      content="The Elixirland ecosystem"
+    >
+    <meta
+      property="og:url"
+      content="https://elixirland.dev/ecosystem"
+    >
+    <meta
+      property="og:description"
+      content="An overview of the Elixirland ecosystem."
     >
 
     """
