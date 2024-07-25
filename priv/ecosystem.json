@@ -43,7 +43,7 @@
   },
   {
     "name": "Dialyzer",
-    "description": "Dialyzer is a static analysis tool for Erlang and other languages that compile to BEAM bytecode for the Erlang VM",
+    "description": "A static analysis tool for Erlang and other languages that compile to BEAM bytecode for the Erlang VM",
     "thumbnail": false,
     "url": "https://hexdocs.pm/dialyxir/Mix.Tasks.Dialyzer.html"
   },
@@ -79,8 +79,14 @@
   },
   {
     "name": "Telemetry",
-    "description": "Telemetry is a lightweight library for dynamic dispatching of events, with a focus on metrics and instrumentation.",
+    "description": "A lightweight library for dynamic dispatching of events, with a focus on metrics and instrumentation.",
     "thumbnail": false,
     "url": "https://hexdocs.pm/telemetry/readme.html"
+  },
+  {
+    "name": "Credo",
+    "description": "A static code analysis tool for the Elixir language with a focus on teaching and code consistency.",
+    "thumbnail": false,
+    "url": ""
   }
 ]
