@@ -17,7 +17,7 @@ defmodule XlWebsiteWeb.PageController do
 
   def ecosystem(conn, _params) do
     ecosystem_data =
-      File.read!("lib/xl_website/data/ecosystem.json")
+      File.read!(path_to("ecosystem.json"))
       |> Jason.decode!()
       |> Enum.sort_by(&Map.get(&1, "name"))
 
@@ -26,6 +26,10 @@ defmodule XlWebsiteWeb.PageController do
     |> assign(:route, "Ecosystem")
     |> assign(:ecosystem_data, ecosystem_data)
     |> render(:ecosystem)
+  end
+
+  defp path_to(file) do
+    Path.join(:code.priv_dir(:xl_website), "/#{file}")
   end
 
   def exercises(conn, _params) do
