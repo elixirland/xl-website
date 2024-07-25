@@ -76,5 +76,11 @@
     "description": "A collaborative and interactive code notebook for Elixir, providing a rich environment for exploring and sharing code.",
     "thumbnail": true,
     "url": "https://livebook.dev/"
+  },
+  {
+    "name": "Telemetry",
+    "description": "Telemetry is a lightweight library for dynamic dispatching of events, with a focus on metrics and instrumentation.",
+    "thumbnail": false,
+    "url": "https://hexdocs.pm/telemetry/readme.html"
   }
 ]
