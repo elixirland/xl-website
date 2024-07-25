@@ -2,66 +2,79 @@
   {
     "name": "Phoenix Framework",
     "description": "Phoenix is a web development framework written in Elixir which implements the server-side Model View Controller (MVC) pattern.",
-    "thumbnail": true
+    "thumbnail": true,
+    "url": "https://www.phoenixframework.org/"
   },
   {
     "name": "Ash Framework",
     "description": "A declarative, resource-oriented application development framework for Elixir.",
-    "thumbnail": true
+    "thumbnail": true,
+    "url": "https://ash-hq.org/"
   },
   {
     "name": "Ecto",
     "description": "A database wrapper and query generator for Elixir, providing a unified API for working with different databases.",
-    "thumbnail": true
+    "thumbnail": true,
+    "url": "https://hexdocs.pm/ecto/Ecto.html"
   },
   {
     "name": "Plug",
     "description": "A specification and composable modules for web application components, enabling HTTP request handling.",
-    "thumbnail": false
+    "thumbnail": false,
+    "url": "https://hexdocs.pm/plug/readme.html"
   },
   {
     "name": "Oban",
     "description": "A robust job processing library for Elixir, providing background job processing with reliability and concurrency.",
-    "thumbnail": true
+    "thumbnail": true,
+    "url": "https://hexdocs.pm/oban/Oban.html"
   },
   {
     "name": "Exq",
     "description": "An Elixir library for job processing, utilizing Redis for managing job queues and worker processes.",
-    "thumbnail": false
+    "thumbnail": false,
+    "url": "https://github.com/akira/exq"
   },
   {
     "name": "Nerves",
     "description": "A framework for building embedded software using Elixir, providing tools and libraries for hardware interfacing.",
-    "thumbnail": true
+    "thumbnail": true,
+    "url": "https://nerves-project.org/"
   },
   {
     "name": "Dialyzer",
     "description": "Dialyzer is a static analysis tool for Erlang and other languages that compile to BEAM bytecode for the Erlang VM",
-    "thumbnail": false
+    "thumbnail": false,
+    "url": "https://hexdocs.pm/dialyxir/Mix.Tasks.Dialyzer.html"
   },
   {
     "name": "ExUnit",
     "description": "The built-in testing framework for Elixir, providing a simple and powerful API for writing and running tests.",
-    "thumbnail": false
+    "thumbnail": false,
+    "url": "https://hexdocs.pm/ex_unit/ExUnit.html"
   },
   {
     "name": "GetText",
     "description": "An internationalization and localization library for Elixir, allowing easy translation and formatting of messages.",
-    "thumbnail": false
-  },
-  {
-    "name": "Telemetry",
-    "description": "A dynamic event dispatching library for Elixir, enabling application monitoring and instrumentation.",
-    "thumbnail": false
+    "thumbnail": false,
+    "url": "https://hexdocs.pm/gettext/Gettext.html"
   },
   {
     "name": "ExDoc",
     "description": "A tool for generating HTML documentation for Elixir projects, transforming documentation into readable web pages.",
-    "thumbnail": false
+    "thumbnail": false,
+    "url": "https://hexdocs.pm/ex_doc/0.22.0/readme.html"
   },
   {
     "name": "Nx",
     "description": "A multi-dimensional tensors library with multi-staged compilation to the CPU/GPU.",
-    "thumbnail": true
+    "thumbnail": true,
+    "url": "https://hexdocs.pm/nx/intro-to-nx.html"
+  },
+  {
+    "name": "LiveBook",
+    "description": "A collaborative and interactive code notebook for Elixir, providing a rich environment for exploring and sharing code.",
+    "thumbnail": true,
+    "url": "https://livebook.dev/"
   }
 ]
