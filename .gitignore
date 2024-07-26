@@ -35,3 +35,8 @@ xl_website-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Local development configuration
+/config/dev.secrets.exs
+
+# .DS_Store files
+**/.DS_Store

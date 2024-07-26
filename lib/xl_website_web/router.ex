@@ -18,17 +18,18 @@ defmodule XlWebsiteWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "ecosystem", PageController, :ecosystem
+    get "/ecosystem", PageController, :ecosystem
     get "/exercises", PageController, :exercises
     get "/exercises/:slug", PageController, :exercise
     get "/about", PageController, :about
     get "/reviewing", PageController, :reviewing
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", XlWebsiteWeb do
-  #   pipe_through :api
-  # end
+  scope "/webhooks", XlWebsiteWeb do
+    pipe_through :api
+
+    post "/push", WebhookController, :push
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:xl_website, :dev_routes) do
