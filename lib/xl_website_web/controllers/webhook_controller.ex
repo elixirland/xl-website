@@ -24,9 +24,9 @@ defmodule XlWebsiteWeb.WebhookController do
   end
 
   defp check_valid_secret(conn) do
+    # ["sha256=5069e2a4ac166fe5ab5bb4934488cacd1dbba54ef15f6fa530dd70e76ce62bea"]
     signature =
       Plug.Conn.get_req_header(conn, "x-hub-signature-256")
-      |> IO.inspect(label: "Raw header")
       |> List.first()
 
     signature =
@@ -35,7 +35,7 @@ defmodule XlWebsiteWeb.WebhookController do
         _ -> "invalid_signature"
       end
 
-    {:ok, payload} =
+    {:ok, payload, _} =
       Plug.Conn.read_body(conn)
 
     expected_signature = :crypto.mac(:sha256, Application.get_env(:xl_website, XlWebsiteWeb.Endpoint)[:github_secret], payload)
