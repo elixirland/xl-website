@@ -38,7 +38,7 @@ defmodule XlWebsiteWeb.WebhookController do
     {:ok, payload, _} =
       Plug.Conn.read_body(conn)
 
-    expected_signature = :crypto.mac(:sha256, Application.get_env(:xl_website, XlWebsiteWeb.Endpoint)[:github_secret], payload)
+    expected_signature = :crypto.mac(:hmac, :sha256, Application.get_env(:xl_website, XlWebsiteWeb.Endpoint)[:github_secret], payload)
 
     if Plug.Crypto.secure_compare(signature, expected_signature) do
       {:ok, :valid}
