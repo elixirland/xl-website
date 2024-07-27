@@ -1,6 +1,7 @@
 defmodule XlWebsiteWeb.PageController do
   use XlWebsiteWeb, :controller
   alias XlWebsite.Parser
+  alias XlWebsite.FileSystem
 
   @home "Home"
   @exercises "Exercises"
@@ -17,7 +18,7 @@ defmodule XlWebsiteWeb.PageController do
 
   def ecosystem(conn, _params) do
     ecosystem_data =
-      File.read!(path_to("ecosystem.json"))
+      FileSystem.read!(path_to("ecosystem.json"))
       |> Jason.decode!()
       |> Enum.sort_by(&Map.get(&1, "name"))
 

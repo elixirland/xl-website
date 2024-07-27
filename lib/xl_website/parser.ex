@@ -13,7 +13,6 @@ defmodule XlWebsite.Parser do
       readme
       # TODO: Refactor this to use a regex for reliability
       |> String.split("\n\n## ")
-      |> IO.inspect()
       |> Enum.drop(2)
       |> Enum.reverse()
       |> Enum.drop(1)

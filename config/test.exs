@@ -26,8 +26,15 @@ config :xl_website, XlWebsite.Mailer, adapter: Swoosh.Adapters.Test
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
 
+# Use a mock for Finch during test
+config :xl_website, :http_client, FinchFake
+config :xl_website, :file_system, FileFake
+
 # Print only warnings and errors during test
 config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Import development secrets
+import_config "dev.secrets.exs"

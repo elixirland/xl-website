@@ -29,6 +29,10 @@ config :xl_website, XlWebsiteWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :xl_website, XlWebsite.Mailer, adapter: Swoosh.Adapters.Local
 
+# Configure defaults implemenations for modules that have fake counterparts for testing
+config :xl_website, :http_client, Finch
+config :xl_website, :file_system, File
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
