@@ -4,6 +4,13 @@ defmodule XlWebsite.Parser do
     "postgresql" => "PostgreSQL"
   }
   @topic_hash_keys Map.keys(@topic_hash_map)
+  @repo_prefix "xle-"
+
+  def parse_body_params(conn, _opts \\ []) do
+    {:ok, body, conn} = Plug.Conn.read_body(conn)
+    conn = Plug.Conn.put_private(conn, :raw_body, body)
+    {:ok, body, conn}
+  end
 
   def filter_description(readme) do
     readme =
@@ -17,6 +24,23 @@ defmodule XlWebsite.Parser do
       |> Enum.join("\n\n## ")
 
     "\n\n## " <> readme
+  end
+
+  def build_name(full_name) do
+    full_name
+    |> String.split("/")
+    |> List.last()
+    |> String.replace(@repo_prefix, "")
+    |> String.split("-")
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(" ")
+  end
+
+  def build_slug(full_name) do
+    full_name
+    |> String.split("/")
+    |> List.last()
+    |> String.replace(@repo_prefix, "")
   end
 
   def slug_to_name(slug) do

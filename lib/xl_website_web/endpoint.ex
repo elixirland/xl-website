@@ -39,14 +39,11 @@ defmodule XlWebsiteWeb.Endpoint do
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
-  # TODO: Continue here
-  # Fix body_params not being built properly because the StoreRawBody plug
-  # already reads the body
-  plug MyAppWeb.Plugs.StoreRawBody
-
+  # Use `:body_reader` option to put `:raw_body` and `:body_params` map entries
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
+    body_reader: {XlWebsite.Parser, :parse_body_params, []},
     json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride

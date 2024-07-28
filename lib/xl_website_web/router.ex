@@ -48,15 +48,3 @@ defmodule XlWebsiteWeb.Router do
     end
   end
 end
-
-defmodule MyAppWeb.Plugs.StoreRawBody do
-  import Plug.Conn
-
-  def init(default), do: default
-
-  def call(conn, _opts) do
-    IO.inspect(conn)
-    {:ok, body, conn} = read_body(conn)
-    assign(conn, :raw_body, body)
-  end
-end

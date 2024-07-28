@@ -4,39 +4,19 @@ defmodule XlWebsiteWeb.WebhookController do
   alias XlWebsiteWeb.HTTPClient
   alias XlWebsite.Parser
 
-  defp build_name(full_name) do
-    full_name
-    |> String.split("/")
-    |> List.last()
-    |> String.split("-")
-    |> Enum.map(&String.capitalize/1)
-    |> Enum.join(" ")
-  end
-
-  defp build_slug(name) do
-    name
-    |> String.downcase()
-    |> String.replace(~r/\s+/, "-")
-  end
-
   def push(conn, _params) do
     with {:ok, signature} <- get_signature(conn),
          {:ok, secret} <- get_hashed_secret(signature),
-         {:ok, _} <- check_valid_secret(conn.assigns.raw_body, secret) do
-
-      body_params = Jason.decode!(conn.assigns.raw_body)
-      full_name = get_in(body_params, ["repository", "full_name"])
-      name = build_name(full_name)
-      slug = build_slug(name)
-      topics = get_in(body_params, ["repository", "topics"])
-      readme_md = fetch_readme(full_name)
+         {:ok, _} <- check_valid_secret(conn.private[:raw_body], secret) do
+      full_name = conn.body_params["repository"]["full_name"]
+      raw_topics = conn.body_params["repository"]["topics"]
 
       XlWebsite.Exercises.upsert_exercise(%{
         full_name: full_name,
-        name: name,
-        slug: slug,
-        topics: Parser.parse_topics(topics),
-        readme_md: readme_md
+        name: Parser.build_name(full_name),
+        slug: Parser.build_slug(full_name),
+        topics: Parser.parse_topics(raw_topics),
+        readme_md: fetch_readme(full_name)
       })
 
       resp(conn, 200, "ok")

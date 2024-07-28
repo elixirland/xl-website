@@ -6,14 +6,8 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
     setup %{conn: conn} do
       secret = Application.get_env(:xl_website, :github_webhooks_secret)
 
-      # body = encode_as_JSON_with_sorted_keys(%{
-      #     repository: %{
-      #       full_name: "elixirland/xle-username-generator",
-      #       topics: ["topic A", "topic B"]
-      #     }
-      #   })
-
-      body = "{\"repository\":{\"full_name\":\"elixirland/xle-username-generator\",\"topics\":[\"topic A\",\"topic B\"]}}"
+      body =
+        "{\"repository\":{\"full_name\":\"elixirland/xle-username-generator\",\"topics\":[\"topic A\",\"topic B\"]}}"
 
       %{conn: conn, body: body, secret: secret}
     end
@@ -21,12 +15,7 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
     test "returns ok when secret is valid",
          %{conn: conn, body: body, secret: secret} do
       signature =
-        :crypto.mac(
-          :hmac,
-          :sha256,
-          secret,
-          body
-        )
+        :crypto.mac(:hmac, :sha256, secret, body)
         |> Base.encode16(case: :lower)
         |> then(&"sha256=#{&1}")
 
@@ -63,15 +52,9 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
     test "returns bad request when signature is invalid",
          %{conn: conn, body: body, secret: secret} do
       signature =
-        :crypto.mac(
-          :hmac,
-          :sha256,
-          secret,
-          body
-        )
+        :crypto.mac(:hmac, :sha256, secret, body)
         |> Base.encode16(case: :lower)
         |> then(&"some_invalid_prefix=#{&1}")
-        |> String.replace("a", "b")
 
       conn =
         conn
