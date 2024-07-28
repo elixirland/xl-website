@@ -88,7 +88,7 @@ defmodule XlWebsiteWeb.WebhookController do
     exercise_path = @exercises_path <> repo_slug <> "/"
 
     if not FileSystem.exists?(exercise_path) do
-      FileSystem.mkdir!(exercise_path)
+      FileSystem.mkdir_p!(exercise_path)
     end
 
     FileSystem.write!(exercise_path <> "topics.json", Jason.encode!(topics))
@@ -103,7 +103,7 @@ defmodule XlWebsiteWeb.WebhookController do
     exercise_path = @exercises_path <> repo_name <> "/"
 
     if not FileSystem.exists?(exercise_path) do
-      FileSystem.mkdir!(exercise_path)
+      FileSystem.mkdir_p!(exercise_path)
     end
 
     readme = fetch_readme(full_name)
