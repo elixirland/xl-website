@@ -11,8 +11,6 @@ defmodule XlWebsiteWeb.WebhookController do
       full_name = conn.body_params["repository"]["full_name"]
       raw_topics = conn.body_params["repository"]["topics"]
 
-      IO.inspect(conn, label: "conn")
-
       XlWebsite.Exercises.upsert_exercise(%{
         full_name: full_name,
         name: Parser.build_name(full_name),

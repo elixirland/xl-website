@@ -40,7 +40,7 @@ defmodule XlWebsiteWeb.PageController do
     conn
     |> assign(:page_title, @title_prefix <> @exercises)
     |> assign(:route, @exercises)
-    |> assign(:repos, exercise_info)
+    |> assign(:exercises, exercise_info)
     |> render(:exercises)
   end
 
@@ -59,6 +59,7 @@ defmodule XlWebsiteWeb.PageController do
         |> assign(:page_title, @title_prefix <> name)
         |> assign(:name, name)
         |> assign(:slug, slug)
+        |> assign(:html_url, exercise.html_url)
         |> assign(:repo_prefix, @repo_prefix)
         |> assign(:readme_md, exercise.readme_md)
         |> assign(:topics, exercise.topics)

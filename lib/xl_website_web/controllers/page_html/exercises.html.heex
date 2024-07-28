@@ -3,7 +3,7 @@
     <heading class="flex items-end">
       <h1 class="pt-8 text-4xl text-[#66626c] font-medium">Exercises</h1>
       <div class="text-xl text-[#66626c] font-medium  ml-auto">
-        <%= case Enum.count(@repos) do %>
+        <%= case Enum.count(@exercises) do %>
           <% 1 -> %>
             1 result
           <% count -> %>
@@ -22,7 +22,7 @@
   </section>
   <section>
     <div class="flex flex-wrap gap-4 my-8">
-      <.exercise_card :for={repo <- @repos} repo={repo} />
+      <.exercise_card :for={exercise <- @exercises} exercise={exercise} />
     </div>
   </section>
 </div>
