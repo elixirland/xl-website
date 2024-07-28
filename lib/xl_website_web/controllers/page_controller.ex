@@ -2,6 +2,7 @@ defmodule XlWebsiteWeb.PageController do
   use XlWebsiteWeb, :controller
   alias XlWebsite.Parser
   alias XlWebsite.FileSystem
+  alias XlWebsite.Exercises
 
   @home "Home"
   @exercises "Exercises"
@@ -33,42 +34,35 @@ defmodule XlWebsiteWeb.PageController do
     Path.join(:code.priv_dir(:xl_website), "/#{file}")
   end
 
-  # TODO: Get repo data from aggregating all repos in the exercises directory
   def exercises(conn, _params) do
-    github_repos =
-      get_repos()
-      |> Parser.normalize_repos()
+    exercise_info = Exercises.get_exercises_info_only()
 
     conn
     |> assign(:page_title, @title_prefix <> @exercises)
     |> assign(:route, @exercises)
-    |> assign(:repos, github_repos)
+    |> assign(:repos, exercise_info)
     |> render(:exercises)
   end
 
   def exercise(conn, %{"slug" => slug}) do
-    with true <- FileSystem.exists?(path_to("exercises/#{slug}")),
-         {:ok, readme_md} <- FileSystem.read(path_to("exercises/#{slug}/README.md")),
-         {:ok, topics_json} <- FileSystem.read(path_to("exercises/#{slug}/topics.json")),
-         {:ok, topics} <- Jason.decode(topics_json) do
-
-      # description = Parser.filter_description(readme)
-      name = Parser.slug_to_name(slug)
-
-      conn
-      |> assign(:page_title, @title_prefix <> name)
-      |> assign(:name, name)
-      |> assign(:slug, slug)
-      |> assign(:repo_prefix, @repo_prefix)
-      |> assign(:readme_md, readme_md)
-      |> assign(:topics, topics)
-      |> render(:exercise)
-    else
-      _ ->
+    case Exercises.get_exercise_by_full_name("elixirland/#{@repo_prefix}#{slug}") do
+      nil ->
         conn
         |> put_status(:not_found)
         |> put_view(XlWebsiteWeb.ErrorHTML)
         |> render("404.html")
+
+      exercise ->
+        name = Parser.slug_to_name(slug)
+
+        conn
+        |> assign(:page_title, @title_prefix <> name)
+        |> assign(:name, name)
+        |> assign(:slug, slug)
+        |> assign(:repo_prefix, @repo_prefix)
+        |> assign(:readme_md, exercise.readme_md)
+        |> assign(:topics, exercise.topics)
+        |> render(:exercise)
     end
   end
 
@@ -84,166 +78,6 @@ defmodule XlWebsiteWeb.PageController do
     |> assign(:page_title, @title_prefix <> "How does exercise reviewing work?")
     |> render(:reviewing)
   end
-
-  # TODO: Replace hard-coded README.md with actual README.md
-
-  def readme("username-generator") do
-    """
-    # Username Generator
-    This is an Elixirland exercise. Read an introduction to Elixirland here: https://github.com/elixirland.
-
-    ## Status
-    This repository is **NOT REVIEWED** and **WORK IN PROGRESS**. This status will be set to "reviewed" when enough feedback has been given on the code and documentation in the `solution` directory.
-
-    You can provide feedback by [opening an issue](https://github.com/elixirland/xle-username-generator/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xle-username-generator/discussions).
-
-    ## Description
-    ### Background
-    Saša recently joined a team of developers and volunteered to build a random username generator. The team’s software requires users to log in via third-party authorization (e.g., Google, Apple, GitHub), and each user must have a unique username. Initially, the team considered requiring users to choose their usernames upon first login, but they decided to assign random usernames instead. Users can change their usernames later in the settings.
-
-    ### Task
-    Develop a package that allows users to generate random usernames. Ensure your implementation meets the following requirements:
-    - Adheres to idiomatic Elixir practices
-    - Is well-tested
-    - Is easily understandable by others, not just yourself
-
-    ### Requirements
-    #### Usernames
-    - The generator must be able to generate at least 600,000 unique usernames
-    - Usernames must consist of existing English words
-    - Words in a username are separated by a hyphen (-) by default, with an option to choose other single-character delimiters
-
-    #### Documentation
-    - A detailed README.md that provides users with all the information they need
-    - Includes instructions about how to install the package
-    - Includes information about the limitations of the generator
-
-    ## How to get started
-    Fork this repository and implement your solution in the Mix app at the root directory. The solution by Elixirland is located in the directory `/solution`.
-
-    Alternatively, you can start a new Mix app by using the command `mix new`. For more information, see the [mix new](https://hexdocs.pm/mix/1.12/Mix.Tasks.New.html) documentation.
-    """
-  end
-
-  def readme("simple-chat-room") do
-    """
-    # Simple Chat Room
-    This is an Elixirland exercise. Read an introduction to Elixirland here: https://github.com/elixirland.
-
-    ## Status
-    This repository is **NOT REVIEWED** and **WORK IN PROGRESS**. This status will be set to "reviewed" when enough feedback has been given on the code and documentation in the `solution` directory.
-
-    You can provide feedback by [opening an issue](https://github.com/elixirland/xle-simple-chat-room/issues/new) or contributing to this repository's [discussions](https://github.com/elixirland/xle-simple-chat-room/discussions).
-
-    ## Description
-    ### Background
-
-    ### Task
-    Ensure your implementation meets the following requirements:
-      - Adheres to idiomatic Elixir practices
-      - Is well-tested
-      - Is easily understandable by others, not just yourself
-
-    ### Requirements
-
-    ### Don't worry about
-    To keep the exercise simple, you do not have to implement the following:
-
-
-    ## How to get started
-    Fork this repository and implement your solution in the Phoenix app at the root directory. The solution by Elixirland is located in the directory `/solution`.
-
-    Alternatively, you can start a new Phoenix app by using the command `mix phx.new`. For more information, see the [mix phx.new](https://hexdocs.pm/phoenix/Mix.Tasks.Phx.New.html) documentation.
-    """
-  end
-
-  def readme("book-club") do
-    """
-    # Book Club
-    This is an Elixirland exercise. Read an introduction to Elixirland here: https://github.com/elixirland.
-
-    ## Status
-    Exercise: ***Not Reviewed***\n
-    Solution: ***In Development***
-
-    > [!NOTE]
-    > The possible statuses of exercises and their example solutions are:
-    >
-    >   1. **In Development**: Currently being developed and not ready for use.
-    >   1. **Not Reviewed**: Available for use but has not been reviewed. Therefore, might contain non-idiomatic Elixir.
-    >   1. **Reviewed**: Available for use and has been reviewed.
-    >
-    > Learn more about the reviewing process [here](https://elixirland.dev/reviewing).
-
-    ## Introduction
-    Chris is a member of a book club and wants to develop a simple web API to streamline their group activities. His vision is to create a system that stores books and tracks the pages currently being read and discussed. The book club reads multiple books simultaneously. Although there is already a system in place for tracking who is reading which books, there is no easy way to find the current page being read in any given book.
-
-    ## Task
-    Develop a Phoenix app that models books and their pages and exposes two endpoints through an API. Ensure your implementation meets the following requirements:
-      - Adheres to idiomatic Elixir practices
-      - Is well-tested
-      - Is easily understandable by others, not just yourself
-
-    ## Requirements
-    ### Data model
-      - Books and pages are stored in a PostgreSQL database
-      - Each book has a title
-      - Each book can have multiple pages
-      - Each page has text content
-      - A book can have one active page (or none)
-
-    ### Seeding
-      - Running `mix ecto.setup` creates the database tables but also seeds the database
-      - Seeding inserts 4,000 books that each have 10 pages
-      - Some seeded books have an active page, but not all
-      - Seeding is fast
-
-    > [!TIP]
-    > You can use Elixirland's [Xl Faker](https://hex.pm/packages/xl_faker) package to generate random titles and page content.
-
-    ### Endpoints
-    #### GET `/api/books`
-      - An endpoint that fetching all books in the alphabetical order of their titles
-      - Retrieves the books along with their active pages, or if non exisits, their first pages
-      - Allows for filtering by partial book title
-      - Returns JSON
-
-    #### GET `/api/books/:param`
-      - An endpoint for fetching a specific book
-      - Retrieves the book along with its active page, or if non exisits, its first page
-      - Returns JSON
-
-    ### Documentation
-      - A detailed manual that provides users with all the information they need
-      - Includes instructions about how to run and seed the app
-      - Includes instructions how to use the endpoints
-      - Includes information about the response schemas
-
-    > [!TIP]
-    > You may use a `README.md` (at the root directory) for documentation purposes.
-
-    ## Assumptions
-    To keep the exercise simple, you do not have to implement the following:
-
-      - Client authentication and/or authorization
-      - Rate limiting
-      - Formatting of page text content
-      - Non-textual content on pages
-      - Pagination
-
-    You may assume these issues are already implemented somehow, or are not required.
-
-    ## How to get started
-    Fork this repository and implement your solution in the Phoenix app at the root directory. The solution by Elixirland is located in the directory `/solution`.
-
-    Alternatively, you can generate a new Phoenix app by running the `mix phx.new` command. See the [documentation](https://hexdocs.pm/phoenix/Mix.Tasks.Phx.New.html) of this command for more information.
-
-    ## Example solution
-    You can find the Elixirland solution to this exercise in its GitHub repository, inside the `/solution` directory.
-    """
-  end
-
-  def readme(_), do: "\n\n## Description\n\nExercise not found."
 
   # TODO: Replace hard-coded repo info with actual repo info
 

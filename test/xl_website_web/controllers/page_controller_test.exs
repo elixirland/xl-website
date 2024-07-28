@@ -1,5 +1,6 @@
 defmodule XlWebsiteWeb.PageControllerTest do
   use XlWebsiteWeb.ConnCase
+  import XlWebsite.Factory
 
   describe "GET /" do
     test "renders home page", %{conn: conn} do
@@ -14,19 +15,33 @@ defmodule XlWebsiteWeb.PageControllerTest do
       assert html_response(conn, 200) =~ "Exercises"
     end
 
-    test "renders hard-coded exercises", %{conn: conn} do
+    test "lists stored exercises", %{conn: conn} do
+      insert!(:exercise, %{
+        name: "Book Club",
+        slug: "book-club"
+      })
+
+      insert!(:exercise, %{
+        name: "Simple Chat Room",
+        slug: "simple-chat-room"
+      })
+
       conn = get(conn, "/exercises")
 
       resp = html_response(conn, 200)
 
       assert resp =~ "Book Club"
       assert resp =~ "Simple Chat Room"
-      assert resp =~ "Username Generator"
     end
   end
 
   describe "GET /exercises/:slug" do
     test "renders exercise", %{conn: conn} do
+      insert!(:exercise, %{
+        name: "Book Club",
+        slug: "book-club"
+      })
+
       conn = get(conn, "/exercises/book-club")
 
       resp = html_response(conn, 200)

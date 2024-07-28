@@ -2,42 +2,66 @@ defmodule XlWebsiteWeb.WebhookController do
   use XlWebsiteWeb, :controller
   require Logger
   alias XlWebsiteWeb.HTTPClient
-  alias XlWebsite.FileSystem
+  alias XlWebsite.Parser
 
-  @exercises_path "#{:code.priv_dir(:xl_website)}/exercises/"
-  @repo_prefix "xle-"
+  defp build_name(full_name) do
+    full_name
+    |> String.split("/")
+    |> List.last()
+    |> String.split("-")
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(" ")
+  end
+
+  defp build_slug(name) do
+    name
+    |> String.downcase()
+    |> String.replace(~r/\s+/, "-")
+  end
 
   def push(conn, _params) do
-    # with {:ok, signature} <- get_signature(conn),
-    #      {:ok, secret} <- get_hashed_secret(signature),
-    #      {:ok, _} <- check_valid_secret(conn.body_params, secret) do
-      conn.body_params
-      |> write_topics_to_file()
-      |> write_README_to_file()
+    with {:ok, signature} <- get_signature(conn),
+         {:ok, secret} <- get_hashed_secret(signature),
+         {:ok, _} <- check_valid_secret(conn.assigns.raw_body, secret) do
+
+      body_params = Jason.decode!(conn.assigns.raw_body)
+      full_name = get_in(body_params, ["repository", "full_name"])
+      name = build_name(full_name)
+      slug = build_slug(name)
+      topics = get_in(body_params, ["repository", "topics"])
+      readme_md = fetch_readme(full_name)
+
+      XlWebsite.Exercises.upsert_exercise(%{
+        full_name: full_name,
+        name: name,
+        slug: slug,
+        topics: Parser.parse_topics(topics),
+        readme_md: readme_md
+      })
 
       resp(conn, 200, "ok")
-    # else
-    #   {:error, :missing_signature} ->
-    #     Logger.warning("missing GitHub webhook secret in request body")
+    else
+      {:error, :missing_signature} ->
+        Logger.warning("missing GitHub webhook secret in request body")
 
-    #     conn
-    #     |> put_status(:bad_request)
-    #     |> json(%{message: "missing signature"})
+        conn
+        |> put_status(:bad_request)
+        |> json(%{message: "missing signature"})
 
-    #   {:error, :invalid_signature} ->
-    #     Logger.warning("invalid GitHub webhook signature in request body")
+      {:error, :invalid_signature} ->
+        Logger.warning("invalid GitHub webhook signature in request body")
 
-    #     conn
-    #     |> put_status(:bad_request)
-    #     |> json(%{message: "invalid signature"})
+        conn
+        |> put_status(:bad_request)
+        |> json(%{message: "invalid signature"})
 
-    #   {:error, :invalid_secret} ->
-    #     Logger.warning("invalid GitHub webhook secret in request body")
+      {:error, :invalid_secret} ->
+        Logger.warning("invalid GitHub webhook secret in request body")
 
-    #     conn
-    #     |> put_status(:bad_request)
-    #     |> json(%{message: "invalid secret"})
-    # end
+        conn
+        |> put_status(:bad_request)
+        |> json(%{message: "invalid secret"})
+    end
   end
 
   defp get_signature(conn) do
@@ -59,7 +83,7 @@ defmodule XlWebsiteWeb.WebhookController do
       :hmac,
       :sha256,
       Application.get_env(:xl_website, :github_webhooks_secret),
-      encode_as_JSON_with_sorted_keys(payload)
+      payload
     )
     |> Base.encode16(case: :lower)
     |> Plug.Crypto.secure_compare(secret)
@@ -67,50 +91,6 @@ defmodule XlWebsiteWeb.WebhookController do
       true -> {:ok, :valid}
       false -> {:error, :invalid_secret}
     end
-  end
-
-  # TODO: Prevent repetition of this function in the controller and the test.
-  # Also, is the sorting guaranteed to be the same as in the test?
-  defp encode_as_JSON_with_sorted_keys(%{} = map) do
-    map
-    |> Map.to_list()
-    |> Enum.sort_by(&elem(&1, 0))
-    |> Jason.OrderedObject.new()
-    |> Jason.encode!()
-  end
-
-  defp write_topics_to_file(body_params) do
-    topics = get_in(body_params, ["repository", "topics"])
-    full_name = get_in(body_params, ["repository", "full_name"])
-    repo_name = String.split(full_name, "/") |> List.last()
-    repo_slug = String.replace(repo_name, @repo_prefix, "")
-
-    exercise_path = @exercises_path <> repo_slug <> "/"
-
-    if not FileSystem.exists?(exercise_path) do
-      FileSystem.mkdir_p!(exercise_path)
-    end
-
-    FileSystem.write!(exercise_path <> "topics.json", Jason.encode!(topics))
-
-    body_params
-  end
-
-  defp write_README_to_file(body_params) do
-    full_name = get_in(body_params, ["repository", "full_name"])
-    repo_name = String.split(full_name, "/") |> List.last()
-    repo_slug = String.replace(repo_name, @repo_prefix, "")
-
-    exercise_path = @exercises_path <> repo_slug <> "/"
-
-    if not FileSystem.exists?(exercise_path) do
-      FileSystem.mkdir_p!(exercise_path)
-    end
-
-    readme = fetch_readme(full_name)
-    FileSystem.write!(exercise_path <> "README.md", readme)
-
-    body_params
   end
 
   defp fetch_readme(full_name) do
