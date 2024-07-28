@@ -61,7 +61,7 @@ defmodule XlWebsiteWeb.WebhookController do
       :hmac,
       :sha256,
       Application.get_env(:xl_website, :github_webhooks_secret),
-      Jason.encode!(payload)
+      encode_as_JSON_with_sorted_keys(payload)
     )
     |> Base.encode16(case: :lower)
     |> Plug.Crypto.secure_compare(secret)
@@ -69,6 +69,16 @@ defmodule XlWebsiteWeb.WebhookController do
       true -> {:ok, :valid}
       false -> {:error, :invalid_secret}
     end
+  end
+
+  # TODO: Prevent repetition of this function in the controller and the test.
+  # Also, is the sorting guaranteed to be the same as in the test?
+  defp encode_as_JSON_with_sorted_keys(%{} = map) do
+    map
+    |> Map.to_list()
+    |> Enum.sort_by(&elem(&1, 0))
+    |> Jason.OrderedObject.new()
+    |> Jason.encode!()
   end
 
   defp write_topics_to_file(body_params) do
