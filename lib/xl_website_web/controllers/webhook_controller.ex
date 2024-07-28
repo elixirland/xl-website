@@ -99,8 +99,9 @@ defmodule XlWebsiteWeb.WebhookController do
   defp write_README_to_file(body_params) do
     full_name = get_in(body_params, ["repository", "full_name"])
     repo_name = String.split(full_name, "/") |> List.last()
+    repo_slug = String.replace(repo_name, @repo_prefix, "")
 
-    exercise_path = @exercises_path <> repo_name <> "/"
+    exercise_path = @exercises_path <> repo_slug <> "/"
 
     if not FileSystem.exists?(exercise_path) do
       FileSystem.mkdir_p!(exercise_path)
