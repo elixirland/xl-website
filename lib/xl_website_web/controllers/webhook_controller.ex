@@ -11,10 +11,14 @@ defmodule XlWebsiteWeb.WebhookController do
       full_name = conn.body_params["repository"]["full_name"]
       raw_topics = conn.body_params["repository"]["topics"]
 
+      IO.inspect(conn, label: "conn")
+
       XlWebsite.Exercises.upsert_exercise(%{
         full_name: full_name,
         name: Parser.build_name(full_name),
         slug: Parser.build_slug(full_name),
+        html_url: conn.body_params["repository"]["html_url"],
+        description: conn.body_params["repository"]["description"],
         topics: Parser.parse_topics(raw_topics),
         readme_md: fetch_readme(full_name)
       })
