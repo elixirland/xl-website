@@ -8,38 +8,36 @@ defmodule XlWebsiteWeb.WebhookController do
   @repo_prefix "xle-"
 
   def push(conn, _params) do
-    with {:ok, signature} <- get_signature(conn),
-         {:ok, secret} <- get_hashed_secret(signature),
-         {:ok, _} <- check_valid_secret(conn.body_params, secret) do
+    # with {:ok, signature} <- get_signature(conn),
+    #      {:ok, secret} <- get_hashed_secret(signature),
+    #      {:ok, _} <- check_valid_secret(conn.body_params, secret) do
       conn.body_params
       |> write_topics_to_file()
       |> write_README_to_file()
 
-      # write_exercise_data_to_file(conn)
-
       resp(conn, 200, "ok")
-    else
-      {:error, :missing_signature} ->
-        Logger.warning("missing GitHub webhook secret in request body")
+    # else
+    #   {:error, :missing_signature} ->
+    #     Logger.warning("missing GitHub webhook secret in request body")
 
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "missing signature"})
+    #     conn
+    #     |> put_status(:bad_request)
+    #     |> json(%{message: "missing signature"})
 
-      {:error, :invalid_signature} ->
-        Logger.warning("invalid GitHub webhook signature in request body")
+    #   {:error, :invalid_signature} ->
+    #     Logger.warning("invalid GitHub webhook signature in request body")
 
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid signature"})
+    #     conn
+    #     |> put_status(:bad_request)
+    #     |> json(%{message: "invalid signature"})
 
-      {:error, :invalid_secret} ->
-        Logger.warning("invalid GitHub webhook secret in request body")
+    #   {:error, :invalid_secret} ->
+    #     Logger.warning("invalid GitHub webhook secret in request body")
 
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid secret"})
-    end
+    #     conn
+    #     |> put_status(:bad_request)
+    #     |> json(%{message: "invalid secret"})
+    # end
   end
 
   defp get_signature(conn) do
