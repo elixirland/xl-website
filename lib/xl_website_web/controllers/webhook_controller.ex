@@ -5,6 +5,7 @@ defmodule XlWebsiteWeb.WebhookController do
   alias XlWebsite.FileSystem
 
   @exercises_path "#{:code.priv_dir(:xl_website)}/exercises/"
+  @repo_prefix "xle-"
 
   def push(conn, _params) do
     with {:ok, signature} <- get_signature(conn),
@@ -60,7 +61,7 @@ defmodule XlWebsiteWeb.WebhookController do
       :hmac,
       :sha256,
       Application.get_env(:xl_website, :github_webhooks_secret),
-      encode_as_JSON_with_sorted_keys(payload)
+      Jason.encode!(payload)
     )
     |> Base.encode16(case: :lower)
     |> Plug.Crypto.secure_compare(secret)
@@ -70,21 +71,13 @@ defmodule XlWebsiteWeb.WebhookController do
     end
   end
 
-  # TODO: Prevent repetition of this function in the controller and the test
-  defp encode_as_JSON_with_sorted_keys(%{} = map) do
-    map
-    |> Map.to_list()
-    |> Enum.sort_by(&elem(&1, 0))
-    |> Map.new()
-    |> Jason.encode!()
-  end
-
   defp write_topics_to_file(body_params) do
     topics = get_in(body_params, ["repository", "topics"])
     full_name = get_in(body_params, ["repository", "full_name"])
     repo_name = String.split(full_name, "/") |> List.last()
+    repo_slug = String.replace(repo_name, @repo_prefix, "")
 
-    exercise_path = @exercises_path <> repo_name <> "/"
+    exercise_path = @exercises_path <> repo_slug <> "/"
 
     if not FileSystem.exists?(exercise_path) do
       FileSystem.mkdir!(exercise_path)

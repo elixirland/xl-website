@@ -1,10 +1,12 @@
 <div class="max-w-[1200px] m-auto p-7 pb-40">
   <div data-markdown="exercise">
-    <h1><%= @name %></h1>
-    <div class="max-w-[800px]">
-      <%= raw(Earmark.as_html!(@description)) %>
+    <div class="flex gap-2">
+      <div :for={topic <- @topics} class="bg-neutral-200 px-2 py-1 rounded-md"><%= topic %></div>
     </div>
-    <h2>Example solution</h2>
+    <div class="max-w-[800px]">
+      <%= raw(Earmark.as_html!(@readme_md)) %>
+    </div>
+    <%!-- <h2>Example solution</h2>
     <hr>
     <p>
       You can find the Elixirland solution to this exercise on its <.link href={"https://github.com/elixirland/#{@repo_prefix <> @slug}"}>GitHub repository<.icon
@@ -12,6 +14,6 @@
           class="w-3 h-3 mb-0.5 ml-0.5"
         /></.link>, inside the <code>/solution</code>
       directory.
-    </p>
+    </p> --%>
   </div>
 </div>

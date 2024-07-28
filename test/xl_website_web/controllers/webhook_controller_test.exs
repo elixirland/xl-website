@@ -6,15 +6,14 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
     setup %{conn: conn} do
       secret = Application.get_env(:xl_website, :github_webhooks_secret)
 
-      # TODO: Use mock for fetching README.md content
-      # Currently, full_name is used to construct a URL to fetch README.md
-      # content
-      body = encode_as_JSON_with_sorted_keys(%{
-          repository: %{
-            full_name: "elixirland/xle-username-generator",
-            topics: ["topic A", "topic B"]
-          }
-        })
+      # body = encode_as_JSON_with_sorted_keys(%{
+      #     repository: %{
+      #       full_name: "elixirland/xle-username-generator",
+      #       topics: ["topic A", "topic B"]
+      #     }
+      #   })
+
+      body = "{\"repository\":{\"full_name\":\"elixirland/xle-username-generator\",\"topics\":[\"topic A\",\"topic B\"]}}"
 
       %{conn: conn, body: body, secret: secret}
     end
@@ -82,13 +81,5 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
 
       assert response(conn, :bad_request) =~ "invalid signature"
     end
-  end
-
-  defp encode_as_JSON_with_sorted_keys(%{} = map) do
-    map
-    |> Map.to_list()
-    |> Enum.sort_by(&elem(&1, 0))
-    |> Map.new()
-    |> Jason.encode!()
   end
 end

@@ -26,35 +26,14 @@ defmodule XlWebsiteWeb.PageControllerTest do
   end
 
   describe "GET /exercises/:slug" do
-    test "renders book club page", %{conn: conn} do
+    test "renders exercise", %{conn: conn} do
       conn = get(conn, "/exercises/book-club")
 
       resp = html_response(conn, 200)
 
-      assert resp =~ "Book Club"
       assert resp =~ "Introduction"
       assert resp =~ "Task"
       assert resp =~ "How to get started"
-      assert resp =~ "Example solution"
-    end
-
-    test "renders simple-chat-room page", %{conn: conn} do
-      conn = get(conn, "/exercises/simple-chat-room")
-
-      resp = html_response(conn, 200)
-
-      assert resp =~ "Simple Chat Room"
-      assert resp =~ "Description"
-      assert resp =~ "Example solution"
-    end
-
-    test "renders username-generator page", %{conn: conn} do
-      conn = get(conn, "/exercises/username-generator")
-
-      resp = html_response(conn, 200)
-
-      assert resp =~ "Username Generator"
-      assert resp =~ "Description"
       assert resp =~ "Example solution"
     end
   end

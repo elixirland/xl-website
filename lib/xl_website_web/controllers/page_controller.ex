@@ -33,6 +33,7 @@ defmodule XlWebsiteWeb.PageController do
     Path.join(:code.priv_dir(:xl_website), "/#{file}")
   end
 
+  # TODO: Get repo data from aggregating all repos in the exercises directory
   def exercises(conn, _params) do
     github_repos =
       get_repos()
@@ -46,19 +47,29 @@ defmodule XlWebsiteWeb.PageController do
   end
 
   def exercise(conn, %{"slug" => slug}) do
-    description =
-      readme(slug)
-      |> Parser.filter_description()
+    with true <- FileSystem.exists?(path_to("exercises/#{slug}")),
+         {:ok, readme_md} <- FileSystem.read(path_to("exercises/#{slug}/README.md")),
+         {:ok, topics_json} <- FileSystem.read(path_to("exercises/#{slug}/topics.json")),
+         {:ok, topics} <- Jason.decode(topics_json) do
 
-    name = Parser.slug_to_name(slug)
+      # description = Parser.filter_description(readme)
+      name = Parser.slug_to_name(slug)
 
-    conn
-    |> assign(:page_title, @title_prefix <> name)
-    |> assign(:name, name)
-    |> assign(:slug, slug)
-    |> assign(:repo_prefix, @repo_prefix)
-    |> assign(:description, description)
-    |> render(:exercise)
+      conn
+      |> assign(:page_title, @title_prefix <> name)
+      |> assign(:name, name)
+      |> assign(:slug, slug)
+      |> assign(:repo_prefix, @repo_prefix)
+      |> assign(:readme_md, readme_md)
+      |> assign(:topics, topics)
+      |> render(:exercise)
+    else
+      _ ->
+        conn
+        |> put_status(:not_found)
+        |> put_view(XlWebsiteWeb.ErrorHTML)
+        |> render("404.html")
+    end
   end
 
   def about(conn, _params) do

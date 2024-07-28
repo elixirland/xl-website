@@ -44,6 +44,39 @@ defmodule FinchFake do
 
   @impl HTTPClient
   def request(_request, _name, _opts \\ []) do
-    {:ok, %Finch.Response{status: 200, body: "mocked response"}}
+    {:ok, %Finch.Response{status: 200, body: readme_md()}}
+  end
+
+  defp readme_md() do
+    """
+    # Some Exercise Name
+    Some text.
+
+    ## Status
+    Exercise: ***Not Reviewed***<br>
+    Solution: ***Not Reviewed***
+
+    > [!NOTE]
+    > Some note.
+
+    ## Introduction
+    Some text.
+
+    ## Task
+    Some text.
+
+    ## Requirements
+    ### Some heading
+      - Some list.
+
+    > [!TIP]
+    > Some tip.
+
+    ## How to get started
+    Some text.
+
+    ## Example solution
+    Some text.
+    """
   end
 end
