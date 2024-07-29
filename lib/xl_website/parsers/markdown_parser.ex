@@ -1,5 +1,5 @@
 defmodule XlWebsite.MarkdownParser do
-  @md_heading_regex ~r/(#+ .+?)(\n)+/
+  @md_heading_regex ~r/(?<!\\)(#+.+?)(\n)+/
 
   def filter_readme_sections(readme, headings) when is_list(headings) do
     readme
@@ -44,9 +44,9 @@ defmodule XlWebsite.MarkdownParser do
   defp first_item_contains?([heading | _], headings) do
     heading_name_only =
       heading
-      |> String.replace(~r/^#+ /, "")
+      |> String.replace(~r/^#+/, "")
       |> String.trim()
 
-    String.contains?(heading_name_only, headings)
+    heading_name_only in headings
   end
 end
