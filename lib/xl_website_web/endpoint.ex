@@ -43,7 +43,7 @@ defmodule XlWebsiteWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    body_reader: {XlWebsite.Parser, :parse_body_params, []},
+    body_reader: {XlWebsite.ParamParser, :parse_body_params, []},
     json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride

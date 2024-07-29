@@ -2,7 +2,7 @@ defmodule XlWebsiteWeb.WebhookController do
   use XlWebsiteWeb, :controller
   require Logger
   alias XlWebsiteWeb.HTTPClient
-  alias XlWebsite.Parser
+  alias XlWebsite.ParamParser
   alias XlWebsite.Exercises
 
   def push(conn, _params) do
@@ -45,11 +45,11 @@ defmodule XlWebsiteWeb.WebhookController do
 
     %{
       full_name: full_name,
-      name: Parser.build_name(full_name),
-      slug: Parser.build_slug(full_name),
+      name: ParamParser.build_name(full_name),
+      slug: ParamParser.build_slug(full_name),
       html_url: body_params["repository"]["html_url"],
       description: body_params["repository"]["description"],
-      topics: Parser.parse_topics(raw_topics),
+      topics: ParamParser.parse_topics(raw_topics),
       readme: fetch_readme(full_name)
     }
   end
