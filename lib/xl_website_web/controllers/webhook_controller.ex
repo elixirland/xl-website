@@ -12,7 +12,6 @@ defmodule XlWebsiteWeb.WebhookController do
       conn.body_params
       |> extract_exercise_attrs()
       |> Exercises.upsert_exercise()
-      |> IO.inspect()
 
       resp(conn, 200, "ok")
     else
@@ -51,7 +50,7 @@ defmodule XlWebsiteWeb.WebhookController do
       html_url: body_params["repository"]["html_url"],
       description: body_params["repository"]["description"],
       topics: Parser.parse_topics(raw_topics),
-      readme_md: fetch_readme(full_name)
+      readme: fetch_readme(full_name)
     }
   end
 

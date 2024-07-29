@@ -8,7 +8,7 @@ defmodule XlWebsite.Repo.Migrations.CreateExerciseTables do
       add :slug, :string
       add :description, :text
       add :html_url, :string
-      add :readme_md, :text
+      add :readme, :text
       add :topics, {:array, :string}
 
       timestamps()

@@ -20,11 +20,11 @@ defmodule XlWebsite.Factory do
       name: "Book Club",
       slug: "book-club",
       topics: ["Elixir", "OTP"],
-      readme_md: readme_md()
+      readme: readme()
     }
   end
 
-  defp readme_md() do
+  defp readme() do
     """
     # Some Exercise Name
     Some text.

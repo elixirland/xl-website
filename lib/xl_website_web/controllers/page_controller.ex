@@ -55,13 +55,19 @@ defmodule XlWebsiteWeb.PageController do
       exercise ->
         name = Parser.slug_to_name(slug)
 
+        readme =
+          Parser.filter_readme_sections(
+            exercise.readme,
+            ["Introduction", "Task", "How to get started", "Example solution"]
+          )
+
         conn
         |> assign(:page_title, @title_prefix <> name)
         |> assign(:name, name)
         |> assign(:slug, slug)
         |> assign(:html_url, exercise.html_url)
         |> assign(:repo_prefix, @repo_prefix)
-        |> assign(:readme_md, exercise.readme_md)
+        |> assign(:readme, readme)
         |> assign(:topics, exercise.topics)
         |> render(:exercise)
     end

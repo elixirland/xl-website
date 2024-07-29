@@ -19,7 +19,8 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   html_url: "https://github.com/elixirland/xle-book-club",
   topics: ["Elixir", "Phoenix"],
   description: "Build an simple Phoenix API for a book club.",
-  readme_md: ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\n  - Some list.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
+  readme:
+    ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\n  - Some list.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
 })
 
 Repo.insert!(%XlWebsite.Exercises.Exercise{
@@ -29,7 +30,8 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   html_url: "https://github.com/elixirland/xle-username-generator",
   topics: ["Elixir", "Hex"],
   description: "Build a Hex package that generates random usernames.",
-  readme_md: ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\n  - Some list.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
+  readme:
+    ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\n  - Some list.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
 })
 
 Repo.insert!(%XlWebsite.Exercises.Exercise{
@@ -39,5 +41,6 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   html_url: "http://github.com/elixirland/xle-simple-chat-room",
   topics: ["Elixir", "Phoenix"],
   description: "Build a simple chat room using Phoenix LiveView.",
-  readme_md: ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\n  - Some list.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
+  readme:
+    ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\n  - Some list.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
 })

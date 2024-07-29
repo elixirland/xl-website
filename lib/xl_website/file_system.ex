@@ -30,7 +30,7 @@ defmodule FileFake do
   end
 
   def read("topics.json", _), do: {:ok, topics()}
-  def read("README.md", _), do: {:ok, readme_md()}
+  def read("README.md", _), do: {:ok, readme()}
   def read(_, _), do: {:ok, "Some file content"}
 
   @impl FileSystem
@@ -44,7 +44,7 @@ defmodule FileFake do
 
   defp topics(), do: ~s|["topic1", "topic2"]|
 
-  defp readme_md() do
+  defp readme() do
     """
     # Some Exercise Name
     Some text.

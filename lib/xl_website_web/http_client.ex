@@ -44,10 +44,10 @@ defmodule FinchFake do
 
   @impl HTTPClient
   def request(_request, _name, _opts \\ []) do
-    {:ok, %Finch.Response{status: 200, body: readme_md()}}
+    {:ok, %Finch.Response{status: 200, body: readme()}}
   end
 
-  defp readme_md() do
+  defp readme() do
     """
     # Some Exercise Name
     Some text.
