@@ -1,9 +1,9 @@
 defmodule XlWebsite.Parser do
-  @topic_hash_map %{
+  @topic_hashes %{
     "api" => "API",
     "postgresql" => "PostgreSQL"
   }
-  @topic_hash_keys Map.keys(@topic_hash_map)
+  @topic_hash_keys Map.keys(@topic_hashes)
   @repo_prefix "xle-"
   @markdown_heading_regex ~r/(#+ .+?)(\n)+/
 
@@ -72,11 +72,6 @@ defmodule XlWebsite.Parser do
     |> Enum.map(&parse_topic/1)
   end
 
-  defp parse_topic(topic) when topic in @topic_hash_keys do
-    @topic_hash_map[topic]
-  end
-
-  defp parse_topic(topic) do
-    String.capitalize(topic)
-  end
+  defp parse_topic(topic) when topic in @topic_hash_keys, do: @topic_hashes[topic]
+  defp parse_topic(topic), do: String.capitalize(topic)
 end
