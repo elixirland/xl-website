@@ -12,6 +12,12 @@
     "url": "https://ash-hq.org/"
   },
   {
+    "name": "SurfaceUI",
+    "description": "A server-side rendering component library that allows developers to build rich interactive user-interfaces, writing minimal custom Javascript.",
+    "thumbnail": true,
+    "url": "https://surface-ui.org/"
+  },
+  {
     "name": "Ecto",
     "description": "A database wrapper and query generator for Elixir, providing a unified API for working with different databases.",
     "thumbnail": true,
@@ -86,7 +92,13 @@
   {
     "name": "Credo",
     "description": "A static code analysis tool for the Elixir language with a focus on teaching and code consistency.",
-    "thumbnail": false,
-    "url": ""
+    "thumbnail": true,
+    "url": "https://hexdocs.pm/credo/overview.html"
+  },
+  {
+    "name": "Absinthe",
+    "description": "A GraphQL toolkit for Elixir, an implementation of the GraphQL specification built to suit the language's capabilities and idiomatic style",
+    "thumbnail": true,
+    "url": "https://absinthe-graphql.org/"
   }
 ]
