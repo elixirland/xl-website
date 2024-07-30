@@ -42,5 +42,10 @@ defmodule XlWebsite.ParamParser do
   end
 
   defp parse_topic(topic) when topic in @topic_hash_keys, do: @topic_hashes[topic]
-  defp parse_topic(topic), do: String.capitalize(topic)
+  defp parse_topic(topic) do
+    topic
+    |> String.split("-")
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(" ")
+  end
 end
