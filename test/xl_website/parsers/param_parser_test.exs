@@ -6,7 +6,7 @@ defmodule XlWebsite.ParamParserTest do
     test "returns topics with correct casing" do
       topics = ["api", "postgresql", "elixir", "phoenix", "mix"]
 
-      assert ParamParser.parse_topics(topics) == ["API", "PostgreSQL", "Elixir"]
+      assert ParamParser.parse_topics(topics) == ["API", "PostgreSQL", "Elixir", "Phoenix", "Mix"]
     end
 
     test "returns topics with correct spaces and dashes" do
