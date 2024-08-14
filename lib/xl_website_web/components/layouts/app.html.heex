@@ -1,23 +1,35 @@
-<header class="h-[60px] bg-[#5d3390] sticky top-0 z-10">
+<header class="h-[60px] bg-[rgb(122,51,144)] sticky top-0 z-10">
   <div class="h-full flex items-center max-w-[1200px] m-auto px-7">
-    <.link href={~p"/"} class="text-white mr-6 text-xl font-semibold tracking-wide">
+    <.link href={~p"/"} class="text-white mr-6 text-xl font-bold tracking-wide">
       Elixirland
     </.link>
-    <nav>
-      <menu class="text text-white flex gap-3">
+    <nav class="ml-auto">
+      <menu class="text text-white flex gap-4">
         <.link
           href={~p"/exercises"}
-          class={assigns[:route] == "Exercises" && "underline underline-offset-2"}
+          class={[
+            "text-lg",
+            assigns[:route] == "Exercises" && "underline underline-offset-2"
+          ]}
         >
           Exercises
         </.link>
         <.link
           href={~p"/ecosystem"}
-          class={assigns[:route] == "Ecosystem" && "underline underline-offset-2"}
+          class={[
+            "text-lg",
+            assigns[:route] == "Ecosystem" && "underline underline-offset-2"
+          ]}
         >
           Ecosystem
         </.link>
-        <.link href={~p"/about"} class={assigns[:route] == "About" && "underline underline-offset-2"}>
+        <.link
+          href={~p"/about"}
+          class={[
+            "text-lg",
+            assigns[:route] == "About" && "underline underline-offset-2"
+          ]}
+        >
           About
         </.link>
       </menu>
