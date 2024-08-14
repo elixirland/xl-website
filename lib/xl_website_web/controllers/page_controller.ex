@@ -58,7 +58,14 @@ defmodule XlWebsiteWeb.PageController do
         readme =
           MarkdownParser.filter_readme_sections(
             exercise.readme,
-            ["Introduction", "Task", "Requirements", "Assumptions", "How to get started", "Example solution"]
+            [
+              "Introduction",
+              "Task",
+              "Requirements",
+              "Assumptions",
+              "How to get started",
+              "Example solution"
+            ]
           )
 
         conn
