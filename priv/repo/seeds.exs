@@ -12,6 +12,53 @@
 
 alias XlWebsite.Repo
 
+readme =
+  """
+  # Some Exercise Name
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
+  Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
+
+  ## Status
+  Exercise: ***Not Reviewed***
+  Solution: ***Not Reviewed***
+
+  > [!NOTE]> Some note.
+
+  ## Introduction
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
+  Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
+
+  ## Task
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
+  Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
+
+  ## Requirements
+  ### Some heading
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
+  Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
+
+  - Some requirement
+  - Another requirement
+  - Yet another requirement
+
+  > [!TIP]
+  > Some tip.
+
+  ## How to get started
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
+  Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
+
+  ## Example solution
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
+  Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
+  """
+
 Repo.insert!(%XlWebsite.Exercises.Exercise{
   full_name: "elixirland/xle-book-club",
   name: "Book Club",
@@ -19,8 +66,7 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   html_url: "https://github.com/elixirland/xle-book-club",
   topics: ["Elixir", "Phoenix"],
   description: "Build an simple Phoenix API for a book club.",
-  readme:
-    ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\nSome text under a heading.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
+  readme: readme
 })
 
 Repo.insert!(%XlWebsite.Exercises.Exercise{
@@ -30,8 +76,7 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   html_url: "https://github.com/elixirland/xle-username-generator",
   topics: ["Elixir", "Hex"],
   description: "Build a Hex package that generates random usernames.",
-  readme:
-    ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\nSome text under a heading.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
+  readme: readme
 })
 
 Repo.insert!(%XlWebsite.Exercises.Exercise{
@@ -41,6 +86,5 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   html_url: "http://github.com/elixirland/xle-simple-chat-room",
   topics: ["Elixir", "Phoenix"],
   description: "Build a simple chat room using Phoenix LiveView.",
-  readme:
-    ~s|# Some Exercise Name\nSome text.\n\n## Status\nExercise: ***Not Reviewed***\nSolution: ***Not Reviewed***\n\n> [!NOTE]> Some note.\n\n## Introduction\nSome text.\n\n## Task\nSome text.\n\n## Requirements\n### Some heading\nSome text under a heading.\n\n> [!TIP]\n> Some tip.\n\n## How to get started\nSome text.\n\n## Example solution\nSome text.|
+  readme: readme
 })

@@ -3,7 +3,7 @@
     <div class="flex gap-2 mb-4">
       <div :for={topic <- @topics} class="bg-neutral-200 px-2 py-1 rounded-md"><%= topic %></div>
     </div>
-    <.link href={@html_url}>View on GitHub</.link>
+    <.link href={@html_url}>View exercise on GitHub</.link>
     <div class="max-w-[800px]">
       <%= raw(Earmark.as_html!(@readme)) %>
     </div>
