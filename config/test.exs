@@ -36,5 +36,7 @@ config :logger, level: :warning
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
-# Import development secrets
-import_config "dev.secrets.exs"
+# Configure GitHub webhooks secret
+config :xl_website,
+       :github_webhooks_secret,
+       "some_secret_for_testing"

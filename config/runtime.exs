@@ -113,6 +113,5 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
-  config :xl_website, :github_webhooks_secret,
-    System.get_env("GITHUB_WEBHOOKS_SECRET")
+  config :xl_website, :github_webhooks_secret, System.get_env("GITHUB_WEBHOOKS_SECRET")
 end

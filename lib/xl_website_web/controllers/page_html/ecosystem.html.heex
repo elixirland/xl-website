@@ -9,9 +9,7 @@
   </heading>
   <div class="flex flex-wrap gap-4 my-8">
     <.link :for={item <- @ecosystem_data} href={item["url"]}>
-      <article
-        class="w-[360px] h-[300px] bg-white rounded-xl overflow-clip shadow-md flex flex-col"
-      >
+      <article class="w-[360px] h-[300px] bg-white rounded-xl overflow-clip shadow-md flex flex-col">
         <img
           :if={item["thumbnail"]}
           src={"/images/#{item["name"]}.webp"}

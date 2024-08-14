@@ -42,6 +42,7 @@ defmodule XlWebsite.ParamParser do
   end
 
   defp parse_topic(topic) when topic in @topic_hash_keys, do: @topic_hashes[topic]
+
   defp parse_topic(topic) do
     topic
     |> String.split("-")
