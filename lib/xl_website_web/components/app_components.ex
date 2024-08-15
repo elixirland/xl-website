@@ -5,8 +5,8 @@ defmodule XlWebsiteWeb.AppComponents do
 
   def exercise_card(assigns) do
     ~H"""
-    <.link href={~p"/exercises/#{@exercise.slug}"}>
-      <article class="w-[360px] bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
+    <.link href={~p"/exercises/#{@exercise.slug}"} class="sm:w-full w-[360px]">
+      <article class="bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
         <%!-- TODO: Replace hard-coded status --%>
         <span class="absolute top-2 right-2 bg-[#f7f7f7f7] drop-shadow py-1 px-2 font-medium rounded-md text-[0.8rem] tracking-wide">
           <%= status(@exercise.name) %>
@@ -15,7 +15,7 @@ defmodule XlWebsiteWeb.AppComponents do
           src={"/images/#{@exercise.name}.webp"}
           width="360"
           height="240"
-          class="h-[240px] bg-cover bg-center"
+          class="h-[240px] sm:w-full bg-cover bg-center"
         />
         <div class="p-5 flex flex-col h-[180px]">
           <h1 class="text-3xl mb-1.5 font-bold">
