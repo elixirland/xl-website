@@ -12,6 +12,12 @@ module.exports = {
     "../lib/*_web/**/*.*ex"
   ],
   theme: {
+    screens: {
+      'lg': { 'max': '1300px' },
+      'md': { 'max': '900px' },
+      'sm': { 'max': '500px' },
+      'touch': { 'raw': '(pointer: coarse)' }
+    },
     extend: {
       colors: {
         brand: "#FD4F00",

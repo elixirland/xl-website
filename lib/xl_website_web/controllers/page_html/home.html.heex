@@ -1,24 +1,24 @@
-<section class="flex flex-col items-center justify-center h-[80vh] min-h-[400px]">
-  <heading class="px-8">
-    <h1 class="pt-8 mb-1 text-[5rem] leading-[5rem] text-center font-bold tracking-wide text-violet-950">
+<section class="flex flex-col items-center justify-center h-[80vh] min-h-[400px] px-8">
+  <heading>
+    <h1 class="pt-8 mb-1.5 text-[5rem] leading-[5rem] text-center font-bold tracking-wide text-violet-950">
       Elixirland
     </h1>
-    <p class="text-[1.8rem] text-center text-violet-950">
-      Master the Elixir ecosystem
+    <p class="text-[1.9rem] text-center text-violet-900">
+      Unlock the Elixir ecosystem
     </p>
   </heading>
-  <div class="mt-[100px] flex gap-2.5 items-center">
+  <div class="mt-[120px] flex gap-2.5 items-center sm:flex-col">
+    <.link
+      href={~p"/exercises"}
+      class="bg-[#653390] shadow-md text-white px-3.5 py-2.5 text-xl rounded hover:bg-[#7a3bb1] font-medium"
+    >
+      Discover exercises
+    </.link>
     <.link
       href={~p"/ecosystem"}
       class="text-neutral-700 px-3.5 py-2 text-xl hover:underline underline-offset-2"
     >
       Explore ecosystem
-    </.link>
-    <.link
-      href={~p"/exercises"}
-      class="bg-[#653390] shadow-md text-white px-3.5 py-2 text-xl rounded-lg hover:bg-[#7a3bb1] font-medium"
-    >
-      Discover exercises
     </.link>
   </div>
 </section>
