@@ -1,14 +1,16 @@
 [data-markdown="exercise"] {
   h1 {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-top: 0.5rem;
+    letter-spacing: -1px;
+    margin-bottom: -8px;
   }
 
   h2 {
     font-weight: 400;
     font-size: 2rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     margin-bottom: 0.125rem;
   }
 
