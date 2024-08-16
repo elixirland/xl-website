@@ -104,6 +104,13 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
   end
 
+  describe "GET /contribute" do
+    test "renders contribute page", %{conn: conn} do
+      conn = get(conn, "/contribute")
+      assert html_response(conn, 200) =~ "How can I contribute?"
+    end
+  end
+
   test "Invalid path" do
     conn = get(build_conn(), "/invalid")
     assert html_response(conn, 404) =~ "Not Found"
