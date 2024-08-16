@@ -5,7 +5,10 @@ defmodule XlWebsiteWeb.PageControllerTest do
   describe "GET /" do
     test "renders home page", %{conn: conn} do
       conn = get(conn, "/")
-      assert html_response(conn, 200) =~ "Elixir exercises with idiomatic example solutions"
+      resp = html_response(conn, 200)
+      assert resp =~ "unlock the Elixir ecosystem"
+      assert resp =~ "Discover exercises"
+      assert resp =~ "Explore ecosystem"
     end
   end
 
