@@ -7,20 +7,27 @@
       </p>
     </div>
   </heading>
-  <div class="flex flex-wrap gap-4 my-8">
-    <.link :for={item <- @ecosystem_data} href={item["url"]}>
-      <article class="w-[360px] h-[300px] bg-white rounded-xl overflow-clip shadow-md flex flex-col">
-        <img
-          :if={item["thumbnail"]}
-          src={"/images/#{item["name"]}.webp"}
-          height="100"
-          class="h-[100px] bg-cover bg-center m-auto mt-5"
-        />
-        <div class="h-[160px] p-6 pt-0 mt-auto">
-          <h1 class="text-2xl font-semibold mb-1"><%= item["name"] %></h1>
-          <p><%= item["description"] %></p>
-        </div>
-      </article>
-    </.link>
+  <div class="flex flex-col gap-4 mt-2 mb-20">
+    <%= for category <- @ecosystem_data do %>
+      <h2 class="text-2xl font-semibold pt-8"><%= category.name %></h2>
+      <div :for={item <- category.items}>
+        <article class="bg-white rounded-xl overflow-clip shadow-md">
+          <div class="p-8">
+            <img
+              :if={item.thumbnail}
+              src={"/images/#{item.name}.webp"}
+              height="50"
+              class="h-[50px] bg-cover bg-center float-right"
+            />
+            <h1 class="text-2xl font-semibold mb-0.5"><%= item.name %></h1>
+            <p class="max-w-[65ch]"><%= item.description %></p>
+            <.link href={item.url} class="text-blue-500 block pt-4">
+              <span class="underline">Official website</span>
+              <.icon name="hero-arrow-top-right-on-square" class="w-3 h-3 ml-1.5" />
+            </.link>
+          </div>
+        </article>
+      </div>
+    <% end %>
   </div>
 </div>

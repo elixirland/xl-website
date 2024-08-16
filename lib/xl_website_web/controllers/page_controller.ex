@@ -28,8 +28,7 @@ defmodule XlWebsiteWeb.PageController do
   def ecosystem(conn, _params) do
     ecosystem_data =
       FileSystem.read!(path_to("ecosystem.json"))
-      |> Jason.decode!()
-      |> Enum.sort_by(&Map.get(&1, "name"))
+      |> Jason.decode!(keys: :atoms)
 
     conn
     |> assign(:page_title, @title_prefix <> @ecosystem)
