@@ -23,7 +23,7 @@ defmodule XlWebsiteWeb.Router do
     get "/exercises/:slug", PageController, :exercise
     get "/about", PageController, :about
     get "/reviewing", PageController, :reviewing
-    get "/contribute", PageController, :contribute
+    get "/contributions", PageController, :contributions
   end
 
   scope "/webhooks", XlWebsiteWeb do

@@ -90,23 +90,9 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
   end
 
-  describe "GET /reviewing" do
-    test "renders reviewing page", %{conn: conn} do
-      conn = get(conn, "/reviewing")
-      assert html_response(conn, 200) =~ "How does reviewing work?"
-    end
-
-    test "renders metadata tags", %{conn: conn} do
-      conn = get(conn, "/")
-      resp = html_response(conn, 200)
-
-      assert_metadata(resp)
-    end
-  end
-
-  describe "GET /contribute" do
-    test "renders contribute page", %{conn: conn} do
-      conn = get(conn, "/contribute")
+  describe "GET /contributions" do
+    test "renders contributions page", %{conn: conn} do
+      conn = get(conn, "/contributions")
       assert html_response(conn, 200) =~ "How can I contribute?"
     end
   end

@@ -95,17 +95,10 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:about)
   end
 
-  def reviewing(conn, _params) do
-    conn
-    |> assign(:page_title, @title_prefix <> "How does exercise reviewing work?")
-    |> assign(:route, "Reviewing")
-    |> render(:reviewing)
-  end
-
-  def contribute(conn, _params) do
+  def contributions(conn, _params) do
     conn
     |> assign(:page_title, @title_prefix <> "How to contribute to Elixirland?")
     |> assign(:route, "Contribute")
-    |> render(:contribute)
+    |> render(:contributions)
   end
 end

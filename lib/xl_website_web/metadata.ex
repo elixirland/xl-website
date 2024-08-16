@@ -75,14 +75,14 @@ defmodule XlWebsiteWeb.Metadata do
     """
   end
 
-  defp metadata(%{route: "Reviewing"} = assigns) do
+  defp metadata(%{route: "Contributions"} = assigns) do
     assigns = Map.put(assigns, :domain, @domain)
 
     ~H"""
-    <meta name="description" content="How does reviewing work at Elixirland?" />
-    <meta property="og:title" content="Elixirland reviewing process" />
-    <meta property="og:url" content={"#{@domain}/reviewing"} />
-    <meta property="og:description" content="How does reviewing work at Elixirland?" />
+    <meta name="description" content="How to contribute to Elixirland?" />
+    <meta property="og:title" content="Contributing to Elixirland" />
+    <meta property="og:url" content={"#{@domain}/contributions"} />
+    <meta property="og:description" content="How to contribute to Elixirland?" />
     """
   end
 
