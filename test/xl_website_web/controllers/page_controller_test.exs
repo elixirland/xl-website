@@ -6,6 +6,7 @@ defmodule XlWebsiteWeb.PageControllerTest do
     test "renders home page", %{conn: conn} do
       conn = get(conn, "/")
       resp = html_response(conn, 200)
+
       assert resp =~ "unlock the Elixir ecosystem"
       assert resp =~ "Discover exercises"
       assert resp =~ "Explore ecosystem"
@@ -30,7 +31,6 @@ defmodule XlWebsiteWeb.PageControllerTest do
       })
 
       conn = get(conn, "/exercises")
-
       resp = html_response(conn, 200)
 
       assert resp =~ "Book Club"
@@ -46,7 +46,6 @@ defmodule XlWebsiteWeb.PageControllerTest do
       })
 
       conn = get(conn, "/exercises/book-club")
-
       resp = html_response(conn, 200)
 
       assert resp =~ "Introduction"

@@ -1,15 +1,15 @@
 defmodule XlWebsiteWeb.MetaData do
   use Phoenix.Component
 
-  attr :page_title, :string
+  attr :route, :string
 
   def tags(assigns) do
     ~H"""
-    <.meta_data page_title={@page_title} />
+    <.meta_data route={@route} />
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "Home" do
+  defp meta_data(assigns) when assigns.route == "Home" do
     ~H"""
     <meta
       name="description"
@@ -24,7 +24,7 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "Exercises" do
+  defp meta_data(assigns) when assigns.route == "Exercises" do
     ~H"""
     <meta name="description" content="Explore our Elixir exercises." />
     <link rel="canonical" content="https://elixirland.dev/exercises" />
@@ -34,7 +34,7 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "Exercise" do
+  defp meta_data(assigns) when assigns.route == "Exercise" do
     ~H"""
     <meta name="description" content="Exercise details." />
     <meta property="og:title" content="Exercise details" />
@@ -43,7 +43,7 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
-  defp meta_data(assigns) when assigns.page_tiatle == "Ecosystem" do
+  defp meta_data(assigns) when assigns.route == "Ecosystem" do
     ~H"""
     <meta name="description" content="An overview of the Elixirland ecosystem." />
     <meta property="og:title" content="The Elixirland ecosystem" />
@@ -52,7 +52,7 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "About" do
+  defp meta_data(assigns) when assigns.route == "About" do
     ~H"""
     <meta name="description" content="Learn more about Elixirland." />
     <meta property="og:title" content="About Elixirland" />
@@ -61,7 +61,7 @@ defmodule XlWebsiteWeb.MetaData do
     """
   end
 
-  defp meta_data(assigns) when assigns.page_title == "Reviewing" do
+  defp meta_data(assigns) when assigns.route == "Reviewing" do
     ~H"""
     <meta name="description" content="How does reviewing work at Elixirland?" />
     <meta property="og:title" content="Elixirland reviewing process" />
