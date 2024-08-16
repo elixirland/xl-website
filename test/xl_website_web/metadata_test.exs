@@ -1,6 +1,6 @@
 defmodule XlWebsiteWeb.MetadataTest do
   alias Ecto.Schema.Metadata
-  use XlWebsiteWeb.ConnCase
+  use ExUnit.Case, async: true
   alias XlWebsiteWeb.Metadata
 
   test "tags/1 renders meta tags" do
