@@ -33,8 +33,8 @@ defmodule XlWebsiteWeb.AppComponents do
 
   defp status(repo_name) do
     case repo_name do
-      "Book Club" -> "Ready To Be Reviewed"
-      _ -> "In Development"
+      "Book Club" -> "Coming Soon"
+      _ -> "Coming Soon"
     end
   end
 
