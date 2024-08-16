@@ -102,4 +102,11 @@ defmodule XlWebsiteWeb.PageController do
     |> assign(:route, "Reviewing")
     |> render(:reviewing)
   end
+
+  def contribute(conn, _params) do
+    conn
+    |> assign(:page_title, @title_prefix <> "How to contribute to Elixirland?")
+    |> assign(:route, "Contribute")
+    |> render(:contribute)
+  end
 end
