@@ -5,8 +5,14 @@ defmodule XlWebsiteWeb.Metadata do
   @domain "https://elixirland.dev"
 
   attr :route, :string
+  attr :slug, :string
+  attr :name, :string
 
-  def tags(assigns), do: ~H"<.metadata route={@route} />"
+  def tags(assigns) do
+    ~H"""
+    <.metadata route={@route} slug={@slug} name={@name} />
+    """
+  end
 
   defp metadata(%{route: "Home"} = assigns) do
     assigns =
@@ -40,11 +46,10 @@ defmodule XlWebsiteWeb.Metadata do
     assigns = Map.put(assigns, :domain, @domain)
 
     ~H"""
-    <meta name="description" content="Exercise details." />
-    <meta property="og:title" content="Exercise details" />
-    <%!-- TODO: Set exercise url tag --%>
-    <%!-- <meta property="og:url" content="" /> --%>
-    <meta property="og:description" content="Exercise details." />
+    <meta name="description" content={"The \"#{@name}\" Exercise"} />
+    <meta property="og:title" content={@name} />
+    <meta property="og:url" content={"#{@domain}/exercises/#{@slug}"} />
+    <meta property="og:description" content={"The \"#{@name}\" Exercise"} />
     """
   end
 

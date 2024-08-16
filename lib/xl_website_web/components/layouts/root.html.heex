@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <XlWebsiteWeb.Metadata.tags route={Map.get(assigns, :route)} />
+    <XlWebsiteWeb.Metadata.tags
+      route={Map.get(assigns, :route)}
+      slug={Map.get(assigns, :slug)}
+      name={Map.get(assigns, :name)}
+    />
     <.live_title>
       <%= assigns[:page_title] || "Elixirland" %>
     </.live_title>

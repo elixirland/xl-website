@@ -1,4 +1,11 @@
 defmodule XlWebsiteWeb.PageController do
+  @moduledoc """
+  The controller for the pages of the website.
+
+  The route assign must be set for each page to ensure the correct metadata is
+  generated. Also, the route assign is used to style the active link in the
+  navigation bar.
+  """
   use XlWebsiteWeb, :controller
   alias XlWebsite.{ParamParser, MarkdownParser}
   alias XlWebsite.FileSystem
@@ -6,6 +13,7 @@ defmodule XlWebsiteWeb.PageController do
 
   @home "Home"
   @exercises "Exercises"
+  @ecosystem "Ecosystem"
   @about "About"
   @repo_prefix "xle-"
   @title_prefix "Elixirland - "
@@ -24,8 +32,8 @@ defmodule XlWebsiteWeb.PageController do
       |> Enum.sort_by(&Map.get(&1, "name"))
 
     conn
-    |> assign(:page_title, @title_prefix <> "The Elixir ecosystem")
-    |> assign(:route, "Ecosystem")
+    |> assign(:page_title, @title_prefix <> @ecosystem)
+    |> assign(:route, @ecosystem)
     |> assign(:ecosystem_data, ecosystem_data)
     |> render(:ecosystem)
   end
@@ -70,6 +78,7 @@ defmodule XlWebsiteWeb.PageController do
 
         conn
         |> assign(:page_title, @title_prefix <> name)
+        |> assign(:route, "Exercise")
         |> assign(:name, name)
         |> assign(:slug, slug)
         |> assign(:html_url, exercise.html_url)
@@ -90,6 +99,7 @@ defmodule XlWebsiteWeb.PageController do
   def reviewing(conn, _params) do
     conn
     |> assign(:page_title, @title_prefix <> "How does exercise reviewing work?")
+    |> assign(:route, "Reviewing")
     |> render(:reviewing)
   end
 end
