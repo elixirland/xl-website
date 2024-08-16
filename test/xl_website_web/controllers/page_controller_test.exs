@@ -11,6 +11,13 @@ defmodule XlWebsiteWeb.PageControllerTest do
       assert resp =~ "Discover exercises"
       assert resp =~ "Explore ecosystem"
     end
+
+    test "renders metadata tags", %{conn: conn} do
+      conn = get(conn, "/")
+      resp = html_response(conn, 200)
+
+      assert_metadata(resp)
+    end
   end
 
   describe "GET /exercises" do
@@ -36,6 +43,13 @@ defmodule XlWebsiteWeb.PageControllerTest do
       assert resp =~ "Book Club"
       assert resp =~ "Simple Chat Room"
     end
+
+    test "renders metadata tags", %{conn: conn} do
+      conn = get(conn, "/")
+      resp = html_response(conn, 200)
+
+      assert_metadata(resp)
+    end
   end
 
   describe "GET /exercises/:slug" do
@@ -53,12 +67,26 @@ defmodule XlWebsiteWeb.PageControllerTest do
       assert resp =~ "How to get started"
       assert resp =~ "Example solution"
     end
+
+    test "renders metadata tags", %{conn: conn} do
+      conn = get(conn, "/")
+      resp = html_response(conn, 200)
+
+      assert_metadata(resp)
+    end
   end
 
   describe "GET /about" do
     test "renders about page", %{conn: conn} do
       conn = get(conn, "/about")
       assert html_response(conn, 200) =~ "About"
+    end
+
+    test "renders metadata tags", %{conn: conn} do
+      conn = get(conn, "/")
+      resp = html_response(conn, 200)
+
+      assert_metadata(resp)
     end
   end
 
@@ -67,10 +95,24 @@ defmodule XlWebsiteWeb.PageControllerTest do
       conn = get(conn, "/reviewing")
       assert html_response(conn, 200) =~ "How does reviewing work?"
     end
+
+    test "renders metadata tags", %{conn: conn} do
+      conn = get(conn, "/")
+      resp = html_response(conn, 200)
+
+      assert_metadata(resp)
+    end
   end
 
   test "Invalid path" do
     conn = get(build_conn(), "/invalid")
     assert html_response(conn, 404) =~ "Not Found"
+  end
+
+  defp assert_metadata(resp) do
+    assert resp =~ "<meta name=\"description\""
+    assert resp =~ "<meta property=\"og:title\""
+    assert resp =~ "<meta property=\"og:url\""
+    assert resp =~ "<meta property=\"og:description\""
   end
 end
