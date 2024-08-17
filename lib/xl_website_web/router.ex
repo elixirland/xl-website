@@ -24,6 +24,7 @@ defmodule XlWebsiteWeb.Router do
     get "/about", PageController, :about
     get "/reviewing", PageController, :reviewing
     get "/contributions", PageController, :contributions
+    get "/contributions/submission-guidelines", PageController, :guidelines
   end
 
   scope "/webhooks", XlWebsiteWeb do
