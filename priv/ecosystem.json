@@ -60,12 +60,6 @@
         "description": "Traditional machine learning tools built on top of Nx. Scholar implements several algorithms for classification, regression, clustering, dimensionality reduction, metrics, and preprocessing.",
         "thumbnail": true,
         "url": "https://github.com/elixir-nx/scholar"
-      },
-      {
-        "name": "EXGBoost",
-        "description": "XGBoost bindings for Elixir.",
-        "thumbnail": false,
-        "url": "https://github.com/acalejos/exgboost"
       }
     ]
   },
