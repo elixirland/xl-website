@@ -1,11 +1,13 @@
 <div class="max-w-[1200px] m-auto p-5 pb-40">
   <div class="flex items-center mb-4">
-    <ul class="flex gap-1">
-      <li class="after:content-['_/']">
-        <.link class="text-[#2879c5]" href={~p"/exercises"}>exercises</.link>
-      </li>
-      <li><.link class="text-[#2879c5]" href={~p"/exercises/#{@slug}"}><%= @slug %></.link></li>
-    </ul>
+    <nav>
+      <ul class="flex gap-1">
+        <li class="after:content-['_/']">
+          <.link class="text-[#2879c5]" href={~p"/exercises"}>exercises</.link>
+        </li>
+        <li><.link class="text-[#2879c5]" href={~p"/exercises/#{@slug}"}><%= @slug %></.link></li>
+      </ul>
+    </nav>
     <.link class="text-[#2879c5] hover:underline ml-auto" href={@html_url}>
       View on GitHub
     </.link>
