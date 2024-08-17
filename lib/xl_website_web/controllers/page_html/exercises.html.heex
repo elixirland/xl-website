@@ -1,7 +1,25 @@
-<div class="max-w-[1200px] m-auto px-5">
+<div class="max-w-[1200px] m-auto p-5">
+  <div class="flex items-center mb-4">
+    <nav>
+      <ul class="flex gap-1">
+        <li class="after:content-['_/']">
+          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
+        </li>
+        <li>
+          <.link class="text-[#2879c5]" href={~p"/exercises"}>exercises</.link>
+        </li>
+      </ul>
+    </nav>
+    <.link
+      class="text-[#2879c5] hover:underline ml-auto"
+      href="https://github.com/elixirland?tab=repositories&q=xle-&type=&language=&sort="
+    >
+      View on GitHub
+    </.link>
+  </div>
   <section>
     <heading class="flex items-end">
-      <h1 class="pt-8 text-4xl text-[#66626c] font-medium">Exercises</h1>
+      <h1 class="pt-3 text-4xl text-[#66626c] font-medium">Exercises</h1>
       <div class="text-xl text-[#66626c] font-medium  ml-auto">
         <%= case Enum.count(@exercises) do %>
           <% 1 -> %>

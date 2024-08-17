@@ -3,6 +3,9 @@
     <nav>
       <ul class="flex gap-1">
         <li class="after:content-['_/']">
+          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
+        </li>
+        <li class="after:content-['_/']">
           <.link class="text-[#2879c5]" href={~p"/exercises"}>exercises</.link>
         </li>
         <li><.link class="text-[#2879c5]" href={~p"/exercises/#{@slug}"}><%= @slug %></.link></li>

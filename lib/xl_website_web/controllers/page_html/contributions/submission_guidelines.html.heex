@@ -1,6 +1,27 @@
-<section class="px-5 max-w-[1200px] m-auto">
+<section class="p-5 max-w-[1200px] m-auto">
+  <div class="flex items-center mb-4">
+    <nav>
+      <ul class="flex gap-1">
+        <li class="after:content-['_/']">
+          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
+        </li>
+        <li class="after:content-['_/']">
+          <.link class="text-[#2879c5]" href={~p"/contributions"}>contributions</.link>
+        </li>
+        <li>
+          <.link class="text-[#2879c5]" href={~p"/contributions/submission-guidelines"}>
+            submission-guidelines
+          </.link>
+        </li>
+      </ul>
+    </nav>
+    <%!-- TODO: Add link to the GitHub repository that stores the submission guidelines --%>
+    <%!-- <.link class="text-[#2879c5] hover:underline ml-auto" href="">
+      View on GitHub
+    </.link> --%>
+  </div>
   <heading class="flex items-end">
-    <h1 class="pt-8 text-4xl text-[#66626c] font-medium">Submission Guidelines</h1>
+    <h1 class="pt-3 text-4xl text-[#66626c] font-medium">Submission Guidelines</h1>
   </heading>
   <div class="max-w-[800px] text-neutral-600 pb-16">
     <p class="pt-4 text-lg tracking-wide">
