@@ -1,7 +1,5 @@
 # Changelog
-All notable changes to this project will be documented in this file.
- 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
@@ -10,10 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Breadcrumb navigation
 
 ### Changed
-- Text size on exercise pages.
+- Text size on exercise pages
+- Introductory text on exercises page
 
 ### Fixed
-- Task descriptions not showing in exercise pages.
+- Task descriptions not showing in exercise pages
  
 ## [0.1.0] - 2024-08-17
  
