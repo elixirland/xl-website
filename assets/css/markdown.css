@@ -1,26 +1,19 @@
 [data-markdown="exercise"] {
-  h1 {
-    font-weight: bold;
-    font-size: 3rem;
-    margin-top: 0.5rem;
-    letter-spacing: -1px;
-    margin-bottom: -8px;
-  }
-
   h2 {
-    font-weight: 400;
-    font-size: 2rem;
+    font-weight: 500;
+    font-size: 1.75rem;
     margin-top: 1rem;
     margin-bottom: 0.125rem;
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    font-weight: 500;
     margin-top: 0.5rem;
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     margin-top: 0.5rem;
   }
 
@@ -31,7 +24,7 @@
   }
 
   p {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     margin-bottom: 0.75rem;
   }
 
