@@ -5,22 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
- 
-Here we write upgrading notes for brands. It's a team effort to make them as
-straightforward as possible.
- 
-### Added
- 
-### Changed
-
-### Deprecated
-
-### Removed
- 
+  
 ### Fixed
 - Task descriptions not showing in exercise pages.
-
-### Security
  
 ## [0.1.0] - 2024-08-17
  
