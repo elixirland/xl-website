@@ -67,7 +67,7 @@ defmodule XlWebsiteWeb.PageController do
             exercise.readme,
             [
               "Introduction",
-              "Task",
+              "Task description",
               "Requirements",
               "Assumptions",
               "How to get started",

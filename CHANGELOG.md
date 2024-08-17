@@ -1,0 +1,35 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+ 
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
+and this project adheres to [Semantic Versioning](http://semver.org/).
+ 
+## [Unreleased] - yyyy-mm-dd
+ 
+Here we write upgrading notes for brands. It's a team effort to make them as
+straightforward as possible.
+ 
+### Added
+ 
+### Changed
+
+### Deprecated
+
+### Removed
+ 
+### Fixed
+- Task descriptions not showing in exercise pages.
+
+### Security
+ 
+## [0.1.0] - 2024-08-17
+ 
+### Added
+- Landing page
+- Elixir ecosystem overview
+- Exercises overview
+- Dedicated exercise pages
+- "How can I contribute" page
+- Submission Guidelines
+- About page
+- Logo
