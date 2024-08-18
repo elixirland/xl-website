@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file. The format 
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
+
+## [0.1.1] - 2024-08-18
   
 ### Added
 - Breadcrumb navigation
+- GitHub source links
 
 ### Changed
 - Text size on exercise pages
