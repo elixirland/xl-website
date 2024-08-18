@@ -3,13 +3,15 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
   import XlWebsite.Factory
   import Plug.Conn
   import Ecto.Query, only: [from: 2]
+  alias XlWebsite.Repo
+  alias XlWebsite.Exercises.Exercise
 
   describe "POST /webhooks/push" do
     setup %{conn: conn} do
       secret = Application.get_env(:xl_website, :github_webhooks_secret)
 
       body =
-        "{\"repository\":{\"description\":\"Some description.\",\"full_name\":\"elixirland/xle-username-generator\",\"html_url\":\"https://example.com/webhooks\",\"topics\":[\"topic A\",\"topic B\"]}}"
+        "{\"repository\":{\"description\":\"Some description.\",\"full_name\":\"elixirland/xle-book-club-API\",\"html_url\":\"https://example.com/webhooks\",\"topics\":[\"topic A\",\"topic B\"]}}"
 
       %{conn: conn, body: body, secret: secret}
     end
@@ -28,9 +30,9 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
         |> post("/webhooks/push", body)
 
       refute nil ==
-               XlWebsite.Repo.one(
-                 from(e in XlWebsite.Exercises.Exercise,
-                   where: e.full_name == "elixirland/xle-username-generator"
+               Repo.one(
+                 from(e in Exercise,
+                   where: e.full_name == "elixirland/xle-book-club-API"
                  )
                )
 
@@ -40,7 +42,7 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
     test "updates an existing exercise",
          %{conn: conn, body: body, secret: secret} do
       insert!(:exercise,
-        full_name: "elixirland/xle-username-generator",
+        full_name: "elixirland/xle-book-club-API",
         topics: ["Topic X", "Topic Y"]
       )
 
@@ -56,9 +58,9 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
         |> post("/webhooks/push", body)
 
       assert %{topics: ["Topic a", "Topic b"]} =
-               XlWebsite.Repo.one(
-                 from(e in XlWebsite.Exercises.Exercise,
-                   where: e.full_name == "elixirland/xle-username-generator"
+               Repo.one(
+                 from(e in Exercise,
+                   where: e.full_name == "elixirland/xle-book-club-API"
                  )
                )
 

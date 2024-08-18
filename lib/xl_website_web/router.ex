@@ -30,7 +30,7 @@ defmodule XlWebsiteWeb.Router do
   scope "/webhooks", XlWebsiteWeb do
     pipe_through :api
 
-    post "/push", WebhookController, :push
+    post "/push", WebhookController, :callback
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

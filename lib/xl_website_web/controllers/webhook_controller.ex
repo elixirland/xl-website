@@ -5,7 +5,7 @@ defmodule XlWebsiteWeb.WebhookController do
   alias XlWebsite.ParamParser
   alias XlWebsite.Exercises
 
-  def push(conn, _params) do
+  def callback(conn, _params) do
     with {:ok, signature} <- get_signature(conn),
          {:ok, secret} <- get_hashed_secret(signature),
          {:ok, _} <- check_valid_secret(conn.private[:raw_body], secret) do
