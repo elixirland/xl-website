@@ -17,8 +17,19 @@ defmodule XlWebsite.ParamParser do
     |> List.last()
     |> String.replace(@repo_prefix, "")
     |> String.split("-")
-    |> Enum.map(&String.capitalize/1)
+    |> Enum.map(&maybe_capitalize/1)
     |> Enum.join(" ")
+  end
+
+  defp maybe_capitalize(word) do
+    case all_lowercase?(word) do
+      true -> String.capitalize(word)
+      false -> word
+    end
+  end
+
+  defp all_lowercase?(word) do
+    word == String.downcase(word)
   end
 
   def build_slug(full_name) do

@@ -15,4 +15,12 @@ defmodule XlWebsite.ParamParserTest do
       assert ParamParser.parse_topics(topics) == ["Web Services", "Some Other Topic"]
     end
   end
+
+  describe "build_name/2" do
+    test "returns correct name" do
+      full_name = "elixirland/xle-book-club-API"
+
+      assert ParamParser.build_name(full_name) == "Book Club API"
+    end
+  end
 end
