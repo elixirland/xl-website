@@ -4,7 +4,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
 
-## [0.1.1] - 2024-08-18
+## [v0.1.1] - 2024-08-18
   
 ### Added
 - Breadcrumb navigation
@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Task descriptions not showing in exercise pages
  
-## [0.1.0] - 2024-08-17
+## [v0.1.0] - 2024-08-17
  
 ### Added
 - Landing page
