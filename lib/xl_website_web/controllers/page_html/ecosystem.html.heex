@@ -1,6 +1,22 @@
-<div class="max-w-[1200px] m-auto px-5">
+<div class="max-w-[1200px] m-auto p-5">
+  <div class="flex items-center mb-4">
+    <nav>
+      <ul class="flex gap-1">
+        <li class="after:content-['_/']">
+          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
+        </li>
+        <li>
+          <.link class="text-[#2879c5]" href={~p"/ecosystem"}>ecosystem</.link>
+        </li>
+      </ul>
+    </nav>
+    <%!-- TODO: Add link to GitHub source --%>
+    <%!-- <.link class="text-[#2879c5] hover:underline ml-auto" href={@html_url}>
+      View on GitHub
+    </.link> --%>
+  </div>
   <heading>
-    <h1 class="pt-8 text-4xl text-[#66626c] font-medium">The Elixir Ecosystem</h1>
+    <h1 class="pt-3 text-4xl text-[#66626c] font-medium">The Elixir Ecosystem</h1>
     <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
       <p>
         The Elixir ecosystem is a collection of libraries, tools, and services that extend the capabilities of Elixir. Here is an overview of some of the most popular and widely-used projects in the Elixir ecosystem.
