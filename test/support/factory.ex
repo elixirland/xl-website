@@ -39,7 +39,7 @@ defmodule XlWebsite.Factory do
     ## Introduction
     Some text.
 
-    ## Task
+    ## Task description
     Some text.
 
     ## Requirements

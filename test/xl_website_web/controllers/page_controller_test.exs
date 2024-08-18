@@ -63,7 +63,7 @@ defmodule XlWebsiteWeb.PageControllerTest do
       resp = html_response(conn, 200)
 
       assert resp =~ "Introduction"
-      assert resp =~ "Task"
+      assert resp =~ "Task description"
       assert resp =~ "How to get started"
       assert resp =~ "Example solution"
     end
