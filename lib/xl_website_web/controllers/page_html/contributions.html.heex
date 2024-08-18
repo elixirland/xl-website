@@ -1,96 +1,79 @@
-<section class="p-5 max-w-[1200px] m-auto">
-  <div class="flex items-center mb-4">
-    <nav>
-      <ul class="flex gap-1">
-        <li class="after:content-['_/']">
-          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
-        </li>
-        <li>
-          <.link class="text-[#2879c5]" href={~p"/contributions"}>contributions</.link>
-        </li>
-      </ul>
-    </nav>
-    <%!-- TODO: Add link to the GitHub repository that stores this page's content --%>
-    <%!-- <.link class="text-[#2879c5] hover:underline ml-auto" href="">
-      View on GitHub
-    </.link> --%>
+<.top_navigation path={~w"contributions"} />
+<heading class="flex items-end">
+  <h1 class="pt-3 text-4xl text-[#66626c] font-medium">How can I contribute?</h1>
+</heading>
+<div class="max-w-[800px] text-neutral-600 pb-16">
+  <p class="pt-4 text-lg tracking-wide">
+    Contributions to Elixirland are more than welcome! Here are some ways you can contribute to the project.
+  </p>
+  <ol class="list-decimal list-inside">
+    <li class="pt-6 block">
+      <h2 class="text-xl list-item font-semibold">Submit an exercise</h2>
+      <p class="text-[1.1rem] tracking-wide">
+        Do you have an idea for an Elixirland exercise? Great! We can use your help. A GitHub repository will be set up for your exercise that automatically syncs with the Elixirland website whenever you push changes to it.
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        If you are a core member or maintainer of a project within the Elixir ecosystem, consider submitting an exercise. Having an exercise on Elixirland might be a good way to introduce new users to your project and complement the official documentation.
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        To submit an exercise, please follow the instructions in the <.link
+          class="text-blue text-blue-500 underline"
+          href={~p"/contributions/submission-guidelines"}
+        >Submission Guidelines</.link>.
+      </p>
+    </li>
+    <li class="pt-6 block">
+      <h2 class="text-xl list-item font-semibold">Review code</h2>
+      <p class="text-[1.1rem] tracking-wide">
+        It's important that the example solutions provided along with the exercises adhere to idiomatic Elixir. Therefore, reviewing their code is a great way of contributing to Elixirland. Although full code reviews are preferred, pointing out isolated idiomatic issues is also very helpful.
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        The code of the example solutions can be found in the
+        <.link
+          class="text-blue text-blue-500 underline"
+          href="https://github.com/elixirland?tab=repositories"
+        >
+          GitHub repositories
+        </.link>
+        of their respective exercises. One good method of providing feedback is by creating a pull request with your suggestions.
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        Also consider joining the discussions about the Elixirland exercise solutions on <.link
+          class="text-blue text-blue-500 underline"
+          href="https://elixirforum.com/tag/elixirland"
+        >ElixirForum</.link>. This can be a great way to learn from others and share your knowledge.
+      </p>
+    </li>
+    <li class="pt-6 block">
+      <h2 class="text-xl list-item font-semibold">Review website content</h2>
+      <p class="text-[1.1rem] tracking-wide">
+        In addition to reviewing the code of the example solutions, you can also help by reviewing other areas of Elixirland's content. For instance, you can review the exercise text to check for typos, grammatical errors, and other issues that could impact the quality of the exercises.
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        Another example is the <.link
+          href={~p"/ecosystem"}
+          class="text-blue text-blue-500 underline"
+        >ecosystem page</.link>, which contains descriptions of popular Elixir projects. If you have experience with any of these projects, consider reviewing the descriptions to ensure they are accurate and up-to-date.
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        All content<sup><a href="#footnote" id="ref1">*</a></sup> is stored in the Elixirland repositories on GitHub, where you can submit your feedback. If you have suggestions for improvements, feel free to create a pull request.
+      </p>
+    </li>
+    <li class="pt-6 block">
+      <h2 class="text-xl list-item font-semibold">Report an issue</h2>
+      <p class="text-[1.1rem] tracking-wide">
+        If you find a bug or have a suggestion for how to improve Elixirland, you can report an issue on GitHub. It's greatly appreciated!
+      </p>
+      <p class="text-[1.1rem] tracking-wide indent-8">
+        All the content<sup><a href="#footnote" id="ref1">*</a></sup> you see on the website is also contained in one of the many <.link href="https://github.com/elixirland?tab=repositories">Elixirland repositories</.link>, since all content is pushed from GitHub to the website. Leave your feedback there so we can find it easily.
+      </p>
+    </li>
+  </ol>
+  <div class="pt-10">
+    <sup id="footnote" class="text-sm text-neutral-500 leading-[1rem]">
+      * Currently, Elixirland is still in the process of migrating all its text content to GitHub. Want to give feedback on content that is not on GitHub yet? In that case you can best open a new issue in the
+      <.link href="https://github.com/elixirland/xl-website">xl-website repository</.link>
+      and submit your feedback there.
+    </sup>
   </div>
-  <heading class="flex items-end">
-    <h1 class="pt-3 text-4xl text-[#66626c] font-medium">How can I contribute?</h1>
-  </heading>
-  <div class="max-w-[800px] text-neutral-600 pb-16">
-    <p class="pt-4 text-lg tracking-wide">
-      Contributions to Elixirland are more than welcome! Here are some ways you can contribute to the project.
-    </p>
-    <ol class="list-decimal list-inside">
-      <li class="pt-6 block">
-        <h2 class="text-xl list-item font-semibold">Submit an exercise</h2>
-        <p class="text-[1.1rem] tracking-wide">
-          Do you have an idea for an Elixirland exercise? Great! We can use your help. A GitHub repository will be set up for your exercise that automatically syncs with the Elixirland website whenever you push changes to it.
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          If you are a core member or maintainer of a project within the Elixir ecosystem, consider submitting an exercise. Having an exercise on Elixirland might be a good way to introduce new users to your project and complement the official documentation.
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          To submit an exercise, please follow the instructions in the <.link
-            class="text-blue text-blue-500 underline"
-            href={~p"/contributions/submission-guidelines"}
-          >Submission Guidelines</.link>.
-        </p>
-      </li>
-      <li class="pt-6 block">
-        <h2 class="text-xl list-item font-semibold">Review code</h2>
-        <p class="text-[1.1rem] tracking-wide">
-          It's important that the example solutions provided along with the exercises adhere to idiomatic Elixir. Therefore, reviewing their code is a great way of contributing to Elixirland. Although full code reviews are preferred, pointing out isolated idiomatic issues is also very helpful.
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          The code of the example solutions can be found in the
-          <.link
-            class="text-blue text-blue-500 underline"
-            href="https://github.com/elixirland?tab=repositories"
-          >
-            GitHub repositories
-          </.link>
-          of their respective exercises. One good method of providing feedback is by creating a pull request with your suggestions.
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          Also consider joining the discussions about the Elixirland exercise solutions on <.link
-            class="text-blue text-blue-500 underline"
-            href="https://elixirforum.com/tag/elixirland"
-          >ElixirForum</.link>. This can be a great way to learn from others and share your knowledge.
-        </p>
-      </li>
-      <li class="pt-6 block">
-        <h2 class="text-xl list-item font-semibold">Review website content</h2>
-        <p class="text-[1.1rem] tracking-wide">
-          In addition to reviewing the code of the example solutions, you can also help by reviewing other areas of Elixirland's content. For instance, you can review the exercise text to check for typos, grammatical errors, and other issues that could impact the quality of the exercises.
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          Another example is the <.link
-            href={~p"/ecosystem"}
-            class="text-blue text-blue-500 underline"
-          >ecosystem page</.link>, which contains descriptions of popular Elixir projects. If you have experience with any of these projects, consider reviewing the descriptions to ensure they are accurate and up-to-date.
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          All content<sup><a href="#footnote" id="ref1">*</a></sup> is stored in the Elixirland repositories on GitHub, where you can submit your feedback. If you have suggestions for improvements, feel free to create a pull request.
-        </p>
-      </li>
-      <li class="pt-6 block">
-        <h2 class="text-xl list-item font-semibold">Report an issue</h2>
-        <p class="text-[1.1rem] tracking-wide">
-          If you find a bug or have a suggestion for how to improve Elixirland, you can report an issue on GitHub. It's greatly appreciated!
-        </p>
-        <p class="text-[1.1rem] tracking-wide indent-8">
-          All the content<sup><a href="#footnote" id="ref1">*</a></sup> you see on the website is also contained in one of the many <.link href="https://github.com/elixirland?tab=repositories">Elixirland repositories</.link>, since all content is pushed from GitHub to the website. Leave your feedback there so we can find it easily.
-        </p>
-      </li>
-    </ol>
-    <div class="pt-10">
-      <sup id="footnote" class="text-sm text-neutral-500 leading-[1rem]">
-        * Currently, Elixirland is still in the process of migrating all its text content to GitHub. Want to give feedback on content that is not on GitHub yet? In that case you can best open a new issue in the
-        <.link href="https://github.com/elixirland/xl-website">xl-website repository</.link>
-        and submit your feedback there.
-      </sup>
-    </div>
-  </div>
-</section>
+</div>

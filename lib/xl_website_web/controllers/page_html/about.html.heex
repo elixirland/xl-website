@@ -1,44 +1,24 @@
-<section class="p-5 max-w-[1200px] m-auto">
-  <div class="flex items-center mb-4">
-    <nav>
-      <ul class="flex gap-1">
-        <li class="after:content-['_/']">
-          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
-        </li>
-        <li>
-          <.link class="text-[#2879c5]" href={~p"/about"}>about</.link>
-        </li>
-      </ul>
-    </nav>
-    <%!-- TODO: Add link to GitHub source --%>
-    <%!-- <.link
-      class="text-[#2879c5] hover:underline ml-auto"
-      href="https://github.com/elixirland?tab=repositories&q=xle-&type=&language=&sort="
-    >
-      View on GitHub
-    </.link> --%>
-  </div>
-  <heading class="flex items-end">
-    <h1 class="pt-3 text-4xl text-[#66626c] font-medium">About</h1>
-  </heading>
-  <p class="max-w-[800px] pt-4 text-lg text-neutral-600 tracking-wide">
-    Elixirland is an initiative by Coen Bakker.
-  </p>
-  <p class="max-w-[800px] pt-4 text-lg text-neutral-600 tracking-wide">
-    Contributions to the Elixirland repositories are welcome.
-  </p>
-  <h2 class="text-xl font-medium pt-4">Links</h2>
-  <ul>
-    <li>
-      <.link href={~p"/contributions"} class="underline text-blue-800">
-        How can I contribute to Elixirland?
-      </.link>
-    </li>
-    <li>
-      <.link href="https://github.com/elixirland" class="text-blue-800">
-        <span class="underline">GitHub Elixirland</span>
-        <.icon name="hero-arrow-top-right-on-square" class="w-3 h-3" />
-      </.link>
-    </li>
-  </ul>
-</section>
+<.top_navigation path={~w"about"} />
+<heading class="flex items-end">
+  <h1 class="pt-3 text-4xl text-[#66626c] font-medium">About</h1>
+</heading>
+<p class="max-w-[800px] pt-4 text-lg text-neutral-600 tracking-wide">
+  Elixirland is an initiative by Coen Bakker.
+</p>
+<p class="max-w-[800px] pt-4 text-lg text-neutral-600 tracking-wide">
+  Contributions to the Elixirland repositories are welcome.
+</p>
+<h2 class="text-xl font-medium pt-4">Links</h2>
+<ul>
+  <li>
+    <.link href={~p"/contributions"} class="underline text-blue-800">
+      How can I contribute to Elixirland?
+    </.link>
+  </li>
+  <li>
+    <.link href="https://github.com/elixirland" class="text-blue-800">
+      <span class="underline">GitHub Elixirland</span>
+      <.icon name="hero-arrow-top-right-on-square" class="w-3 h-3" />
+    </.link>
+  </li>
+</ul>

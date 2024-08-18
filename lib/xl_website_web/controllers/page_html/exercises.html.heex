@@ -1,49 +1,33 @@
-<div class="max-w-[1200px] m-auto p-5">
-  <div class="flex items-center mb-4">
-    <nav>
-      <ul class="flex gap-1">
-        <li class="after:content-['_/']">
-          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
-        </li>
-        <li>
-          <.link class="text-[#2879c5]" href={~p"/exercises"}>exercises</.link>
-        </li>
-      </ul>
-    </nav>
-    <.link
-      class="text-[#2879c5] hover:underline ml-auto"
-      href="https://github.com/elixirland?tab=repositories&q=xle-&type=&language=&sort="
-    >
-      View on GitHub
-    </.link>
+<.top_navigation
+  path={~w"exercises"}
+  github_source="https://github.com/elixirland?tab=repositories&q=xle-&type=&language=&sort=name"
+/>
+<section>
+  <heading class="flex items-end">
+    <h1 class="pt-3 text-4xl text-[#66626c] font-medium">Exercises</h1>
+    <div class="text-xl text-[#66626c] font-medium  ml-auto">
+      <%= case Enum.count(@exercises) do %>
+        <% 1 -> %>
+          1 result
+        <% count -> %>
+          <%= count %> results
+      <% end %>
+    </div>
+  </heading>
+  <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
+    <p>
+      Exercises live in their own GitHub repositories. Each repository contains an exercise, along with an example solution in idiomatic Elixir.
+    </p>
+    <p class="mt-3">
+      The example solutions are reviewed by the Elixir community to ensure they adhere to idiomatic Elixir. Learn more about how you can contribute to Elixirland by visiting the <.link
+        class="text-blue text-blue-500 underline"
+        href={~p"/contributions"}
+      >contributions page</.link>.
+    </p>
   </div>
-  <section>
-    <heading class="flex items-end">
-      <h1 class="pt-3 text-4xl text-[#66626c] font-medium">Exercises</h1>
-      <div class="text-xl text-[#66626c] font-medium  ml-auto">
-        <%= case Enum.count(@exercises) do %>
-          <% 1 -> %>
-            1 result
-          <% count -> %>
-            <%= count %> results
-        <% end %>
-      </div>
-    </heading>
-    <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
-      <p>
-        Exercises live in their own GitHub repositories. Each repository contains an exercise, along with an example solution in idiomatic Elixir.
-      </p>
-      <p class="mt-3">
-        The example solutions are reviewed by the Elixir community to ensure they adhere to idiomatic Elixir. Learn more about how you can contribute to Elixirland by visiting the <.link
-          class="text-blue text-blue-500 underline"
-          href={~p"/contributions"}
-        >contributions page</.link>.
-      </p>
-    </div>
-  </section>
-  <section>
-    <div class="flex flex-wrap gap-4 my-8">
-      <.exercise_card :for={exercise <- @exercises} exercise={exercise} />
-    </div>
-  </section>
-</div>
+</section>
+<section>
+  <div class="flex flex-wrap gap-4 my-8">
+    <.exercise_card :for={exercise <- @exercises} exercise={exercise} />
+  </div>
+</section>

@@ -1,29 +1,12 @@
-<div class="max-w-[1200px] m-auto p-5 pb-40">
-  <div class="flex items-center mb-4">
-    <nav>
-      <ul class="flex gap-1">
-        <li class="after:content-['_/']">
-          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
-        </li>
-        <li class="after:content-['_/']">
-          <.link class="text-[#2879c5]" href={~p"/exercises"}>exercises</.link>
-        </li>
-        <li><.link class="text-[#2879c5]" href={~p"/exercises/#{@slug}"}><%= @slug %></.link></li>
-      </ul>
-    </nav>
-    <.link class="text-[#2879c5] hover:underline ml-auto" href={@html_url}>
-      View on GitHub
-    </.link>
+<.top_navigation path={["exercises", @slug]} github_source={@html_url} />
+<h1 class="font-bold text-[3rem] mt-[0.5rem] -tracking-[1px]"><%= @name %></h1>
+<div class="flex gap-2 mb-4">
+  <div :for={topic <- @topics} class="text-sm bg-neutral-200 px-2 py-1 rounded-md">
+    <%= topic %>
   </div>
-  <h1 class="font-bold text-[3rem] mt-[0.5rem] -tracking-[1px]"><%= @name %></h1>
-  <div class="flex gap-2 mb-4">
-    <div :for={topic <- @topics} class="text-sm bg-neutral-200 px-2 py-1 rounded-md">
-      <%= topic %>
-    </div>
-  </div>
-  <div data-markdown="exercise">
-    <div class="max-w-[800px]">
-      <%= raw(Earmark.as_html!(@readme)) %>
-    </div>
+</div>
+<div data-markdown="exercise">
+  <div class="max-w-[800px]">
+    <%= raw(Earmark.as_html!(@readme)) %>
   </div>
 </div>

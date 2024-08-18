@@ -1,49 +1,32 @@
-<div class="max-w-[1200px] m-auto p-5">
-  <div class="flex items-center mb-4">
-    <nav>
-      <ul class="flex gap-1">
-        <li class="after:content-['_/']">
-          <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
-        </li>
-        <li>
-          <.link class="text-[#2879c5]" href={~p"/ecosystem"}>ecosystem</.link>
-        </li>
-      </ul>
-    </nav>
-    <%!-- TODO: Add link to GitHub source --%>
-    <%!-- <.link class="text-[#2879c5] hover:underline ml-auto" href={@html_url}>
-      View on GitHub
-    </.link> --%>
+<.top_navigation path={~w"ecosystem"} />
+<heading>
+  <h1 class="pt-3 text-4xl text-[#66626c] font-medium">The Elixir Ecosystem</h1>
+  <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
+    <p>
+      The Elixir ecosystem is a collection of libraries, tools, and services that extend the capabilities of Elixir. Here is an overview of some of the most popular and widely-used projects in the Elixir ecosystem.
+    </p>
   </div>
-  <heading>
-    <h1 class="pt-3 text-4xl text-[#66626c] font-medium">The Elixir Ecosystem</h1>
-    <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
-      <p>
-        The Elixir ecosystem is a collection of libraries, tools, and services that extend the capabilities of Elixir. Here is an overview of some of the most popular and widely-used projects in the Elixir ecosystem.
-      </p>
+</heading>
+<div class="flex flex-col gap-4 mt-2 mb-20">
+  <%= for category <- @ecosystem_data do %>
+    <h2 class="text-2xl font-semibold pt-8"><%= category.name %></h2>
+    <div :for={item <- category.items}>
+      <article class="bg-white rounded-xl overflow-clip shadow-md">
+        <div class="p-8">
+          <img
+            :if={item.thumbnail}
+            src={"/images/#{item.name}.webp"}
+            height="50"
+            class="h-[50px] bg-cover bg-center float-right"
+          />
+          <h1 class="text-2xl font-semibold mb-0.5"><%= item.name %></h1>
+          <p class="max-w-[65ch]"><%= item.description %></p>
+          <.link href={item.url} class="text-blue-500 block pt-4">
+            <span class="underline">Official website</span>
+            <.icon name="hero-arrow-top-right-on-square" class="w-3 h-3 ml-1.5" />
+          </.link>
+        </div>
+      </article>
     </div>
-  </heading>
-  <div class="flex flex-col gap-4 mt-2 mb-20">
-    <%= for category <- @ecosystem_data do %>
-      <h2 class="text-2xl font-semibold pt-8"><%= category.name %></h2>
-      <div :for={item <- category.items}>
-        <article class="bg-white rounded-xl overflow-clip shadow-md">
-          <div class="p-8">
-            <img
-              :if={item.thumbnail}
-              src={"/images/#{item.name}.webp"}
-              height="50"
-              class="h-[50px] bg-cover bg-center float-right"
-            />
-            <h1 class="text-2xl font-semibold mb-0.5"><%= item.name %></h1>
-            <p class="max-w-[65ch]"><%= item.description %></p>
-            <.link href={item.url} class="text-blue-500 block pt-4">
-              <span class="underline">Official website</span>
-              <.icon name="hero-arrow-top-right-on-square" class="w-3 h-3 ml-1.5" />
-            </.link>
-          </div>
-        </article>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>

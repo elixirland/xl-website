@@ -1,6 +1,47 @@
 defmodule XlWebsiteWeb.AppComponents do
   use XlWebsiteWeb, :html
 
+  attr :path, :list
+  attr :github_source, :string, default: nil
+
+  def top_navigation(assigns) do
+    ~H"""
+    <div class="flex items-center mb-4">
+      <nav>
+        <ul class="flex gap-1">
+          <li class="after:content-['_/']">
+            <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
+          </li>
+
+          <%= for {item, index} <- Enum.with_index(@path) do %>
+            <li class={if index < length(@path) - 1, do: "after:content-['_/']", else: ""}>
+              <.link class="text-[#2879c5]" href={build_breadcrumb_path(@path, index)}>
+                <%= item %>
+              </.link>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <%= if is_nil(@github_source) do %>
+        <span class="text-[#696969c0] ml-auto disabled:opacity-50 cursor-default">
+          Not yet on GitHub
+        </span>
+      <% else %>
+        <.link class="text-[#2879c5] hover:underline ml-auto" href={@github_source}>
+          View on GitHub
+        </.link>
+      <% end %>
+    </div>
+    """
+  end
+
+  defp build_breadcrumb_path(path_list, index) do
+    path_list
+    |> Enum.take(index + 1)
+    |> Enum.join("/")
+    |> then(&"/#{&1}")
+  end
+
   attr :exercise, :map
 
   def exercise_card(assigns) do
