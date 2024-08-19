@@ -65,3 +65,12 @@
     margin-block: 10px;
   }
 }
+
+/* dark mode */
+html.dark {
+  [data-markdown="exercise"] {
+    code {
+      background-color: #585858;
+    }
+  }
+}
