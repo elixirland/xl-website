@@ -29,7 +29,24 @@
     ]
   },
   {
-    "name": "Numerical Computing and Machine Learning",
+    "name": "Native Applications",
+    "items": [
+      {
+        "name": "Scenic",
+        "description": "Scenic is an application framework written directly on the Elixir/Erlang/OTP stack. With it, you can build client-side applications that operate identically across all supported operating systems, including MacOS, Ubuntu, Nerves/Linux, and more.",
+        "thumbnail": true,
+        "url": "https://hexdocs.pm/scenic/welcome.html"
+      },
+      {
+        "name": "LiveView Native",
+        "description": "LiveView Native empowers developers to build native and web applications seamlessly with Phoenix.",
+        "thumbnail": true,
+        "url": "https://native.live/"
+      }
+    ]
+  },
+  {
+    "name": "Machine Learning",
     "items": [
       {
         "name": "Nx",
