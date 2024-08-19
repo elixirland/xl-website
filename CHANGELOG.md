@@ -4,6 +4,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
 
+### Added
+- Dark mode
+
 ### Changed
 - Allow words in exercise names that are not capitalized, like "API"
 
