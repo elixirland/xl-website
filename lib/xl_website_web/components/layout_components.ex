@@ -8,12 +8,12 @@ defmodule XlWebsiteWeb.LayoutComponents do
   def layout_header(assigns) do
     ~H"""
     <header class="h-[60px] bg-[#4d1e93] sticky top-0 z-10">
-      <div class="h-full flex items-center max-w-[1200px] m-auto px-5">
+      <div class="h-full relative flex items-center max-w-[1200px] m-auto px-5">
         <.link href={~p"/"} class="text-white text-[40px] tracking-wider font-['Jersey_10'] ml-[1px]">
           XL
         </.link>
-        <nav class="ml-auto">
-          <menu class="text text-white flex gap-6">
+        <nav class="absolute right-1/2 translate-x-1/2">
+          <menu class="text text-white flex gap-5">
             <.link
               href={~p"/exercises"}
               class={[
