@@ -1,7 +1,7 @@
 <.top_navigation path={~w"ecosystem"} />
 <heading>
-  <h1 class="pt-3 text-4xl text-[#66626c] font-medium">The Elixir Ecosystem</h1>
-  <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide">
+  <h1 class="pt-3 text-4xl text-[#66626c] font-medium dark:text-white">The Elixir Ecosystem</h1>
+  <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide dark:text-neutral-100">
     <p>
       The Elixir ecosystem is a collection of libraries, tools, and services that extend the capabilities of Elixir. Here is an overview of some of the most popular and widely-used projects in the Elixir ecosystem.
     </p>
@@ -11,17 +11,17 @@
   <%= for category <- @ecosystem_data do %>
     <h2 class="text-2xl font-semibold pt-8"><%= category.name %></h2>
     <div :for={item <- category.items}>
-      <article class="bg-white rounded-xl overflow-clip shadow-md">
+      <article class="bg-white dark:bg-[#323232] rounded-xl overflow-clip shadow-md">
         <div class="p-8">
           <img
             :if={item.thumbnail}
             src={"/images/#{item.name}.webp"}
-            height="50"
-            class="h-[50px] bg-cover bg-center float-right"
+            height="60"
+            class="h-[60px] bg-cover bg-center float-right bg-white rounded-lg p-2"
           />
           <h1 class="text-2xl font-semibold mb-0.5"><%= item.name %></h1>
           <p class="max-w-[65ch]"><%= item.description %></p>
-          <.link href={item.url} class="text-blue-500 block pt-4">
+          <.link href={item.url} class="text-blue-500 dark:text-blue-300 block pt-4">
             <span class="underline">Official website</span>
             <.icon name="hero-arrow-top-right-on-square" class="w-3 h-3 ml-1.5" />
           </.link>

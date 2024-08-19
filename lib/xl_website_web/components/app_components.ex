@@ -10,12 +10,15 @@ defmodule XlWebsiteWeb.AppComponents do
       <nav>
         <ul class="flex gap-1">
           <li class="after:content-['_/']">
-            <.link class="text-[#2879c5]" href={~p"/"}>home</.link>
+            <.link class="text-[#2879c5] dark:text-blue-400" href={~p"/"}>home</.link>
           </li>
 
           <%= for {item, index} <- Enum.with_index(@path) do %>
             <li class={if index < length(@path) - 1, do: "after:content-['_/']", else: ""}>
-              <.link class="text-[#2879c5]" href={build_breadcrumb_path(@path, index)}>
+              <.link
+                class="text-[#2879c5] dark:text-blue-400"
+                href={build_breadcrumb_path(@path, index)}
+              >
                 <%= item %>
               </.link>
             </li>
@@ -23,11 +26,11 @@ defmodule XlWebsiteWeb.AppComponents do
         </ul>
       </nav>
       <%= if is_nil(@github_source) do %>
-        <span class="text-[#696969c0] ml-auto disabled:opacity-50 cursor-default">
+        <span class="text-[#696969c0] dark:text-neutral-400 ml-auto disabled:opacity-50 cursor-default">
           Not yet on GitHub
         </span>
       <% else %>
-        <.link class="text-[#2879c5] hover:underline ml-auto" href={@github_source}>
+        <.link class="text-[#2879c5] dark:text-blue-400 hover:underline ml-auto" href={@github_source}>
           View on GitHub
         </.link>
       <% end %>
@@ -47,7 +50,7 @@ defmodule XlWebsiteWeb.AppComponents do
   def exercise_card(assigns) do
     ~H"""
     <.link href={~p"/exercises/#{@exercise.slug}"} class="sm:w-full w-[360px]">
-      <article class="bg-white rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
+      <article class="bg-white dark:bg-[#323232] rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
         <img
           src={"/images/#{@exercise.name}.webp"}
           width="360"
@@ -72,7 +75,7 @@ defmodule XlWebsiteWeb.AppComponents do
 
   def topic(assigns) do
     ~H"""
-    <span class="bg-primary-100 text-primary-900 rounded-md px-2 py-1 text-xs bg-indigo-50">
+    <span class="bg-primary-100 text-primary-900 rounded-md px-2 py-1 text-xs bg-indigo-50 dark:bg-indigo-600">
       <%= @topic %>
     </span>
     """

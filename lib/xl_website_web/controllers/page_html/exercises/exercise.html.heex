@@ -1,7 +1,10 @@
 <.top_navigation path={["exercises", @slug]} github_source={@html_url} />
 <h1 class="font-bold text-[3rem] mt-[0.5rem] -tracking-[1px]"><%= @name %></h1>
 <div class="flex gap-2 mb-4">
-  <div :for={topic <- @topics} class="text-sm bg-neutral-200 px-2 py-1 rounded-md">
+  <div
+    :for={topic <- @topics}
+    class="text-sm bg-neutral-100 px-2 py-1 rounded-md dark:bg-neutral-700"
+  >
     <%= topic %>
   </div>
 </div>

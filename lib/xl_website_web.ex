@@ -85,6 +85,7 @@ defmodule XlWebsiteWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import XlWebsiteWeb.CoreComponents
+      import XlWebsiteWeb.LayoutComponents
       import XlWebsiteWeb.Gettext
 
       # Shortcut for generating JS commands
