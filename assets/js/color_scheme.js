@@ -17,7 +17,7 @@ let lightIcon;
 let autoIcon;
 
 let systemColorScheme;
-let toggleState = 0;
+let toggleStateIndex = 0;
 const toggleOptions = [TOGGLE_STATES.AUTO, TOGGLE_STATES.LIGHT, TOGGLE_STATES.DARK];
 
 export function init() {
@@ -37,20 +37,43 @@ function cacheElements() {
 function initializeSystemColorScheme() {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     systemColorScheme = TOGGLE_STATES.DARK;
-    turnOnDarkMode();
   } else {
     systemColorScheme = TOGGLE_STATES.LIGHT;
+  }
+
+  const userPreference = localStorage.getItem("color-scheme");
+
+  if (userPreference) {
+    toggleStateIndex = toggleOptions.indexOf(userPreference);
+  } else {
+    toggleStateIndex = 0;
+  }
+
+  if (toggleStateIndex == 0 && systemColorScheme === TOGGLE_STATES.DARK) {
+    turnOnDarkMode();
+  } else if (toggleStateIndex == 0 && systemColorScheme === TOGGLE_STATES.LIGHT) {
     turnOffDarkMode();
+  } else if (toggleStateIndex == 1) {
+    turnOffDarkMode();
+  } else if (toggleStateIndex == 2) {
+    turnOnDarkMode();
   }
 }
 
 function setInitialIconState() {
-  if (systemColorScheme === TOGGLE_STATES.DARK) {
+  if (toggleStateIndex == 0 && systemColorScheme === TOGGLE_STATES.DARK) {
     setIconToDark();
-  } else {
+    showAutoIcon();
+  } else if (toggleStateIndex == 0 && systemColorScheme === TOGGLE_STATES.LIGHT) {
     setIconToLight();
+    showAutoIcon();  
+  } else if (toggleStateIndex == 1) {
+    setIconToLight();
+    hideAutoIcon();
+  } else if (toggleStateIndex == 2) {
+    setIconToDark();
+    hideAutoIcon();
   }
-  showAutoIcon();
 }
 
 function addEventListeners() {
@@ -66,11 +89,21 @@ function handleSystemColorSchemeChange(event) {
 }
 
 function handleToggleClick() {
-  toggleState = incrementToggleState();
-  const toggleOption = toggleOptions[toggleState];
+  toggleStateIndex = incrementToggleStateIndex();
+  const toggleOption = toggleOptions[toggleStateIndex];
 
   updateIcons(toggleOption);
   updateDocumentMode(toggleOption);
+  
+  if (isAutoMode()) {
+    localStorage.removeItem("color-scheme");
+  } else {
+    saveUserPreference(toggleOption);
+  }
+}
+
+function saveUserPreference(toggleOption) {
+  localStorage.setItem("color-scheme", toggleOption);
 }
 
 function updateIcons(toggleOption) {
@@ -117,14 +150,18 @@ function showAutoIcon() {
   autoIcon.classList.remove("hidden");
 }
 
+function hideAutoIcon() {
+  autoIcon.classList.add("hidden");
+}
+
 function removeAutoIcon() {
   autoIcon.classList.add("hidden");
 }
 
-function incrementToggleState() {
-  return (toggleState + 1) % toggleOptions.length;
+function incrementToggleStateIndex() {
+  return (toggleStateIndex + 1) % toggleOptions.length;
 }
 
 function isAutoMode() {
-  return toggleOptions[toggleState] === TOGGLE_STATES.AUTO;
+  return toggleOptions[toggleStateIndex] === TOGGLE_STATES.AUTO;
 }
