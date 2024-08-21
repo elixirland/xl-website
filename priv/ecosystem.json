@@ -4,9 +4,15 @@
     "items": [
       {
         "name": "Phoenix Framework",
-        "description": "A web development framework written in Elixir which implements the server-side Model View Controller (MVC) pattern.",
+        "description": "Phoenix is a popular web development framework for building web applications with Elixir. Server-side rendering and real-time communication, are some of its key features. Has LiveView built-in, allowing developers to build interactive, real-time applications while writing little to no JavaScript.",
         "thumbnail": true,
         "url": "https://www.phoenixframework.org/"
+      },
+      {
+        "name": "Phoenix LiveView",
+        "description": "LiveView is a library that enables rich, real-time user experiences with server-rendered HTML. It allows developers to build interactive, real-time applications while writing little to no JavaScript.",
+        "thumbnail": false,
+        "url": "https://hexdocs.pm/phoenix_live_view/welcome.html"
       },
       {
         "name": "SurfaceUI",
@@ -39,7 +45,7 @@
       },
       {
         "name": "LiveView Native",
-        "description": "LiveView Native empowers developers to build native and web applications seamlessly with Phoenix.",
+        "description": "LiveView Native allows you to build LiveView apps that have a front-end for multiple platforms. Use your LiveView back-end to create a web, mobile, wearable and/or desktop UI.",
         "thumbnail": true,
         "url": "https://native.live/"
       }
@@ -96,7 +102,7 @@
     "items": [
       {
         "name": "Ecto",
-        "description": "A database wrapper and query generator for Elixir, providing a unified API for working with different databases.",
+        "description": "Ecto is a database wrapper and query generator for Elixir, providing a unified API for working with different databases.",
         "thumbnail": true,
         "url": "https://hexdocs.pm/ecto/Ecto.html"
       }
@@ -124,7 +130,7 @@
     "items": [
       {
         "name": "GetText",
-        "description": "An internationalization and localization library for Elixir, allowing easy translation and formatting of messages.",
+        "description": "GetText is an internationalization and localization library for Elixir, allowing easy translation and formatting of messages.",
         "thumbnail": false,
         "url": "https://hexdocs.pm/gettext/Gettext.html"
       },
