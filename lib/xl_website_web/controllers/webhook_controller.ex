@@ -4,13 +4,14 @@ defmodule XlWebsiteWeb.WebhookController do
   alias XlWebsiteWeb.HTTPClient
   alias XlWebsite.ParamParser
   alias XlWebsite.Exercises
+  alias XlWebsite.Ecosystem
 
   def callback(conn, _params) do
     with {:ok, signature} <- get_signature(conn),
          {:ok, secret} <- get_hashed_secret(signature),
          {:ok, _} <- check_valid_secret(conn.private[:raw_body], secret) do
       conn.body_params
-      |> extract_exercise_attrs()
+      |> build_exercise_attrs()
       |> Exercises.upsert_exercise()
 
       resp(conn, 200, "ok")
@@ -38,8 +39,50 @@ defmodule XlWebsiteWeb.WebhookController do
     end
   end
 
-  @spec extract_exercise_attrs(body_params :: map()) :: map()
-  defp extract_exercise_attrs(body_params) do
+  def ecosystem(conn, _params) do
+    with {:ok, signature} <- get_signature(conn),
+         {:ok, secret} <- get_hashed_secret(signature),
+         {:ok, _} <- check_valid_secret(conn.private[:raw_body], secret) do
+      conn.body_params
+      |> build_list_of_ecosystem_tool_attrs()
+      |> Ecosystem.upsert_ecosystem()
+
+      resp(conn, 200, "ok")
+    else
+      {:error, :missing_signature} ->
+        Logger.warning("missing GitHub webhook secret in request body")
+
+        conn
+        |> put_status(:bad_request)
+        |> json(%{message: "missing signature"})
+
+      {:error, :invalid_signature} ->
+        Logger.warning("invalid GitHub webhook signature in request body")
+
+        conn
+        |> put_status(:bad_request)
+        |> json(%{message: "invalid signature"})
+
+      {:error, :invalid_secret} ->
+        Logger.warning("invalid GitHub webhook secret in request body")
+
+        conn
+        |> put_status(:bad_request)
+        |> json(%{message: "invalid secret"})
+    end
+  end
+
+  @spec build_list_of_ecosystem_tool_attrs(body_params :: map()) :: list()
+
+  defp build_list_of_ecosystem_tool_attrs(body_params) do
+    body_params["repository"]["full_name"]
+    |> fetch_readme()
+    |> ParamParser.parse_ecosystem_tools()
+  end
+
+  @spec build_exercise_attrs(body_params :: map()) :: map()
+
+  defp build_exercise_attrs(body_params) do
     full_name = body_params["repository"]["full_name"]
     raw_topics = body_params["repository"]["topics"]
 

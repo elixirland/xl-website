@@ -8,8 +8,8 @@ defmodule XlWebsiteWeb.PageController do
   """
   use XlWebsiteWeb, :controller
   alias XlWebsite.{ParamParser, MarkdownParser}
-  alias XlWebsite.FileSystem
   alias XlWebsite.Exercises
+  alias XlWebsite.Ecosystem
 
   @home "Home"
   @exercises "Exercises"
@@ -25,20 +25,17 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:home)
   end
 
-  def ecosystem(conn, _params) do
-    ecosystem_data =
-      FileSystem.read!(path_to("ecosystem.json"))
-      |> Jason.decode!(keys: :atoms)
+  # TODO: Continue here
+  # Fetch ECOSYSTEM.md from GitHub and parse it.
+  # Fetch thumbnail image URLs from GitHub, validate them, and store them in the database.
+  # Check if links in tool descriptions are rendered correctly and work as expected.
 
+  def ecosystem(conn, _params) do
     conn
     |> assign(:page_title, @title_prefix <> @ecosystem)
     |> assign(:route, @ecosystem)
-    |> assign(:ecosystem_data, ecosystem_data)
+    |> assign(:ecosystem_data, Ecosystem.get_ecosystem_overview())
     |> render(:ecosystem)
-  end
-
-  defp path_to(file) do
-    Path.join(:code.priv_dir(:xl_website), "/#{file}")
   end
 
   def exercises(conn, _params) do

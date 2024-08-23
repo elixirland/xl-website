@@ -8,8 +8,6 @@
     <%= topic %>
   </div>
 </div>
-<div data-markdown="exercise">
-  <div class="max-w-[800px]">
-    <%= raw(Earmark.as_html!(@readme)) %>
-  </div>
+<div class="max-w-[800px]" data-markdown="exercise">
+  <%= raw(Earmark.as_html!(@readme)) %>
 </div>

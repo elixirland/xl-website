@@ -16,7 +16,6 @@ defmodule XlWebsite.Exercises.Exercise do
     timestamps()
   end
 
-  @doc false
   def changeset(exercise, attrs) do
     exercise
     |> cast(attrs, @fields)

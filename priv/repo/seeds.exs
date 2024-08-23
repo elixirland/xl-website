@@ -11,6 +11,10 @@
 # and so on) as they will fail if something goes wrong.
 
 alias XlWebsite.Repo
+alias XlWebsite.Exercises.Exercise
+alias XlWebsite.Ecosystem
+
+# Insert exercises
 
 readme =
   """
@@ -19,18 +23,12 @@ readme =
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
 
-  ## Status
-  Exercise: ***Not Reviewed***
-  Solution: ***Not Reviewed***
-
-  > [!NOTE]> Some note.
-
   ## Introduction
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
 
-  ## Task
+  ## Task description
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
@@ -48,6 +46,9 @@ readme =
   > [!TIP]
   > Some tip.
 
+  ## Assumptions
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
+
   ## How to get started
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
 
@@ -59,7 +60,7 @@ readme =
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
   """
 
-Repo.insert!(%XlWebsite.Exercises.Exercise{
+Repo.insert!(%Exercise{
   full_name: "elixirland/xle-book-club",
   name: "Book Club",
   slug: "book-club",
@@ -69,7 +70,7 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   readme: readme
 })
 
-Repo.insert!(%XlWebsite.Exercises.Exercise{
+Repo.insert!(%Exercise{
   full_name: "elixirland/xle-username-generator",
   name: "Username Generator",
   slug: "username-generator",
@@ -79,7 +80,7 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   readme: readme
 })
 
-Repo.insert!(%XlWebsite.Exercises.Exercise{
+Repo.insert!(%Exercise{
   full_name: "elixirland/xle-simple-chat-room",
   name: "Simple Chat Room",
   slug: "simple-chat-room",
@@ -87,4 +88,44 @@ Repo.insert!(%XlWebsite.Exercises.Exercise{
   topics: ["Elixir", "Phoenix"],
   description: "Build a simple chat room using Phoenix LiveView.",
   readme: readme
+})
+
+# Insert ecosystem categories and tools
+
+the_web_category =
+  Repo.insert!(%Ecosystem.Category{
+    name: "The Web"
+  })
+
+Repo.insert!(%Ecosystem.Tool{
+  name: "Phoenix Framework",
+  description:
+    "Phoenix is a popular web development framework for building web applications with Elixir.\n\nServer-side rendering and real-time communication, are some of its key features. Has LiveView built-in, allowing developers to build interactive, real-time applications while writing little to no JavaScript.",
+  category_id: the_web_category.id
+})
+
+Repo.insert!(%Ecosystem.Tool{
+  name: "SurfaceUI",
+  description:
+    "Surface is a component library for Phoenix LiveView that allows you to build interactive, real-time applications while writing little to no JavaScript.",
+  category_id: the_web_category.id
+})
+
+native_applications_category =
+  Repo.insert!(%Ecosystem.Category{
+    name: "Native Applications"
+  })
+
+Repo.insert!(%Ecosystem.Tool{
+  name: "Scenic",
+  description:
+    "Scenic is an application framework written directly on the Elixir/Erlang/OTP stack. With it, you can build client-side applications that operate identically across all supported operating systems, including MacOS, Ubuntu, Nerves/Linux, and more.",
+  category_id: native_applications_category.id
+})
+
+Repo.insert!(%Ecosystem.Tool{
+  name: "LiveView Native",
+  description:
+    "LiveView Native allows you to build LiveView apps that have a front-end for multiple platforms. Use your LiveView back-end to create a web, mobile, wearable and/or desktop UI.",
+  category_id: native_applications_category.id
 })
