@@ -6,7 +6,7 @@
         "name": "Phoenix Framework",
         "description": "Phoenix is a popular web development framework for building web applications with Elixir. Server-side rendering and real-time communication, are some of its key features. Has LiveView built-in, allowing developers to build interactive, real-time applications while writing little to no JavaScript.",
         "thumbnail": true,
-        "url": "https://www.phoenixframework.org/"
+        "url": "https://hexdocs.pm/phoenix/overview.html"
       },
       {
         "name": "Phoenix LiveView",
@@ -18,7 +18,13 @@
         "name": "SurfaceUI",
         "description": "A server-side rendering component library that allows developers to build rich interactive user-interfaces, writing minimal custom Javascript.",
         "thumbnail": true,
-        "url": "https://surface-ui.org/"
+        "url": "https://hexdocs.pm/surface/Surface.html"
+      },
+      {
+        "name": "LiveState",
+        "description": "The goal of LiveState is to make highly interactive web applications easier to build. Currently, in most such applications, clients send requests and receive responses from and to a server API. This essentially results in two applications, with state being managed in both in an ad hoc way.\n\nLiveState uses a different approach. Clients dispatch events, which are sent to the server to be handled, and receive updates from the server any time application state changes. This allows state to have a single source of truth, and greatly reduces client code complexity. It also works equally well for applications where updates to state can occur independently from a user initiated, client side event (think \"real time\" applications such as chat, etc).",
+        "thumbnail": false,
+        "url": "https://hexdocs.pm/live_state/readme.html"
       },
       {
         "name": "Plug",
@@ -30,7 +36,7 @@
         "name": "Absinthe",
         "description": "A GraphQL toolkit for Elixir, an implementation of the GraphQL specification built to suit the language's capabilities and idiomatic style",
         "thumbnail": true,
-        "url": "https://absinthe-graphql.org/"
+        "url": "https://hexdocs.pm/absinthe/overview.html"
       }
     ]
   },
@@ -47,7 +53,7 @@
         "name": "LiveView Native",
         "description": "LiveView Native allows you to build LiveView apps that have a front-end for multiple platforms. Use your LiveView back-end to create a web, mobile, wearable and/or desktop UI.",
         "thumbnail": true,
-        "url": "https://native.live/"
+        "url": "https://hexdocs.pm/live_view_native/readme.html"
       }
     ]
   },
@@ -64,25 +70,25 @@
         "name": "Axon",
         "description": "Nx-powered Neural Networks for Elixir.",
         "thumbnail": true,
-        "url": "https://github.com/elixir-nx/axon"
+        "url": "https://hexdocs.pm/axon/Axon.html"
       },
       {
         "name": "Bumblebee",
         "description": "Pre-trained Neural Network models in Axon and integration with Hugging Face models",
         "thumbnail": false,
-        "url": "https://github.com/elixir-nx/bumblebee"
+        "url": "https://hexdocs.pm/bumblebee/Bumblebee.html"
       },
       {
         "name": "Explorer",
         "description": "Explorer brings series (one-dimensional) and dataframes (two-dimensional) for fast data exploration to Elixir.",
         "thumbnail": true,
-        "url": "https://github.com/elixir-explorer/explorer"
+        "url": "https://hexdocs.pm/explorer/exploring_explorer.html"
       },
       {
         "name": "Scholar",
         "description": "Traditional machine learning tools built on top of Nx. Scholar implements several algorithms for classification, regression, clustering, dimensionality reduction, metrics, and preprocessing.",
         "thumbnail": true,
-        "url": "https://github.com/elixir-nx/scholar"
+        "url": "https://hexdocs.pm/scholar/readme.html"
       }
     ]
   },
@@ -93,7 +99,7 @@
         "name": "Nerves",
         "description": "A framework for building embedded software using Elixir, providing tools and libraries for hardware interfacing.",
         "thumbnail": true,
-        "url": "https://nerves-project.org/"
+        "url": "https://hexdocs.pm/nerves/getting-started.html"
       }
     ]
   },
@@ -138,7 +144,7 @@
         "name": "Elixir CLDR",
         "description": "A library for working with Unicode Common Locale Data Repository (CLDR) in Elixir applications.",
         "thumbnail": true,
-        "url": "https://github.com/elixir-cldr/cldr"
+        "url": "https://hexdocs.pm/ex_cldr/readme.html"
       }
     ]
   },
@@ -166,7 +172,7 @@
         "name": "Ash Framework",
         "description": "A declarative, resource-oriented application development framework for Elixir.",
         "thumbnail": true,
-        "url": "https://ash-hq.org/"
+        "url": "https://hexdocs.pm/ash/readme.html"
       },
       {
         "name": "Oban",
@@ -178,7 +184,7 @@
         "name": "Exq",
         "description": "An Elixir library for job processing, utilizing Redis for managing job queues and worker processes.",
         "thumbnail": false,
-        "url": "https://github.com/akira/exq"
+        "url": "https://hexdocs.pm/exq/readme.html"
       },
       {
         "name": "ExDoc",
@@ -190,7 +196,7 @@
         "name": "LiveBook",
         "description": "A collaborative and interactive code notebook for Elixir, providing a rich environment for exploring and sharing code.",
         "thumbnail": true,
-        "url": "https://livebook.dev/"
+        "url": "https://hexdocs.pm/livebook/readme.html"
       },
       {
         "name": "Telemetry",
