@@ -80,4 +80,25 @@ defmodule XlWebsiteWeb.AppComponents do
     </span>
     """
   end
+
+  attr :tool, :map
+
+  def ecosystem_tool_card(assigns) do
+    ~H"""
+    <article class="bg-white dark:bg-[#323232] rounded-xl overflow-clip shadow-md">
+      <div class="p-8">
+        <img
+          src={"https://raw.githubusercontent.com/elixirland/ecosystem/main/thumbnails/#{@tool.name}.webp"}
+          onerror="this.style.display='none'"
+          height="60"
+          class="h-[60px] bg-cover bg-center float-right bg-white rounded-lg p-2"
+        />
+        <h1 class="text-2xl font-semibold mb-0.5"><%= @tool.name %></h1>
+        <div class="max-w-[65ch]" data-markdown="exercise">
+          <%= raw(Earmark.as_html!(@tool.description)) %>
+        </div>
+      </div>
+    </article>
+    """
+  end
 end

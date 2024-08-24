@@ -25,15 +25,19 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:home)
   end
 
-  # TODO
-  # Fetch thumbnail image URLs from GitHub, validate them, and store them in the database.
-  # Check if links in tool descriptions are rendered correctly and work as expected.
-
   def ecosystem(conn, _params) do
+    sorted_ecosystem_data =
+      Ecosystem.get_ecosystem_overview()
+      |> Enum.sort_by(& &1.name)
+      |> Enum.map(fn cat ->
+        sorted_tools = Enum.sort_by(cat.tools, & &1.name)
+        Map.put(cat, :tools, sorted_tools)
+      end)
+
     conn
     |> assign(:page_title, @title_prefix <> @ecosystem)
     |> assign(:route, @ecosystem)
-    |> assign(:ecosystem_data, Ecosystem.get_ecosystem_overview())
+    |> assign(:ecosystem_data, sorted_ecosystem_data)
     |> render(:ecosystem)
   end
 
