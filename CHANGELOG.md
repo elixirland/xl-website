@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Allow words in exercise names that are not capitalized, like "API"
+- Elixir ecosystem data is now sourced from a GitHub repository
 
 ## [v0.1.1] - 2024-08-18
   
