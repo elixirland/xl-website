@@ -100,7 +100,7 @@ the_web_category =
 Repo.insert!(%Ecosystem.Tool{
   name: "Phoenix Framework",
   description:
-    "Phoenix is a popular web development framework for building web applications with Elixir.\n\nServer-side rendering and real-time communication, are some of its key features. Has LiveView built-in, allowing developers to build interactive, real-time applications while writing little to no JavaScript.",
+    "Phoenix is a popular web development framework for building web applications with Elixir.\n\nServer-side rendering and real-time communication, are some of its key features. Has LiveView built-in, allowing developers to build interactive, real-time applications while writing little to no JavaScript.\n\n[Documentation](https://hexdocs.pm/phoenix_live_view/welcome.html)",
   category_id: the_web_category.id
 })
 

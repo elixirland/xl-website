@@ -5,18 +5,18 @@ defmodule XlWebsiteWeb.PageControllerTest do
   describe "GET /" do
     test "renders home page", %{conn: conn} do
       conn = get(conn, "/")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert resp =~ "unlock the Elixir ecosystem"
-      assert resp =~ "Discover exercises"
-      assert resp =~ "Explore ecosystem"
+      assert html =~ "unlock the Elixir ecosystem"
+      assert html =~ "Discover exercises"
+      assert html =~ "Explore ecosystem"
     end
 
     test "renders metadata tags", %{conn: conn} do
       conn = get(conn, "/")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert_metadata(resp)
+      assert_metadata(html)
     end
   end
 
@@ -38,17 +38,17 @@ defmodule XlWebsiteWeb.PageControllerTest do
       })
 
       conn = get(conn, "/exercises")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert resp =~ "Book Club"
-      assert resp =~ "Simple Chat Room"
+      assert html =~ "Book Club"
+      assert html =~ "Simple Chat Room"
     end
 
     test "renders metadata tags", %{conn: conn} do
       conn = get(conn, "/")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert_metadata(resp)
+      assert_metadata(html)
     end
   end
 
@@ -60,19 +60,19 @@ defmodule XlWebsiteWeb.PageControllerTest do
       })
 
       conn = get(conn, "/exercises/book-club")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert resp =~ "Introduction"
-      assert resp =~ "Task description"
-      assert resp =~ "How to get started"
-      assert resp =~ "Example solution"
+      assert html =~ "Introduction"
+      assert html =~ "Task description"
+      assert html =~ "How to get started"
+      assert html =~ "Example solution"
     end
 
     test "renders metadata tags", %{conn: conn} do
       conn = get(conn, "/")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert_metadata(resp)
+      assert_metadata(html)
     end
   end
 
@@ -84,9 +84,9 @@ defmodule XlWebsiteWeb.PageControllerTest do
 
     test "renders metadata tags", %{conn: conn} do
       conn = get(conn, "/")
-      resp = html_response(conn, 200)
+      html = html_response(conn, 200)
 
-      assert_metadata(resp)
+      assert_metadata(html)
     end
   end
 
@@ -97,15 +97,29 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
   end
 
+  describe "GET /ecosystem" do
+    test "renders ecosystem page", %{conn: conn} do
+      category = insert!(:category, name: "The Web")
+      insert!(:tool, name: "Some tool", category_id: category.id)
+
+      conn = get(conn, "/ecosystem")
+      html = html_response(conn, 200)
+
+      assert html =~ "The Elixir Ecosystem"
+      assert html =~ "The Web"
+      assert html =~ "Some tool"
+    end
+  end
+
   test "Invalid path" do
     conn = get(build_conn(), "/invalid")
     assert html_response(conn, 404) =~ "Not Found"
   end
 
-  defp assert_metadata(resp) do
-    assert resp =~ "<meta name=\"description\""
-    assert resp =~ "<meta property=\"og:title\""
-    assert resp =~ "<meta property=\"og:url\""
-    assert resp =~ "<meta property=\"og:description\""
+  defp assert_metadata(html) do
+    assert html =~ "<meta name=\"description\""
+    assert html =~ "<meta property=\"og:title\""
+    assert html =~ "<meta property=\"og:url\""
+    assert html =~ "<meta property=\"og:description\""
   end
 end

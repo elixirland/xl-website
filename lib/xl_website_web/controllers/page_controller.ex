@@ -25,7 +25,7 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:home)
   end
 
-  # TODO: Continue here
+  # TODO
   # Fetch ECOSYSTEM.md from GitHub and parse it.
   # Fetch thumbnail image URLs from GitHub, validate them, and store them in the database.
   # Check if links in tool descriptions are rendered correctly and work as expected.

@@ -4,10 +4,26 @@ defmodule XlWebsite.Ecosystem do
   alias XlWebsite.Ecosystem
 
   def get_ecosystem_overview() do
-    Repo.all(from c in Ecosystem.Category, preload: [:tools])
+    Ecosystem.Category
+    |> preload(:tools)
+    |> Repo.all()
   end
 
-  def upsert_ecosystem(attrs_of_tools) do
-    IO.inspect(attrs_of_tools, label: "attrs_of_tools")
+  @doc """
+  Inserts or replaces the ecosystem in the database.
+
+  All existing categories and tools are deleted and replaced with the new ones.
+  """
+
+  def insert_or_replace_ecosystem(attrs_of_tools) do
+    Repo.transaction(fn ->
+      Repo.delete_all(Ecosystem.Tool)
+      Repo.delete_all(Ecosystem.Category)
+
+      for cat <- attrs_of_tools do
+        struct!(Ecosystem.Category, cat)
+        |> Repo.insert!()
+      end
+    end)
   end
 end

@@ -1,6 +1,7 @@
 defmodule XlWebsite.Factory do
   alias XlWebsite.Repo
   alias XlWebsite.Exercises.Exercise
+  alias XlWebsite.Ecosystem
 
   def insert!(name, attrs \\ []) do
     name
@@ -21,6 +22,20 @@ defmodule XlWebsite.Factory do
       slug: "book-club",
       topics: ["Elixir", "OTP"],
       readme: readme()
+    }
+  end
+
+  defp build_default(:category) do
+    %Ecosystem.Category{
+      name: "The Web"
+    }
+  end
+
+  defp build_default(:tool) do
+    %Ecosystem.Tool{
+      name: "Some tool",
+      description: "Some description",
+      category_id: nil
     }
   end
 

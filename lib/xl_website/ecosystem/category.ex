@@ -6,8 +6,6 @@ defmodule XlWebsite.Ecosystem.Category do
   schema "categories" do
     field :name, :string
     has_many :tools, Ecosystem.Tool
-
-    timestamps()
   end
 
   def changeset(category, attrs) do

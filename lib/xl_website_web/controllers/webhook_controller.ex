@@ -1,10 +1,12 @@
 defmodule XlWebsiteWeb.WebhookController do
   use XlWebsiteWeb, :controller
-  require Logger
+  alias XlWebsite.MarkdownParser
   alias XlWebsiteWeb.HTTPClient
   alias XlWebsite.ParamParser
   alias XlWebsite.Exercises
   alias XlWebsite.Ecosystem
+
+  action_fallback XlWebsiteWeb.WebhookErrorHandler
 
   def callback(conn, _params) do
     with {:ok, signature} <- get_signature(conn),
@@ -15,27 +17,6 @@ defmodule XlWebsiteWeb.WebhookController do
       |> Exercises.upsert_exercise()
 
       resp(conn, 200, "ok")
-    else
-      {:error, :missing_signature} ->
-        Logger.warning("missing GitHub webhook secret in request body")
-
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "missing signature"})
-
-      {:error, :invalid_signature} ->
-        Logger.warning("invalid GitHub webhook signature in request body")
-
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid signature"})
-
-      {:error, :invalid_secret} ->
-        Logger.warning("invalid GitHub webhook secret in request body")
-
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid secret"})
     end
   end
 
@@ -45,39 +26,20 @@ defmodule XlWebsiteWeb.WebhookController do
          {:ok, _} <- check_valid_secret(conn.private[:raw_body], secret) do
       conn.body_params
       |> build_list_of_ecosystem_tool_attrs()
-      |> Ecosystem.upsert_ecosystem()
+      |> Ecosystem.insert_or_replace_ecosystem()
 
       resp(conn, 200, "ok")
-    else
-      {:error, :missing_signature} ->
-        Logger.warning("missing GitHub webhook secret in request body")
-
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "missing signature"})
-
-      {:error, :invalid_signature} ->
-        Logger.warning("invalid GitHub webhook signature in request body")
-
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid signature"})
-
-      {:error, :invalid_secret} ->
-        Logger.warning("invalid GitHub webhook secret in request body")
-
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid secret"})
     end
   end
+
+  # Private functions
 
   @spec build_list_of_ecosystem_tool_attrs(body_params :: map()) :: list()
 
   defp build_list_of_ecosystem_tool_attrs(body_params) do
     body_params["repository"]["full_name"]
-    |> fetch_readme()
-    |> ParamParser.parse_ecosystem_tools()
+    |> fetch_ecosystem_md()
+    |> MarkdownParser.parse_ecosystem_tools()
   end
 
   @spec build_exercise_attrs(body_params :: map()) :: map()
@@ -123,6 +85,22 @@ defmodule XlWebsiteWeb.WebhookController do
     |> case do
       true -> {:ok, :valid}
       false -> {:error, :invalid_secret}
+    end
+  end
+
+  defp fetch_ecosystem_md(full_name) do
+    http_request =
+      HTTPClient.build(:get, "https://raw.githubusercontent.com/#{full_name}/main/ECOSYSTEM.md")
+
+    case HTTPClient.request(http_request, XlWebsite.Finch) do
+      {:ok, %Finch.Response{status: 200, body: body}} ->
+        body
+
+      {:ok, %Finch.Response{status: status}} ->
+        raise "Failed to fetch ECOSYSTEM.md from GitHub. Status: #{status}"
+
+      {:error, reason} ->
+        raise "Failed to fetch ECOSYSTEM.md from GitHub. Reason: #{inspect(reason)}"
     end
   end
 

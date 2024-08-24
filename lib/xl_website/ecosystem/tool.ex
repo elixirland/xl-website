@@ -7,8 +7,6 @@ defmodule XlWebsite.Ecosystem.Tool do
     field :name, :string
     field :description, :string
     belongs_to :category, Ecosystem.Category
-
-    timestamps()
   end
 
   def changeset(tool, attrs) do
