@@ -105,7 +105,7 @@ Repo.insert!(%Ecosystem.Tool{
 })
 
 Repo.insert!(%Ecosystem.Tool{
-  name: "SurfaceUI",
+  name: "Plug",
   description:
     "Surface is a component library for Phoenix LiveView that allows you to build interactive, real-time applications while writing little to no JavaScript.",
   category_id: the_web_category.id
