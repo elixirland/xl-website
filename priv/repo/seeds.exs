@@ -113,7 +113,7 @@ Repo.insert!(%Ecosystem.Tool{
 
 native_applications_category =
   Repo.insert!(%Ecosystem.Category{
-    name: "Native Applications"
+    name: "Other Tools"
   })
 
 Repo.insert!(%Ecosystem.Tool{

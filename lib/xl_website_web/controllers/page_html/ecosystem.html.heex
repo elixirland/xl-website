@@ -8,12 +8,14 @@
   </div>
 </heading>
 <div class="flex flex-col gap-4 mt-2 mb-20">
-  <%= for category <- Enum.reject(@ecosystem_data, fn cat -> cat == "Other Tools" end) do %>
+  <%= for category <- Enum.reject(@ecosystem_data, fn cat -> cat.name == "Other Tools" end) do %>
     <h2 class="text-2xl font-semibold pt-8"><%= category.name %></h2>
     <.ecosystem_tool_card :for={tool <- category.tools} tool={tool} />
   <% end %>
-  <%= for other_tools <- Enum.filter(@ecosystem_data, fn cat -> cat == "Other Tools" end) do %>
-    <h2 :if={other_tools != []} class="text-2xl font-semibold pt-8"><%= other_tools.name %></h2>
-    <.ecosystem_tool_card :for={tool <- other_tools.tools} tool={tool} />
+  <%= for other_category <- Enum.filter(@ecosystem_data, fn cat -> cat.name == "Other Tools" end) do %>
+    <h2 :if={Enum.count(other_category.tools) > 0} class="text-2xl font-semibold pt-8">
+      <%= other_category.name %>
+    </h2>
+    <.ecosystem_tool_card :for={tool <- other_category.tools} tool={tool} />
   <% end %>
 </div>
