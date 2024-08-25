@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Play video of project preview on card when hovering thumbnail
+- Sanitize markdown before rendering its html
 
 ### Changed
 - Change thumbnails of project cards to preview videos
