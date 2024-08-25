@@ -25,11 +25,7 @@ defmodule XlWebsiteWeb.AppComponents do
           <% end %>
         </ul>
       </nav>
-      <.link
-        :if={@github_source}
-        class="text-[#2879c5] dark:text-blue-400 hover:underline ml-auto"
-        href={@github_source}
-      >
+      <.link :if={@github_source} class="ml-auto" href={@github_source}>
         <img
           src="/images/icons/github-logo.svg"
           width="24"
