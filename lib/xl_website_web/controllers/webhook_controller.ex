@@ -1,7 +1,7 @@
 defmodule XlWebsiteWeb.WebhookController do
   use XlWebsiteWeb, :controller
   alias XlWebsite.MarkdownParser
-  alias XlWebsiteWeb.HTTPClient
+  alias XlWebsiteWeb.GithubClient
   alias XlWebsite.ParamParser
   alias XlWebsite.Exercises
   alias XlWebsite.Ecosystem
@@ -38,7 +38,7 @@ defmodule XlWebsiteWeb.WebhookController do
 
   defp build_list_of_ecosystem_tool_attrs(body_params) do
     body_params["repository"]["full_name"]
-    |> fetch_ecosystem_md()
+    |> GithubClient.fetch_ecosystem_md()
     |> MarkdownParser.parse_ecosystem_tools()
   end
 
@@ -55,7 +55,7 @@ defmodule XlWebsiteWeb.WebhookController do
       html_url: body_params["repository"]["html_url"],
       description: body_params["repository"]["description"],
       topics: ParamParser.parse_topics(raw_topics),
-      readme: fetch_readme(full_name)
+      readme: GithubClient.fetch_readme_md(full_name)
     }
   end
 
@@ -85,38 +85,6 @@ defmodule XlWebsiteWeb.WebhookController do
     |> case do
       true -> {:ok, :valid}
       false -> {:error, :invalid_secret}
-    end
-  end
-
-  defp fetch_ecosystem_md(full_name) do
-    http_request =
-      HTTPClient.build(:get, "https://raw.githubusercontent.com/#{full_name}/main/ECOSYSTEM.md")
-
-    case HTTPClient.request(http_request, XlWebsite.Finch) do
-      {:ok, %Finch.Response{status: 200, body: body}} ->
-        body
-
-      {:ok, %Finch.Response{status: status}} ->
-        raise "Failed to fetch ECOSYSTEM.md from GitHub. Status: #{status}"
-
-      {:error, reason} ->
-        raise "Failed to fetch ECOSYSTEM.md from GitHub. Reason: #{inspect(reason)}"
-    end
-  end
-
-  defp fetch_readme(full_name) do
-    http_request =
-      HTTPClient.build(:get, "https://raw.githubusercontent.com/#{full_name}/main/README.md")
-
-    case HTTPClient.request(http_request, XlWebsite.Finch) do
-      {:ok, %Finch.Response{status: 200, body: body}} ->
-        body
-
-      {:ok, %Finch.Response{status: status}} ->
-        raise "Failed to fetch README.md from GitHub. Status: #{status}"
-
-      {:error, reason} ->
-        raise "Failed to fetch README.md from GitHub. Reason: #{inspect(reason)}"
     end
   end
 end
