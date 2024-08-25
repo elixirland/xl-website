@@ -4,8 +4,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
 
+## [v0.2.0] - 2024-08-25
+
 ### Added
 - Dark mode
+- Breadcrumb navigation
+- GitHub source links
 
 ### Changed
 - Allow words in exercise names that are not capitalized, like "API"
@@ -13,14 +17,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Terminology change: uses "projects", instead of "exercises"
 
 ## [v0.1.1] - 2024-08-18
-  
-### Added
-- Breadcrumb navigation
-- GitHub source links
-
-### Changed
-- Text size on exercise pages
-- Introductory text on exercises page
 
 ### Fixed
 - Task descriptions not showing in exercise pages
