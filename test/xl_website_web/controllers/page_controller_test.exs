@@ -65,7 +65,7 @@ defmodule XlWebsiteWeb.PageControllerTest do
       assert html =~ "Introduction"
       assert html =~ "Task description"
       assert html =~ "How to get started"
-      assert html =~ "Example solution"
+      assert html =~ "Example"
     end
 
     test "renders metadata tags", %{conn: conn} do

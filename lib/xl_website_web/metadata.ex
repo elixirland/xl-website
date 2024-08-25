@@ -1,7 +1,7 @@
 defmodule XlWebsiteWeb.Metadata do
   use Phoenix.Component
 
-  @main_description "Projects with idiomatic example solutions for the Elixir ecosystem."
+  @main_description "Learn the Elixir ecosystem by building projects."
   @domain "https://elixirland.dev"
 
   attr :route, :string

@@ -67,7 +67,7 @@ defmodule XlWebsite.Factory do
     ## How to get started
     Some text.
 
-    ## Example solution
+    ## Example
     Some text.
     """
   end

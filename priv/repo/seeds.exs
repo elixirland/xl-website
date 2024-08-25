@@ -54,7 +54,7 @@ readme =
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
 
-  ## Example solution
+  ## Example
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.

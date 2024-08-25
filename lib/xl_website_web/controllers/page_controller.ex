@@ -20,7 +20,7 @@ defmodule XlWebsiteWeb.PageController do
 
   def home(conn, _params) do
     conn
-    |> assign(:page_title, @title_prefix <> "Elixir projects with idiomatic example solutions")
+    |> assign(:page_title, @title_prefix <> "Learn the Elixir ecosystem by building projects")
     |> assign(:route, @home)
     |> render(:home)
   end
@@ -71,7 +71,7 @@ defmodule XlWebsiteWeb.PageController do
               "Requirements",
               "Assumptions",
               "How to get started",
-              "Example solution"
+              "Example"
             ]
           )
 
