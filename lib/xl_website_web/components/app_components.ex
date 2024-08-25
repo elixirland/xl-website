@@ -59,12 +59,7 @@ defmodule XlWebsiteWeb.AppComponents do
     <.link href={~p"/projects/#{@project.slug}"} class="sm:w-full w-[360px]">
       <article class="bg-white dark:bg-[#323232] rounded-lg overflow-clip transition-all shadow-md relative">
         <div class="h-[228px]">
-          <video
-            width="360"
-            onmouseover="this.play()"
-            onmouseout="this.pause(); this.currentTime = 0;"
-            muted
-          >
+          <video width="360" onmouseover="this.play()" onmouseout="this.pause();" muted>
             <source
               src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
               type="video/webm"
