@@ -4,6 +4,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
 
+### Changed
+- Change thumbnails of project cards to preview videos
+
 ### Fix
 - Fix missing terminology updates
 
