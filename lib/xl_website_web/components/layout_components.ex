@@ -13,7 +13,7 @@ defmodule XlWebsiteWeb.LayoutComponents do
           XL
         </.link>
         <nav class="absolute right-1/2 translate-x-1/2">
-          <menu class="text text-white flex gap-5">
+          <menu class="text text-white flex gap-4">
             <.link
               href={~p"/projects"}
               class={[

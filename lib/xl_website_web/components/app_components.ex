@@ -25,15 +25,26 @@ defmodule XlWebsiteWeb.AppComponents do
           <% end %>
         </ul>
       </nav>
-      <%= if is_nil(@github_source) do %>
-        <span class="text-[#696969c0] dark:text-neutral-400 ml-auto disabled:opacity-50 cursor-default">
-          Not yet on GitHub
-        </span>
-      <% else %>
-        <.link class="text-[#2879c5] dark:text-blue-400 hover:underline ml-auto" href={@github_source}>
-          View on GitHub
-        </.link>
-      <% end %>
+      <.link
+        :if={@github_source}
+        class="text-[#2879c5] dark:text-blue-400 hover:underline ml-auto"
+        href={@github_source}
+      >
+        <img
+          src="/images/icons/github-logo.svg"
+          width="24"
+          height="24"
+          alt="GitHub"
+          class="dark:hidden"
+        />
+        <img
+          src="/images/icons/github-logo-white.svg"
+          width="24"
+          height="24"
+          alt="GitHub"
+          class="hidden dark:block"
+        />
+      </.link>
     </div>
     """
   end
