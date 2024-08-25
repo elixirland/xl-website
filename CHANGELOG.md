@@ -19,7 +19,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Terminology change: uses "projects", instead of "exercises"
 
 ### Fix
-- Fix missing terminology updates
 - Task descriptions not showing on project pages
  
 ## [v0.1.0] - 2024-08-17
