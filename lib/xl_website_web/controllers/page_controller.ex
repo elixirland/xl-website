@@ -8,19 +8,19 @@ defmodule XlWebsiteWeb.PageController do
   """
   use XlWebsiteWeb, :controller
   alias XlWebsite.{ParamParser, MarkdownParser}
-  alias XlWebsite.Exercises
+  alias XlWebsite.Projects
   alias XlWebsite.Ecosystem
 
   @home "Home"
-  @exercises "Exercises"
+  @projects "Projects"
   @ecosystem "Ecosystem"
   @about "About"
-  @repo_prefix "xle-"
+  @repo_prefix "xlp-"
   @title_prefix "Elixirland - "
 
   def home(conn, _params) do
     conn
-    |> assign(:page_title, @title_prefix <> "Elixir exercises with idiomatic example solutions")
+    |> assign(:page_title, @title_prefix <> "Elixir projects with idiomatic example solutions")
     |> assign(:route, @home)
     |> render(:home)
   end
@@ -41,30 +41,30 @@ defmodule XlWebsiteWeb.PageController do
     |> render(:ecosystem)
   end
 
-  def exercises(conn, _params) do
-    exercise_info = Exercises.get_exercises_info_only()
+  def projects(conn, _params) do
+    project_info = Projects.get_projects_info_only()
 
     conn
-    |> assign(:page_title, @title_prefix <> @exercises)
-    |> assign(:route, @exercises)
-    |> assign(:exercises, exercise_info)
-    |> render(:exercises)
+    |> assign(:page_title, @title_prefix <> @projects)
+    |> assign(:route, @projects)
+    |> assign(:projects, project_info)
+    |> render(:projects)
   end
 
-  def exercise(conn, %{"slug" => slug}) do
-    case Exercises.get_exercise_by_full_name("elixirland/#{@repo_prefix}#{slug}") do
+  def project(conn, %{"slug" => slug}) do
+    case Projects.get_project_by_full_name("elixirland/#{@repo_prefix}#{slug}") do
       nil ->
         conn
         |> put_status(:not_found)
         |> put_view(XlWebsiteWeb.ErrorHTML)
         |> render("404.html")
 
-      exercise ->
+      project ->
         name = ParamParser.slug_to_name(slug)
 
         readme =
           MarkdownParser.filter_readme_sections(
-            exercise.readme,
+            project.readme,
             [
               "Introduction",
               "Task description",
@@ -77,14 +77,14 @@ defmodule XlWebsiteWeb.PageController do
 
         conn
         |> assign(:page_title, @title_prefix <> name)
-        |> assign(:route, "Exercise")
+        |> assign(:route, "Project")
         |> assign(:name, name)
         |> assign(:slug, slug)
-        |> assign(:html_url, exercise.html_url)
+        |> assign(:html_url, project.html_url)
         |> assign(:repo_prefix, @repo_prefix)
         |> assign(:readme, readme)
-        |> assign(:topics, exercise.topics)
-        |> render(:exercise)
+        |> assign(:topics, project.topics)
+        |> render(:project)
     end
   end
 
@@ -104,7 +104,7 @@ defmodule XlWebsiteWeb.PageController do
 
   def guidelines(conn, _params) do
     conn
-    |> assign(:page_title, @title_prefix <> "The guidelines for sumbitting an exercise")
+    |> assign(:page_title, @title_prefix <> "The guidelines for sumbitting an project")
     |> assign(:route, "Guidelines")
     |> render(:submission_guidelines)
   end

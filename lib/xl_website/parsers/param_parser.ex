@@ -4,7 +4,7 @@ defmodule XlWebsite.ParamParser do
     "postgresql" => "PostgreSQL"
   }
   @topic_hash_keys Map.keys(@topic_hashes)
-  @repo_prefix "xle-"
+  @repo_prefix "xlp-"
 
   def parse_body_params(conn, _opts \\ []) do
     {:ok, body, conn} = Plug.Conn.read_body(conn)

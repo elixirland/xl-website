@@ -19,8 +19,8 @@ defmodule XlWebsiteWeb.Router do
 
     get "/", PageController, :home
     get "/ecosystem", PageController, :ecosystem
-    get "/exercises", PageController, :exercises
-    get "/exercises/:slug", PageController, :exercise
+    get "/projects", PageController, :projects
+    get "/projects/:slug", PageController, :project
     get "/about", PageController, :about
     get "/reviewing", PageController, :reviewing
     get "/contributions", PageController, :contributions

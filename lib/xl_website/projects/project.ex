@@ -1,10 +1,10 @@
-defmodule XlWebsite.Exercises.Exercise do
+defmodule XlWebsite.Projects.Project do
   use Ecto.Schema
   import Ecto.Changeset
 
   @fields [:full_name, :name, :slug, :description, :html_url, :readme, :topics]
 
-  schema "exercises" do
+  schema "projects" do
     field :full_name, :string
     field :name, :string
     field :slug, :string
@@ -16,8 +16,8 @@ defmodule XlWebsite.Exercises.Exercise do
     timestamps()
   end
 
-  def changeset(exercise, attrs) do
-    exercise
+  def changeset(project, attrs) do
+    project
     |> cast(attrs, @fields)
     |> validate_required(@fields)
   end

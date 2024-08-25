@@ -5,7 +5,7 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
   import Ecto.Query, only: [from: 2]
   alias XlWebsite.Ecosystem
   alias XlWebsite.Repo
-  alias XlWebsite.Exercises.Exercise
+  alias XlWebsite.Projects.Project
 
   # Sourced from the FinchFake module
   @test_ecosystem_categories ["The Web", "Native Applications"]
@@ -16,12 +16,12 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
       secret = Application.get_env(:xl_website, :github_webhooks_secret)
 
       body =
-        "{\"repository\":{\"description\":\"Some description.\",\"full_name\":\"elixirland/xle-book-club-API\",\"html_url\":\"https://example.com/webhooks\",\"topics\":[\"topic A\",\"topic B\"]}}"
+        "{\"repository\":{\"description\":\"Some description.\",\"full_name\":\"elixirland/xlp-book-club-API\",\"html_url\":\"https://example.com/webhooks\",\"topics\":[\"topic A\",\"topic B\"]}}"
 
       %{conn: conn, body: body, secret: secret}
     end
 
-    test "creates a new exercise",
+    test "creates a new project",
          %{conn: conn, body: body, secret: secret} do
       signature =
         :crypto.mac(:hmac, :sha256, secret, body)
@@ -36,18 +36,18 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
 
       refute nil ==
                Repo.one(
-                 from(e in Exercise,
-                   where: e.full_name == "elixirland/xle-book-club-API"
+                 from(e in Project,
+                   where: e.full_name == "elixirland/xlp-book-club-API"
                  )
                )
 
       assert response(conn, :ok) =~ "ok"
     end
 
-    test "updates an existing exercise",
+    test "updates an existing project",
          %{conn: conn, body: body, secret: secret} do
-      insert!(:exercise,
-        full_name: "elixirland/xle-book-club-API",
+      insert!(:project,
+        full_name: "elixirland/xlp-book-club-API",
         topics: ["Topic X", "Topic Y"]
       )
 
@@ -64,8 +64,8 @@ defmodule XlWebsiteWeb.WebhookControllerTest do
 
       assert %{topics: ["Topic a", "Topic b"]} =
                Repo.one(
-                 from(e in Exercise,
-                   where: e.full_name == "elixirland/xle-book-club-API"
+                 from(e in Project,
+                   where: e.full_name == "elixirland/xlp-book-club-API"
                  )
                )
 

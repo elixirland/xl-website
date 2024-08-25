@@ -15,13 +15,13 @@ defmodule XlWebsiteWeb.LayoutComponents do
         <nav class="absolute right-1/2 translate-x-1/2">
           <menu class="text text-white flex gap-5">
             <.link
-              href={~p"/exercises"}
+              href={~p"/projects"}
               class={[
                 "text-lg",
-                @route == "Exercises" && "underline underline-offset-4"
+                @route == "Projects" && "underline underline-offset-4"
               ]}
             >
-              exercises
+              projects
             </.link>
             <.link
               href={~p"/ecosystem"}

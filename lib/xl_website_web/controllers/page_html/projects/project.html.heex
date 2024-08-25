@@ -1,4 +1,4 @@
-<.top_navigation path={["exercises", @slug]} github_source={@html_url} />
+<.top_navigation path={["projects", @slug]} github_source={@html_url} />
 <h1 class="font-bold text-[3rem] mt-[0.5rem] -tracking-[1px]"><%= @name %></h1>
 <div class="flex gap-2 mb-4">
   <div
@@ -8,6 +8,6 @@
     <%= topic %>
   </div>
 </div>
-<div class="max-w-[800px]" data-markdown="exercise">
+<div class="max-w-[800px]" data-markdown="project">
   <%= raw(Earmark.as_html!(@readme)) %>
 </div>

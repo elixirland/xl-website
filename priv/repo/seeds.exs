@@ -11,14 +11,14 @@
 # and so on) as they will fail if something goes wrong.
 
 alias XlWebsite.Repo
-alias XlWebsite.Exercises.Exercise
+alias XlWebsite.Projects.Project
 alias XlWebsite.Ecosystem
 
-# Insert exercises
+# Insert projects
 
 readme =
   """
-  # Some Exercise Name
+  # Some Project Name
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
@@ -60,31 +60,31 @@ readme =
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
   """
 
-Repo.insert!(%Exercise{
-  full_name: "elixirland/xle-book-club",
+Repo.insert!(%Project{
+  full_name: "elixirland/xlp-book-club",
   name: "Book Club",
   slug: "book-club",
-  html_url: "https://github.com/elixirland/xle-book-club",
+  html_url: "https://github.com/elixirland/xlp-book-club",
   topics: ["Elixir", "Phoenix"],
   description: "Build an simple Phoenix API for a book club.",
   readme: readme
 })
 
-Repo.insert!(%Exercise{
-  full_name: "elixirland/xle-username-generator",
+Repo.insert!(%Project{
+  full_name: "elixirland/xlp-username-generator",
   name: "Username Generator",
   slug: "username-generator",
-  html_url: "https://github.com/elixirland/xle-username-generator",
+  html_url: "https://github.com/elixirland/xlp-username-generator",
   topics: ["Elixir", "Hex"],
   description: "Build a Hex package that generates random usernames.",
   readme: readme
 })
 
-Repo.insert!(%Exercise{
-  full_name: "elixirland/xle-simple-chat-room",
+Repo.insert!(%Project{
+  full_name: "elixirland/xlp-simple-chat-room",
   name: "Simple Chat Room",
   slug: "simple-chat-room",
-  html_url: "http://github.com/elixirland/xle-simple-chat-room",
+  html_url: "http://github.com/elixirland/xlp-simple-chat-room",
   topics: ["Elixir", "Phoenix"],
   description: "Build a simple chat room using Phoenix LiveView.",
   readme: readme

@@ -1,6 +1,6 @@
 defmodule XlWebsite.Factory do
   alias XlWebsite.Repo
-  alias XlWebsite.Exercises.Exercise
+  alias XlWebsite.Projects.Project
   alias XlWebsite.Ecosystem
 
   def insert!(name, attrs \\ []) do
@@ -15,9 +15,9 @@ defmodule XlWebsite.Factory do
     |> struct!(attrs)
   end
 
-  defp build_default(:exercise) do
-    %Exercise{
-      full_name: "elixirland/xle-book-club",
+  defp build_default(:project) do
+    %Project{
+      full_name: "elixirland/xlp-book-club",
       name: "Book Club",
       slug: "book-club",
       topics: ["Elixir", "OTP"],
@@ -41,11 +41,11 @@ defmodule XlWebsite.Factory do
 
   defp readme() do
     """
-    # Some Exercise Name
+    # Some Project Name
     Some text.
 
     ## Status
-    Exercise: ***Not Reviewed***<br>
+    Project: ***Not Reviewed***<br>
     Solution: ***Not Reviewed***
 
     > [!NOTE]

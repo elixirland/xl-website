@@ -39,11 +39,11 @@ defmodule FinchFake do
 
   defp readme() do
     """
-    # Some Exercise Name
+    # Some Project Name
     Some text.
 
     ## Status
-    Exercise: ***Not Reviewed***<br>
+    Project: ***Not Reviewed***<br>
     Solution: ***Not Reviewed***
 
     > [!NOTE]

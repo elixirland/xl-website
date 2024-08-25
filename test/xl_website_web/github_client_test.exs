@@ -16,7 +16,7 @@ defmodule XlWebsiteWeb.GithubClientTest do
 
   describe "fetch_ecosystem_md/1" do
     test "fetches ECOSYSTEM.md from GitHub" do
-      ecosystem_md = GithubClient.fetch_ecosystem_md("elixirland/xle-book-club-API")
+      ecosystem_md = GithubClient.fetch_ecosystem_md("elixirland/xlp-book-club-API")
 
       assert ecosystem_md =~ "# The Elixir Ecosystem"
     end
@@ -24,9 +24,9 @@ defmodule XlWebsiteWeb.GithubClientTest do
 
   describe "fetch_readme_md/1" do
     test "fetches README.md from GitHub" do
-      readme_md = GithubClient.fetch_readme_md("elixirland/xle-book-club-API")
+      readme_md = GithubClient.fetch_readme_md("elixirland/xlp-book-club-API")
 
-      assert readme_md =~ "# Some Exercise Name"
+      assert readme_md =~ "# Some Project Name"
     end
   end
 
@@ -40,7 +40,7 @@ defmodule XlWebsiteWeb.GithubClientTest do
     test "logs an error when fetching ECOSYSTEM.md fails" do
       log =
         capture_log(fn ->
-          GithubClient.fetch_ecosystem_md("elixirland/xle-book-club-API")
+          GithubClient.fetch_ecosystem_md("elixirland/xlp-book-club-API")
         end)
 
       assert log =~ "Failed to fetch ECOSYSTEM.md from GitHub. Status: 404"
@@ -49,7 +49,7 @@ defmodule XlWebsiteWeb.GithubClientTest do
     test "logs an error when fetching README.md fails" do
       log =
         capture_log(fn ->
-          GithubClient.fetch_readme_md("elixirland/xle-book-club-API")
+          GithubClient.fetch_readme_md("elixirland/xlp-book-club-API")
         end)
 
       assert log =~ "Failed to fetch README.md from GitHub. Status: 404"

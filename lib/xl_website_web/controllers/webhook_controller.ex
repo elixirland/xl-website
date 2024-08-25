@@ -3,7 +3,7 @@ defmodule XlWebsiteWeb.WebhookController do
   alias XlWebsite.MarkdownParser
   alias XlWebsiteWeb.GithubClient
   alias XlWebsite.ParamParser
-  alias XlWebsite.Exercises
+  alias XlWebsite.Projects
   alias XlWebsite.Ecosystem
 
   action_fallback XlWebsiteWeb.WebhookErrorHandler
@@ -13,8 +13,8 @@ defmodule XlWebsiteWeb.WebhookController do
          {:ok, secret} <- get_hashed_secret(signature),
          {:ok, _} <- check_valid_secret(conn.private[:raw_body], secret) do
       conn.body_params
-      |> build_exercise_attrs()
-      |> Exercises.upsert_exercise()
+      |> build_project_attrs()
+      |> Projects.upsert_project()
 
       resp(conn, 200, "ok")
     end
@@ -42,9 +42,9 @@ defmodule XlWebsiteWeb.WebhookController do
     |> MarkdownParser.parse_ecosystem_tools()
   end
 
-  @spec build_exercise_attrs(body_params :: map()) :: map()
+  @spec build_project_attrs(body_params :: map()) :: map()
 
-  defp build_exercise_attrs(body_params) do
+  defp build_project_attrs(body_params) do
     full_name = body_params["repository"]["full_name"]
     raw_topics = body_params["repository"]["topics"]
 

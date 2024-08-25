@@ -1,7 +1,7 @@
 defmodule XlWebsiteWeb.Metadata do
   use Phoenix.Component
 
-  @main_description "Exercises with idiomatic example solutions for the Elixir ecosystem."
+  @main_description "Projects with idiomatic example solutions for the Elixir ecosystem."
   @domain "https://elixirland.dev"
 
   attr :route, :string
@@ -28,28 +28,28 @@ defmodule XlWebsiteWeb.Metadata do
     """
   end
 
-  defp metadata(%{route: "Exercises"} = assigns) do
+  defp metadata(%{route: "Projects"} = assigns) do
     assigns =
       assigns
       |> Map.put(:main_description, @main_description)
       |> Map.put(:domain, @domain)
 
     ~H"""
-    <meta name="description" content="Explore our Elixir exercises." />
-    <meta property="og:title" content="Elixirland Exercises" />
-    <meta property="og:url" content={"#{@domain}/exercises"} />
+    <meta name="description" content="Explore our Elixir projects." />
+    <meta property="og:title" content="Elixirland Projects" />
+    <meta property="og:url" content={"#{@domain}/projects"} />
     <meta property="og:description" content={@main_description} />
     """
   end
 
-  defp metadata(%{route: "Exercise"} = assigns) do
+  defp metadata(%{route: "Project"} = assigns) do
     assigns = Map.put(assigns, :domain, @domain)
 
     ~H"""
-    <meta name="description" content={"The \"#{@name}\" Exercise"} />
+    <meta name="description" content={"The \"#{@name}\" Project"} />
     <meta property="og:title" content={@name} />
-    <meta property="og:url" content={"#{@domain}/exercises/#{@slug}"} />
-    <meta property="og:description" content={"The \"#{@name}\" Exercise"} />
+    <meta property="og:url" content={"#{@domain}/projects/#{@slug}"} />
+    <meta property="og:description" content={"The \"#{@name}\" Project"} />
     """
   end
 

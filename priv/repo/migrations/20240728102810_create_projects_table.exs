@@ -1,8 +1,8 @@
-defmodule XlWebsite.Repo.Migrations.CreateExerciseTables do
+defmodule XlWebsite.Repo.Migrations.CreateProjectsTable do
   use Ecto.Migration
 
   def change do
-    create table(:exercises) do
+    create table(:projects) do
       add :full_name, :string
       add :name, :string
       add :slug, :string

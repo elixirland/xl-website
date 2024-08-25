@@ -1,12 +1,12 @@
 <.top_navigation
-  path={~w"exercises"}
-  github_source="https://github.com/elixirland?tab=repositories&q=xle-&type=&language=&sort=name"
+  path={~w"projects"}
+  github_source="https://github.com/elixirland?tab=repositories&q=xlp-&type=&language=&sort=name"
 />
 <section>
   <heading class="flex items-end">
-    <h1 class="pt-3 text-4xl text-[#66626c] font-medium dark:text-white">Exercises</h1>
+    <h1 class="pt-3 text-4xl text-[#66626c] font-medium dark:text-white">Projects</h1>
     <div class="text-xl text-[#66626c] font-medium ml-auto dark:text-white">
-      <%= case Enum.count(@exercises) do %>
+      <%= case Enum.count(@projects) do %>
         <% 1 -> %>
           1 result
         <% count -> %>
@@ -16,7 +16,7 @@
   </heading>
   <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide dark:text-neutral-100">
     <p>
-      Exercises live in their own GitHub repositories. Each repository contains an exercise, along with an example solution in idiomatic Elixir.
+      Projects live in their own GitHub repositories. Each repository contains the project, along with an example solution in idiomatic Elixir.
     </p>
     <p class="mt-3">
       The example solutions are reviewed by the Elixir community to ensure they adhere to idiomatic Elixir. Learn more about how you can contribute to Elixirland by visiting the <.link
@@ -28,6 +28,6 @@
 </section>
 <section>
   <div class="flex flex-wrap gap-4 my-8">
-    <.exercise_card :for={exercise <- @exercises} exercise={exercise} />
+    <.project_card :for={project <- @projects} project={project} />
   </div>
 </section>

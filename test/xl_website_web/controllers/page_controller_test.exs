@@ -7,8 +7,8 @@ defmodule XlWebsiteWeb.PageControllerTest do
       conn = get(conn, "/")
       html = html_response(conn, 200)
 
-      assert html =~ "unlock the Elixir ecosystem"
-      assert html =~ "Discover exercises"
+      assert html =~ "learn the Elixir ecosystem by building projects"
+      assert html =~ "Discover projects"
       assert html =~ "Explore ecosystem"
     end
 
@@ -20,24 +20,24 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
   end
 
-  describe "GET /exercises" do
-    test "renders exercises page", %{conn: conn} do
-      conn = get(conn, "/exercises")
-      assert html_response(conn, 200) =~ "Exercises"
+  describe "GET /projects" do
+    test "renders projects page", %{conn: conn} do
+      conn = get(conn, "/projects")
+      assert html_response(conn, 200) =~ "Projects"
     end
 
-    test "lists stored exercises", %{conn: conn} do
-      insert!(:exercise, %{
+    test "lists stored projects", %{conn: conn} do
+      insert!(:project, %{
         name: "Book Club",
         slug: "book-club"
       })
 
-      insert!(:exercise, %{
+      insert!(:project, %{
         name: "Simple Chat Room",
         slug: "simple-chat-room"
       })
 
-      conn = get(conn, "/exercises")
+      conn = get(conn, "/projects")
       html = html_response(conn, 200)
 
       assert html =~ "Book Club"
@@ -52,14 +52,14 @@ defmodule XlWebsiteWeb.PageControllerTest do
     end
   end
 
-  describe "GET /exercises/:slug" do
-    test "renders exercise", %{conn: conn} do
-      insert!(:exercise, %{
+  describe "GET /projects/:slug" do
+    test "renders project", %{conn: conn} do
+      insert!(:project, %{
         name: "Book Club",
         slug: "book-club"
       })
 
-      conn = get(conn, "/exercises/book-club")
+      conn = get(conn, "/projects/book-club")
       html = html_response(conn, 200)
 
       assert html =~ "Introduction"

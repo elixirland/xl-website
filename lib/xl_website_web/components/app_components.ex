@@ -45,25 +45,25 @@ defmodule XlWebsiteWeb.AppComponents do
     |> then(&"/#{&1}")
   end
 
-  attr :exercise, :map
+  attr :project, :map
 
-  def exercise_card(assigns) do
+  def project_card(assigns) do
     ~H"""
-    <.link href={~p"/exercises/#{@exercise.slug}"} class="sm:w-full w-[360px]">
+    <.link href={~p"/projects/#{@project.slug}"} class="sm:w-full w-[360px]">
       <article class="bg-white dark:bg-[#323232] rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
         <img
-          src={"/images/#{@exercise.name}.webp"}
+          src={"/images/#{@project.name}.webp"}
           width="360"
           height="240"
           class="h-[240px] sm:w-full bg-cover bg-center"
         />
         <div class="p-5 flex flex-col h-[180px]">
           <h1 class="text-3xl mb-1.5 font-bold">
-            <%= @exercise.name %>
+            <%= @project.name %>
           </h1>
-          <p><%= @exercise.description %></p>
+          <p><%= @project.description %></p>
           <div class="mt-auto flex gap-2 flex-wrap">
-            <.topic :for={topic <- @exercise.topics} topic={topic} />
+            <.topic :for={topic <- @project.topics} topic={topic} />
           </div>
         </div>
       </article>
@@ -94,7 +94,7 @@ defmodule XlWebsiteWeb.AppComponents do
           class="h-[60px] bg-cover bg-center float-right bg-white rounded-lg p-2"
         />
         <h1 class="text-2xl font-semibold mb-0.5"><%= @tool.name %></h1>
-        <div class="max-w-[65ch]" data-markdown="exercise">
+        <div class="max-w-[65ch]" data-markdown="project">
           <%= raw(Earmark.as_html!(@tool.description)) %>
         </div>
       </div>
