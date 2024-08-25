@@ -58,8 +58,16 @@ defmodule XlWebsiteWeb.AppComponents do
     ~H"""
     <.link href={~p"/projects/#{@project.slug}"} class="sm:w-full w-[360px]">
       <article class="bg-white dark:bg-[#323232] rounded-lg overflow-clip transition-all shadow-md relative">
-        <div class="h-[228px]">
-          <video width="360" onmouseover="this.play()" onmouseout="this.pause();" muted>
+        <%!-- Display and play behavior is defined in assets/js/card_media.js --%>
+        <div class="h-[228px] relative" data-card-media>
+          <img
+            src={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
+            width="360"
+            height="228"
+            class="h-[228px] sm:w-full bg-cover bg-center"
+          />
+
+          <video width="360" height="228" loop muted class="hidden">
             <source
               src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
               type="video/webm"

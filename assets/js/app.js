@@ -22,6 +22,7 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 import ColorScheme from "./color_scheme"
+import CardMedia from "./card_media"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
@@ -42,3 +43,6 @@ window.liveSocket = liveSocket
 
 // Initialize the color scheme toggling functionality
 ColorScheme.init()
+
+// Initialize the behavior of the media on project cards
+CardMedia.init()
