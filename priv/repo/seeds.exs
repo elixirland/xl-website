@@ -66,7 +66,7 @@ Repo.insert!(%Project{
   slug: "book-club",
   html_url: "https://github.com/elixirland/xlp-book-club",
   topics: ["Elixir", "Phoenix"],
-  description: "Build an simple Phoenix API for a book club.",
+  description: "Build a simple Phoenix API for a book club.",
   readme: readme
 })
 

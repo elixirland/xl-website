@@ -104,7 +104,7 @@ defmodule XlWebsiteWeb.PageController do
 
   def guidelines(conn, _params) do
     conn
-    |> assign(:page_title, @title_prefix <> "The guidelines for sumbitting an project")
+    |> assign(:page_title, @title_prefix <> "The guidelines for sumbitting a project")
     |> assign(:route, "Guidelines")
     |> render(:submission_guidelines)
   end
