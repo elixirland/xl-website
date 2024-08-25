@@ -57,13 +57,21 @@ defmodule XlWebsiteWeb.AppComponents do
   def project_card(assigns) do
     ~H"""
     <.link href={~p"/projects/#{@project.slug}"} class="sm:w-full w-[360px]">
-      <article class="bg-white dark:bg-[#323232] rounded-xl overflow-clip hover:-translate-x-[2px] hover:-translate-y-[3px] transition-all shadow-md hover:shadow-lg relative">
-        <img
-          src={"/images/#{@project.name}.webp"}
-          width="360"
-          height="240"
-          class="h-[240px] sm:w-full bg-cover bg-center"
-        />
+      <article class="bg-white dark:bg-[#323232] rounded-lg overflow-clip transition-all shadow-md relative">
+        <div class="h-[228px]">
+          <video
+            width="360"
+            onmouseover="this.play()"
+            onmouseout="this.pause(); this.currentTime = 0;"
+            muted
+          >
+            <source
+              src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
+              type="video/webm"
+            /> Your browser does not support the video tag.
+          </video>
+        </div>
+
         <div class="p-5 flex flex-col h-[180px]">
           <h1 class="text-3xl mb-1.5 font-bold">
             <%= @project.name %>

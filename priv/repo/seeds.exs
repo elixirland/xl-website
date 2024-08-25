@@ -28,6 +28,9 @@ readme =
 
   Vivamus euismod, diam in iaculis feugiat, augue augue pharetra ipsum, non dictum est eros vitae orci. Quisque in leo risus. Mauris ultrices augue a sagittis pellentesque. Aliquam pretium nulla justo, non lobortis nibh bibendum non. Praesent orci sapien, tempus ut felis eget, mattis ultrices ipsum. Suspendisse facilisis dictum lacus, faucibus euismod lectus condimentum non.
 
+  ## Preview
+  https://github.com/elixirland/xlp-book-club-API/raw/main/preview.webm
+
   ## Task description
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
 
@@ -61,10 +64,10 @@ readme =
   """
 
 Repo.insert!(%Project{
-  full_name: "elixirland/xlp-book-club",
-  name: "Book Club",
-  slug: "book-club",
-  html_url: "https://github.com/elixirland/xlp-book-club",
+  full_name: "elixirland/xlp-book-club-API",
+  name: "Book Club API",
+  slug: "book-club-API",
+  html_url: "https://github.com/elixirland/xlp-book-club-API",
   topics: ["Elixir", "Phoenix"],
   description: "Build a simple Phoenix API for a book club.",
   readme: readme

@@ -67,6 +67,7 @@ defmodule XlWebsiteWeb.PageController do
             project.readme,
             [
               "Introduction",
+              "Preview",
               "Task description",
               "Requirements",
               "Assumptions",
