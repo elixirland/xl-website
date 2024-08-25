@@ -4,30 +4,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
 
-### Added
-- Play video of project preview on card when hovering thumbnail
-- Sanitize markdown before rendering its html
-
-### Changed
-- Change thumbnails of project cards to preview videos
-
-### Fix
-- Fix missing terminology updates
-
 ## [v0.2.0] - 2024-08-25
 
 ### Added
 - Dark mode
 - Breadcrumb navigation
 - GitHub source links
+- Play video of project preview on card when hovering thumbnail
+- Sanitize markdown before rendering its html
 
 ### Changed
 - Allow words in exercise names that are not capitalized, like "API"
 - Source Elixir ecosystem data from a GitHub repository (https://github.com/elixirland/ecosystem)
 - Terminology change: uses "projects", instead of "exercises"
 
-### Fixed
-- Task descriptions not showing in exercise pages
+### Fix
+- Fix missing terminology updates
+- Task descriptions not showing on project pages
  
 ## [v0.1.0] - 2024-08-17
  
