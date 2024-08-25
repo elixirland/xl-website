@@ -4,6 +4,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [Unreleased] - yyyy-mm-dd
 
+### Added
+- Play video of project preview on card when hovering thumbnail
+
 ### Changed
 - Change thumbnails of project cards to preview videos
 
