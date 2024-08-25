@@ -8,7 +8,6 @@ defmodule XlWebsiteWeb.GithubClient do
 
     case HTTPClient.request(http_request, XlWebsite.Finch) do
       {:ok, %Finch.Response{status: 200, body: body}} ->
-        Logger.info("Fetched ECOSYSTEM.md from GitHub for #{full_name}")
         body
 
       {:ok, %Finch.Response{status: status}} ->
@@ -25,7 +24,6 @@ defmodule XlWebsiteWeb.GithubClient do
 
     case HTTPClient.request(http_request, XlWebsite.Finch) do
       {:ok, %Finch.Response{status: 200, body: body}} ->
-        Logger.info("Fetched README.md from GitHub for #{full_name}")
         body
 
       {:ok, %Finch.Response{status: status}} ->
