@@ -51,7 +51,8 @@ defmodule XlWebsite.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:timex, "~> 3.0"},
-      {:earmark, "~> 1.4.4"}
+      {:earmark, "~> 1.4.4"},
+      {:html_sanitize_ex, "~> 1.4"}
     ]
   end
 

@@ -119,4 +119,20 @@ defmodule XlWebsiteWeb.AppComponents do
     </article>
     """
   end
+
+  attr :markdown, :string, required: true
+
+  def markdown(assigns) do
+    safe_html =
+      assigns.markdown
+      |> Earmark.as_html!()
+      |> HtmlSanitizeEx.basic_html()
+      |> raw()
+
+    assigns = assign(assigns, safe_html: safe_html)
+
+    ~H"""
+    <%= @safe_html %>
+    """
+  end
 end
