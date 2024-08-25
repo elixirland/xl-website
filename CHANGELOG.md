@@ -16,8 +16,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Source Elixir ecosystem data from a GitHub repository (https://github.com/elixirland/ecosystem)
 - Terminology change: uses "projects", instead of "exercises"
 
-## [v0.1.1] - 2024-08-18
-
 ### Fixed
 - Task descriptions not showing in exercise pages
  
