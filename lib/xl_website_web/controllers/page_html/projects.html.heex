@@ -4,7 +4,7 @@
 />
 <section>
   <heading class="flex items-end">
-    <h1 class="pt-3 text-4xl text-[#66626c] font-medium dark:text-white">Projects</h1>
+    <h1 class="pt-3 text-4xl text-[#66626c] font-medium dark:text-white">Projects to build</h1>
     <div class="text-xl text-[#66626c] font-medium ml-auto dark:text-white">
       <%= case Enum.count(@projects) do %>
         <% 1 -> %>
@@ -16,10 +16,10 @@
   </heading>
   <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide dark:text-neutral-100">
     <p>
-      Projects live in their own GitHub repositories. Each repository contains the project, along with an example implementation in idiomatic Elixir.
+      Elixirland projects live in their own GitHub repositories, along with an example implementation in idiomatic Elixir.
     </p>
     <p class="mt-3">
-      The example implementations are reviewed by the Elixir community to ensure they adhere to idiomatic Elixir. Learn more about how you can contribute to Elixirland by visiting the <.link
+      The Elixir community is invited to review the example implementations, to ensure their quality. Learn more about how you can contribute to Elixirland by visiting the <.link
         class="text-blue text-blue-500 dark:text-blue-400 underline"
         href={~p"/contributions"}
       >contributions page</.link>.
