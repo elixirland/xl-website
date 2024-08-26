@@ -8,8 +8,11 @@ const CardMedia = {
       const img = cardMediaElement.querySelector("img")
       const video = cardMediaElement.querySelector("video")
 
+      img.hasBrokenSrc = false
+
       img.onerror = () => {
         img.style.display = "none"
+        img.hasBrokenSrc = true
         video.style.display = "block"
         video.play()
       }
@@ -21,8 +24,10 @@ const CardMedia = {
       }
 
       video.onmouseleave = () => {
-        img.style.display = "block"
-        video.style.display = "none"
+        if (!img.hasBrokenSrc) {
+          img.style.display = "block"
+          video.style.display = "none"
+        }
         video.pause()
         video.currentTime = 0
       }
