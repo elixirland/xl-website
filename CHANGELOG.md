@@ -2,9 +2,9 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
-## [Unreleased] - yyyy-mm-dd
+## Unreleased - yyyy-mm-dd
 
-## [v0.2.0] - 2024-08-25
+## v0.2.0 - 2024-08-25
 
 ### Added
 - Dark mode
@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fix
 - Task descriptions not showing on project pages
  
-## [v0.1.0] - 2024-08-17
+## v0.1.0 - 2024-08-17
  
 ### Added
 - Landing page
