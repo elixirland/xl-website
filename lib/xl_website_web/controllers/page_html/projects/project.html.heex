@@ -1,27 +1,27 @@
 <.top_navigation path={["projects", @project.slug]} github_source={@project.html_url} />
-<div class="flex gap-6 max-w-[800px]">
-  <div>
-    <h1 class="font-[800] text-[3.3rem] sm:text-[2.6rem] pt-[0.5rem] -tracking-[1px] leading-[2.7rem] pb-3.5 sm:pb-2">
-      <%= @project.name %>
-    </h1>
-    <div class="flex gap-1.5 sm:gap-1 mb-4">
-      <div
-        :for={topic <- @project.topics}
-        class="text-[0.83rem] sm:text-xs bg-purple-500 text-white px-1.5 py-0.5 rounded-md dark:bg-neutral-700"
-      >
-        <%= topic %>
-      </div>
+<div class="max-w-[800px]">
+  <h1 class="font-[800] text-[3.3rem] sm:text-[2.6rem] pt-[0.5rem] -tracking-[1px] leading-[2.7rem] pb-3.5 sm:pb-2">
+    <%= @project.name %>
+  </h1>
+  <div class="flex gap-1.5 sm:gap-1 mb-4">
+    <div
+      :for={topic <- @project.topics}
+      class="text-[0.83rem] sm:text-xs bg-purple-500 text-white px-1.5 py-0.5 rounded-md dark:bg-neutral-700"
+    >
+      <%= topic %>
     </div>
   </div>
-  <img
-    height="72"
-    src={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
-    class="h-[72px] mt-[9px] shadow-md rounded-lg border-neutral-200 border-[0.5px] ml-auto"
-  />
 </div>
 <%!-- Video playback and control display behavior defined in project_preview.js --%>
-<div class="relative max-w-[800px]" data-project-preview>
-  <video width="360" height="228" loop muted class="w-full mt-6 rounded-md">
+<div class="relative max-w-[800px] rounded-md overflow-clip" data-project-preview>
+  <video
+    width="360"
+    height="240"
+    loop
+    muted
+    poster={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
+    class="w-full aspect-[3/2] mt-6 shadow-lg"
+  >
     <source
       src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
       type="video/webm"
@@ -30,9 +30,10 @@
   <button
     type="button"
     data-play-button
-    class="drop-shadow-lg absolute left-0 top-0 h-full w-full"
+    class="absolute left-0 top-0 h-full w-full bg-[#0000002b]"
   >
     <.icon name="hero-play-solid" class="h-[120px] w-[120px] text-white" />
+    <p class="font-[900] text-white drop-shadow-lg text-4xl tracking-wide">Preview</p>
   </button>
 </div>
 <div class="max-w-[800px]" data-markdown="project">

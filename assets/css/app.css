@@ -3,4 +3,5 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+@import "global.css";
 @import "markdown.css";
