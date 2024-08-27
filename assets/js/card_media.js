@@ -3,6 +3,8 @@
 const CardMedia = {
   init() {
     const cardMediaElements = document.querySelectorAll("[data-card-media]")
+    
+    if (cardMediaElements.length === 0) return
 
     cardMediaElements.forEach((cardMediaElement) => {
       const img = cardMediaElement.querySelector("img")

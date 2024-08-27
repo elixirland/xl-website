@@ -7,7 +7,7 @@ defmodule XlWebsiteWeb.PageController do
   navigation bar.
   """
   use XlWebsiteWeb, :controller
-  alias XlWebsite.{ParamParser, MarkdownParser}
+  alias XlWebsite.MarkdownParser
   alias XlWebsite.Projects
   alias XlWebsite.Ecosystem
 
@@ -60,31 +60,22 @@ defmodule XlWebsiteWeb.PageController do
         |> render("404.html")
 
       project ->
-        name = ParamParser.slug_to_name(slug)
-
         readme =
-          MarkdownParser.filter_readme_sections(
+          MarkdownParser.filter_h2_headings(
             project.readme,
-            [
-              "Introduction",
+            reject: [
               "Preview",
-              "Task description",
-              "Requirements",
-              "Assumptions",
               "How to get started",
-              "Example"
+              "See our example"
             ]
           )
 
         conn
-        |> assign(:page_title, @title_prefix <> name)
+        |> assign(:page_title, @title_prefix <> project.name)
         |> assign(:route, "Project")
-        |> assign(:name, name)
-        |> assign(:slug, slug)
-        |> assign(:html_url, project.html_url)
+        |> assign(:project, project)
         |> assign(:repo_prefix, @repo_prefix)
         |> assign(:readme, readme)
-        |> assign(:topics, project.topics)
         |> render(:project)
     end
   end

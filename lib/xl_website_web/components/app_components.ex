@@ -66,7 +66,6 @@ defmodule XlWebsiteWeb.AppComponents do
             height="228"
             class="h-[228px] sm:w-full bg-cover bg-center"
           />
-
           <video width="360" height="228" loop muted class="hidden">
             <source
               src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}

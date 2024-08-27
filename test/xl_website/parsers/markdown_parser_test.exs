@@ -2,14 +2,13 @@ defmodule XlWebsite.MarkdownParserTest do
   use ExUnit.Case
   alias XlWebsite.MarkdownParser
 
-  describe "filter_readme_sections/2" do
-    test "filters out sections not in list of headings" do
-      headings = ["Heading A", "Heading B", "Heading D"]
+  describe "filter_h2_headings/2" do
+    test "removes the sections contained a list of headings" do
+      headings = ["Heading A", "Heading B"]
 
       markdown =
         """
         # Title
-        Title text.
 
         ## Heading A
         Text A.
@@ -30,32 +29,22 @@ defmodule XlWebsite.MarkdownParserTest do
         Text D.
         """
 
-      assert MarkdownParser.filter_readme_sections(markdown, headings) ==
+      assert MarkdownParser.filter_h2_headings(markdown, reject: headings) ==
                """
-               ## Heading A
-               Text A.
-
-               ## Heading B
-               ### Subheading
-               Text B.
-
-                 - List of B.
-
-               > [!TIP]
-               > Tip of B.
+               ## Heading C
+               Text C.
 
                ## Heading D
                Text D.
                """
     end
 
-    test "allows no space between hash character heading text" do
-      headings = ["Heading A", "Heading B", "Heading D"]
+    test "also works when there is no space between hash character and heading text" do
+      headings = ["Heading A", "Heading C"]
 
       markdown =
         """
         #Title
-        Title text.
 
         ##Heading A
         Text A.
@@ -76,11 +65,8 @@ defmodule XlWebsite.MarkdownParserTest do
         Text D.
         """
 
-      assert MarkdownParser.filter_readme_sections(markdown, headings) ==
+      assert MarkdownParser.filter_h2_headings(markdown, reject: headings) ==
                """
-               ##Heading A
-               Text A.
-
                ##Heading B
                ###Subheading
                Text B.
@@ -107,7 +93,14 @@ defmodule XlWebsite.MarkdownParserTest do
         Text
         """
 
-      assert MarkdownParser.filter_readme_sections(markdown, headings) == ""
+      assert MarkdownParser.filter_h2_headings(markdown, reject: headings) ==
+               """
+               ## heading a
+               Text
+
+               ### heading B
+               Text
+               """
     end
 
     test "matches full heading text" do
@@ -122,11 +115,10 @@ defmodule XlWebsite.MarkdownParserTest do
         Text
         """
 
-      assert MarkdownParser.filter_readme_sections(markdown, headings) ==
+      assert MarkdownParser.filter_h2_headings(markdown, reject: headings) ==
                """
-               ## Heading A
+               ## Heading AA
                Text
-
                """
     end
 
@@ -134,8 +126,7 @@ defmodule XlWebsite.MarkdownParserTest do
       headings = ["Heading A", "Heading B"]
       markdown = ~s|\###\# Heading A\nThis is a hash character: \#\n## Heading B\nText|
 
-      assert MarkdownParser.filter_readme_sections(markdown, headings) ==
-               ~s|\###\# Heading A\nThis is a hash character: \#\n## Heading B\nText|
+      assert MarkdownParser.filter_h2_headings(markdown, reject: headings) == ""
     end
   end
 

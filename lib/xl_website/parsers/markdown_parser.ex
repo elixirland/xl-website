@@ -7,10 +7,22 @@ defmodule XlWebsite.MarkdownParser do
   @starts_with_two_hashes ~r/^##(?!#)/
   @starts_with_one_or_many_hashes ~r/^#+/
 
-  def filter_readme_sections(readme, headings) when is_list(headings) do
+  @doc """
+  Takes a markdown string and keeps only the sections that have a level 2 heading.
+
+  ## Options
+  Optionally, you can pass a list of headings to reject. If a section has a heading
+  that matches any of the headings in the list, it will be removed.
+
+  Pass the list of headings as the `:reject` option. For example:
+
+      MarkdownParser.filter_h2_headings(markdown, reject: ["Preview"])
+
+  """
+  def filter_h2_headings(readme, opts \\ []) do
     readme
     |> group_by_headings()
-    |> Enum.filter(&first_item_contains?(&1, headings))
+    |> maybe_reject_headings(opts)
     |> List.flatten()
     |> Enum.join()
   end
@@ -53,6 +65,13 @@ defmodule XlWebsite.MarkdownParser do
     end)
     |> Enum.map(&Enum.reverse/1)
     |> Enum.reverse()
+  end
+
+  defp maybe_reject_headings(grouped_headings, opts) do
+    case Keyword.get(opts, :reject, []) do
+      [] -> grouped_headings
+      headings -> Enum.reject(grouped_headings, &first_item_contains?(&1, headings))
+    end
   end
 
   defp level_2_heading?(heading) do

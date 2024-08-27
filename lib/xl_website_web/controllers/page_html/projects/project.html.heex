@@ -1,13 +1,52 @@
-<.top_navigation path={["projects", @slug]} github_source={@html_url} />
-<h1 class="font-bold text-[3rem] mt-[0.5rem] -tracking-[1px]"><%= @name %></h1>
-<div class="flex gap-2 mb-4">
-  <div
-    :for={topic <- @topics}
-    class="text-sm bg-neutral-100 px-2 py-1 rounded-md dark:bg-neutral-700"
-  >
-    <%= topic %>
+<.top_navigation path={["projects", @project.slug]} github_source={@project.html_url} />
+<div class="flex gap-6 max-w-[800px]">
+  <div>
+    <h1 class="font-[800] text-[3.3rem] sm:text-[2.6rem] pt-[0.5rem] -tracking-[1px] leading-[2.7rem] pb-3.5 sm:pb-2">
+      <%= @project.name %>
+    </h1>
+    <div class="flex gap-1.5 sm:gap-1 mb-4">
+      <div
+        :for={topic <- @project.topics}
+        class="text-[0.83rem] sm:text-xs bg-purple-500 text-white px-1.5 py-0.5 rounded-md dark:bg-neutral-700"
+      >
+        <%= topic %>
+      </div>
+    </div>
   </div>
+  <img
+    height="72"
+    src={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
+    class="h-[72px] mt-[9px] shadow-md rounded-lg border-neutral-200 border-[0.5px] ml-auto"
+  />
+</div>
+<%!-- Video playback and control display behavior defined in project_preview.js --%>
+<div class="relative max-w-[800px]" data-project-preview>
+  <video width="360" height="228" loop muted class="w-full mt-6 rounded-md">
+    <source
+      src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
+      type="video/webm"
+    /> Your browser does not support the video tag.
+  </video>
+  <button
+    type="button"
+    data-play-button
+    class="drop-shadow-lg absolute left-0 top-0 h-full w-full"
+  >
+    <.icon name="hero-play-solid" class="h-[120px] w-[120px] text-white" />
+  </button>
 </div>
 <div class="max-w-[800px]" data-markdown="project">
   <.markdown markdown={@readme} />
+  <h2>How to get started</h2>
+  <p>
+    Start your implementation of the project by generating a new Phoenix app with the
+    <code>mix phx.new</code>
+    command (see <.link href="https://hexdocs.pm/phoenix/Mix.Tasks.Phx.New.html">documentation</.link>).
+  </p>
+  <h2>See our example</h2>
+  <p>
+    You can find the author’s example solution to this project in the project’s GitHub repository, inside the
+    <code>/example</code>
+    directory.
+  </p>
 </div>

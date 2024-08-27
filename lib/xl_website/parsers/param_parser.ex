@@ -39,13 +39,6 @@ defmodule XlWebsite.ParamParser do
     |> String.replace(@repo_prefix, "")
   end
 
-  def slug_to_name(slug) do
-    slug
-    |> String.split("-")
-    |> Enum.map(&String.capitalize/1)
-    |> Enum.join(" ")
-  end
-
   def parse_topics(topics) do
     topics
     |> Enum.map(&String.downcase/1)
