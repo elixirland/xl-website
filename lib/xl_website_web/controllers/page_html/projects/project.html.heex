@@ -1,9 +1,9 @@
 <.top_navigation path={["projects", @project.slug]} github_source={@project.html_url} />
-<div class="max-w-[800px]">
-  <h1 class="font-[800] text-[3.3rem] sm:text-[2.6rem] pt-[0.5rem] -tracking-[1px] leading-[2.7rem] pb-3.5 sm:pb-2">
+<div class="max-w-[740px]">
+  <h1 class="font-[900] text-[4rem] sm:text-[2.6rem] pt-[2rem] -tracking-[0.5px] leading-[2.7rem] pb-6 sm:pb-2">
     <%= @project.name %>
   </h1>
-  <div class="flex gap-1.5 sm:gap-1 mb-4">
+  <div class="flex gap-1.5 sm:gap-1 ml-0.5">
     <div
       :for={topic <- @project.topics}
       class="text-[0.83rem] sm:text-xs bg-purple-500 text-white px-1.5 py-0.5 rounded-md dark:bg-neutral-700"
@@ -13,14 +13,14 @@
   </div>
 </div>
 <%!-- Video playback and control display behavior defined in project_preview.js --%>
-<div class="relative max-w-[800px] rounded-md overflow-clip" data-project-preview>
+<div class="relative max-w-[740px] rounded-md overflow-clip my-5 sm:my-4" data-project-preview>
   <video
     width="360"
     height="240"
     loop
     muted
     poster={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
-    class="w-full aspect-[3/2] mt-6 shadow-lg"
+    class="w-full aspect-[3/2] shadow-lg"
   >
     <source
       src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
@@ -32,8 +32,8 @@
     data-play-button
     class="absolute left-0 top-0 h-full w-full flex items-center justify-center"
   >
-    <div class="bg-[#ffffffe9] h-[130px] aspect-square rounded-full flex items-center justify-center shadow">
-      <.icon name="hero-play-solid" class="h-[60px] w-[60px] text-black ml-2" />
+    <div class="bg-[#ffffffe9] h-[110px] aspect-square rounded-full flex items-center justify-center shadow">
+      <.icon name="hero-play-solid" class="h-[50px] w-[50px] text-black ml-2" />
     </div>
     <div
       data-video-duration
@@ -41,7 +41,7 @@
     />
   </button>
 </div>
-<div class="max-w-[800px]" data-markdown="project">
+<div class="max-w-[740px]" data-markdown="project">
   <.markdown markdown={@readme} />
   <h2>How to get started</h2>
   <p>
