@@ -66,7 +66,7 @@ defmodule XlWebsiteWeb.PageController do
             reject: [
               "Preview",
               "How to get started",
-              "See our example"
+              "Where is the example?"
             ]
           )
 
