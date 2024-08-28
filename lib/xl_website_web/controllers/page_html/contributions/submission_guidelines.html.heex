@@ -8,59 +8,116 @@
   </p>
   <h2 class="text-2xl pt-6 font-semibold">What is an Elixirland project?</h2>
   <p class="text-[1.1rem] tracking-wide">
-    An Elixirland project is a small programming task that is designed to help users learn some area of the Elixir ecosystem. The projects are typically based on real-world problems and are meant to be solved using idiomatic Elixir. The project tasks might be small, but they are meant to be implemented with production-quality code in mind. This means that the implementations should be well-structured, tested, and documented.
+    An Elixirland project is a programming task that is designed to help users learn some area of the Elixir ecosystem by building small applications. Projects are meant to be implemented with production-quality code in mind. This means that the implementations should be well-structured, tested, and documented.
   </p>
   <p class="text-[1.1rem] tracking-wide indent-8">
     Each project also comes with an example implementation that demonstrates how the task can be solved. The example implementations serve as a reference for users who are stuck or want to compare their own implementations with a working implementation. Also, the example implementations serve as a way to showcase idiomatic Elixir code.
   </p>
-  <h2 class="text-2xl pt-6 font-semibold">Project structure</h2>
+  <h2 class="text-2xl pt-6 font-semibold">Project description</h2>
   <p class="text-[1.1rem] tracking-wide">
-    Projects follow a specific structure to ensure consistency and make it easier for users to understand the task. Some parts of the project structure are mandatory, while others are optional. Here is an overview of the different sections that a project can contain.
+    Your project lives in a GitHub repository and, once it is approved, it is published on the Elixirland website automatically whenever your push changes to the repository. Your project's repository contains the project description inside a file called <code>README.md</code>. This file is used to display the project description on the Elixirland website.
   </p>
-  <ol class="list-decimal list-inside text-[1.1rem]">
+  <p class="text-[1.1rem] tracking-wide indent-8">
+    Project authors are free to design their project how they wish, but they must follow a minimal set of requirements to ensure consistency and quality. Here is an overview of the different sections that your project description must contain.
+  </p>
+  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px]">
+    <h3 class="text-xl font-medium underline">Required sections</h3>
     <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">Learning objectives (optional)</h3>
-      <p>
-        The learning objectives describe what users can expect to learn by solving the project. This section is optional but can be helpful for users who want to know what they will gain from solving the task.
-      </p>
-    </li>
-    <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">Introduction (optional)</h3>
-      <p>
-        The introduction provides some background information about the task and sets the context for the project. This section is optional but can be useful for users who want to understand the problem domain better.
-      </p>
-    </li>
-    <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">Task description</h3>
+      <h4 class="text-lg font-medium pt-4">Task description</h4>
       <p>
         The task description explains what the user needs to do to solve the project. This section is mandatory and should be clear and concise to avoid confusion.
       </p>
     </li>
     <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">Requirements</h3>
+      <h4 class="text-lg font-medium pt-4">Requirements</h4>
       <p>
         The requirements list any constraints or conditions that the implementation must satisfy. This section is mandatory and should be specific to avoid ambiguity.
       </p>
     </li>
+  </ul>
+  <p class="text-[1.1rem] tracking-wide indent-8">
+    The task description and requirements are the core of your project and should appear in the given order and consecutively. However, these sections do not have to be placed at the beginning of your project description. You can add other sections before or after these two sections, as long as they are clearly separated from the task description and requirements and the overall structure follows a logical order.
+  </p>
+  <p class="text-[1.1rem] tracking-wide indent-8">
+    Here is a list of suggested sections that you can include in your project to help users understand and solve the project. These sections are optional, but they can be very helpful for users who need more context or guidance.
+  </p>
+  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px]">
+    <h3 class="text-xl font-medium underline">Suggested sections</h3>
     <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">Assumptions (optional)</h3>
+      <h4 class="list-item text-lg font-medium pt-4">Learning objectives (optional)</h4>
       <p>
-        The assumptions describe any assumptions that the user can make when solving the project. This section is optional but can be helpful for users who want to know what is expected of them.
+        The learning objectives describe what users can expect to learn by solving the project. This section is optional but can be helpful for users who want to know what they will gain from solving the task.
+      </p>
+      <p class="indent-8">
+        If you add this section, please position it after the introductory section, or at the beginning of the project if there is no introduction.
       </p>
     </li>
     <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">How to get started</h3>
+      <h4 class="list-item text-lg font-medium pt-4">Introduction (optional)</h4>
       <p>
-        The "How to get started" section provides guidance on how to approach the project and get started with the implementation. This section is mandatory and should be clear and actionable. Elixirland provides a template for this section that you can use as a starting point. You'll learn more about this template in a later section.
+        The introduction provides some background information about the task and sets the context for the project. This section is optional but can be useful for users who want to understand the problem domain better.
+      </p>
+      <p class="indent-8">
+        The name of this section can be "Introduction" or any other name that you think is appropriate.
       </p>
     </li>
     <li class="block">
-      <h3 class="list-item text-lg font-medium pt-6">Example implementation</h3>
+      <h4 class="text-lg font-medium pt-4">Limitations (optional)</h4>
       <p>
-        This sections contains information about the example implementation that accompanies the project. This is not where the example implementation is provided, but rather an explanation of where to find the example implementation and what it contains. This section is mandatory and should provide users with enough information to understand the purpose of the example implementation. Elixirland provides a template for this section that you can use as a starting point. You’ll learn more about this template in a later section.
+        The limitations describe any features that the user does not have to implement. This section is optional but can be very helpful for users that need to know what is expected of them in more detail.
+      </p>
+    </li>
+  </ul>
+  <p class="text-[1.1rem] tracking-wide indent-8">
+    In addition to these sections, you can include any other sections that you think are necessary to help users understand and solve the project. However, make sure to keep the project structure consistent and easy to navigate.
+  </p>
+  <p class="text-[1.1rem] tracking-wide indent-8">
+    You might wish to add information about how users can get started with their implementation of your project or a reference to your example implementation. This information is, however, automatically added to your project when it is published on Elixirland. Have a look at any of the existing projects on Elixirland to see how this information is presented, so you can decide what to include in your project and what to leave out.
+  </p>
+  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px]">
+    <h3 class="text-xl font-medium underline">Automatically added sections</h3>
+    <li class="block">
+      <h3 class="list-item text-lg font-medium pt-4">How to get started</h3>
+      <p>
+        The "How to get started" section guides users through the process of starting their own implementation of a project. This section prewritten by Elixirland and added to your project when it is published from GitHub to the Elixirland website.
+      </p>
+    </li>
+    <li class="block">
+      <h3 class="list-item text-lg font-medium pt-4">Example implementation</h3>
+      <p>
+        This sections contains practical information about the example implementation that accompanies the project. This is not where the example implementation is provided, but rather an explanation of where to find the example implementation and what it contains. This section prewritten by Elixirland and added to your project when it is published from GitHub to the Elixirland website.
+      </p>
+    </li>
+  </ul>
+  <h2 class="text-2xl pt-6 font-semibold">Thumbnail and preview video</h2>
+  <p class="text-[1.1rem] tracking-wide">
+    When you submit your project for approval, it must include a thumbnail image and a preview video. These assets are used to promote your project on the Elixirland website and help users understand what your project is about. Below are the requirements for the thumbnail image and preview video.
+  </p>
+  <ol class="text-[1.1rem]">
+    <li class="block">
+      <h3 class="text-lg font-medium pt-6">Thumbnail image</h3>
+      <p>
+        The thumbnail image is an image that represents your project. It should give users an idea of what your project is about. The thumbnail image should have the aspect ration 3:2 and have a resolution of at least 600x400 pixels. The image must be in
+        <code>.WEBP</code>
+        format.
+      </p>
+      <p class="indent-8">
+        Add the preview video to the root directory of your project repository and name it <code>thumbnail.webp</code>. Elixirland can help you create a thumbnail image if you don't have one. Just reach out to the Elixirland team for assistance.
+      </p>
+    </li>
+    <li class="block">
+      <h3 class="text-lg font-medium pt-6">Preview video</h3>
+      <p>
+        The preview video is a short video that showcases the example implementation of your project in action. The video should not be more than 2 minutes long and give users a quick overview of what your project does. The video should be in
+        <code>.WEBM</code>
+        format and have an aspect ratio of 3:2. The maximum file size is 50MB.
+      </p>
+      <p class="indent-8">
+        Add the preview video to the root directory of your project repository and name it <code>preview.webm</code>.
       </p>
     </li>
   </ol>
+
   <h2 class="text-2xl pt-6 font-semibold">Example implementation requirements</h2>
   <p class="text-[1.1rem] tracking-wide">
     The example implementation is an important part of the project as it serves as a reference for users who are stuck or want to compare their own implementations with a working implementation. To ensure it meets this purpose, the example implementation should be well-structured, thoroughly tested, and properly documented. Below are the key requirements for the example implementation.
