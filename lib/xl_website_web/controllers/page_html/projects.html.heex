@@ -22,12 +22,25 @@
       The Elixir community is invited to review the example implementations, to ensure their quality. Learn more about how you can contribute to Elixirland by visiting the <.link
         class="text-blue text-blue-500 dark:text-blue-400 underline"
         href={~p"/contributions"}
-      >contributions page</.link>.
+      >contributions</.link> page.
     </p>
   </div>
 </section>
 <section>
   <div class="flex flex-wrap gap-4 my-8">
     <.project_card :for={project <- @projects} project={project} />
+  </div>
+</section>
+<section>
+  <div class="max-w-[800px] pt-4 text-base text-neutral-600 tracking-wide dark:text-neutral-100">
+    <p>
+      Hoping to find more projects?
+    </p>
+    <p class="mt-3">
+      Elixirland launched recently, and we are working on adding more projects. If you would like to add your project to Elixirland, check out the <.link
+        class="text-blue text-blue-500 dark:text-blue-400 underline"
+        href={~p"/contributions/submission-guidelines"}
+      >Submission Guidelines</.link>.
+    </p>
   </div>
 </section>
