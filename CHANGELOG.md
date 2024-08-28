@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Improved styling of project pages
+- Updated Submission Guidelines
 
 ## v0.2.0 - 2024-08-25
 
