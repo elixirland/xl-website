@@ -32,9 +32,13 @@
     data-play-button
     class="absolute left-0 top-0 h-full w-full flex items-center justify-center"
   >
-    <div class="bg-[#ffffffe9] h-[130px] aspect-square rounded-full flex items-center justify-center shadow-md">
+    <div class="bg-[#ffffffe9] h-[130px] aspect-square rounded-full flex items-center justify-center shadow">
       <.icon name="hero-play-solid" class="h-[60px] w-[60px] text-black ml-2" />
     </div>
+    <div
+      data-video-duration
+      class="absolute bottom-4 right-4 text-lg font-medium tracking-wide bg-[#ffffffe9] px-2 py-0.5 rounded shadow min-w-[56px]"
+    />
   </button>
 </div>
 <div class="max-w-[800px]" data-markdown="project">
