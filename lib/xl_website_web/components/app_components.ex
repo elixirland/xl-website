@@ -2,6 +2,23 @@ defmodule XlWebsiteWeb.AppComponents do
   alias XlWebsite.MarkdownParser
   use XlWebsiteWeb, :html
 
+  attr :markdown, :string, required: true
+
+  def markdown(assigns) do
+    safe_html =
+      assigns.markdown
+      |> Earmark.as_html!()
+      |> HtmlSanitizeEx.basic_html()
+      |> parse_github_icons()
+      |> raw()
+
+    assigns = assign(assigns, safe_html: safe_html)
+
+    ~H"""
+    <%= @safe_html %>
+    """
+  end
+
   attr :path, :list
   attr :github_source, :string, default: nil
 
@@ -120,20 +137,27 @@ defmodule XlWebsiteWeb.AppComponents do
     """
   end
 
-  attr :markdown, :string, required: true
-
-  def markdown(assigns) do
-    safe_html =
-      assigns.markdown
-      |> Earmark.as_html!()
-      |> HtmlSanitizeEx.basic_html()
-      |> MarkdownParser.parse_github_icons()
-      |> raw()
-
-    assigns = assign(assigns, safe_html: safe_html)
-
-    ~H"""
-    <%= @safe_html %>
-    """
+  defp parse_github_icons(html) do
+    html
+    |> String.replace(
+      ~r/\[!NOTE\]/,
+      "<span data-icon='note' class='hero-information-circle-solid h-6 w-6 mr-2 text-blue-600'></span>"
+    )
+    |> String.replace(
+      ~r/\[!TIP\]/,
+      "<span data-icon='tip' class='hero-exclamation-circle-solid h-6 w-6 mr-2 text-green-700'></span>"
+    )
+    |> String.replace(
+      ~r/\[!IMPORTANT\]/,
+      "<span data-icon='important' class='hero-information-circle-solid h-6 w-6 mr-2 text-purple-700'></span>"
+    )
+    |> String.replace(
+      ~r/\[!WARNING\]/,
+      "<span data-icon='warning' class='hero-exclamation-triangle-solid h-6 w-6 mr-2 text-yellow-600'></span>"
+    )
+    |> String.replace(
+      ~r/\[!CAUTION\]/,
+      "<span data-icon='caution' class='hero-information-circle-solid h-6 w-6 mr-2 text-red-600'></span>"
+    )
   end
 end
