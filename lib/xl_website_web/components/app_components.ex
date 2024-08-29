@@ -80,10 +80,10 @@ defmodule XlWebsiteWeb.AppComponents do
           <img
             src={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
             width="360"
-            height="228"
+            height="240"
             class="sm:w-full bg-cover bg-center"
           />
-          <video width="360" height="228" loop muted class="hidden w-full">
+          <video width="360" height="240" loop muted class="hidden w-full">
             <source
               src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
               type="video/webm"
