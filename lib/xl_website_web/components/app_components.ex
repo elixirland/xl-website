@@ -156,7 +156,7 @@ defmodule XlWebsiteWeb.AppComponents do
     )
     |> String.replace(
       ~r/\[!CAUTION\]/,
-      "<span data-icon='caution' class='hero-information-circle-solid h-6 w-6 mr-2 text-red-600'></span>"
+      "<span data-icon='caution' class='hero-exclamation-triangle-solid h-6 w-6 mr-2 text-red-600'></span>"
     )
   end
 end

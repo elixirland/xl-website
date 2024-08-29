@@ -4,7 +4,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## Unreleased - yyyy-mm-dd
 
+## v0.3.0 - 2024-08-29
+
 ### Changed
+- Play preview video on project card on hover (mobile)
+
+### Changed
+- Play preview video on project card on hover (desktop)
 - Improved styling of project pages
 - Updated Submission Guidelines
 
