@@ -76,14 +76,14 @@ defmodule XlWebsiteWeb.AppComponents do
     <.link href={~p"/projects/#{@project.slug}"} class="sm:w-full w-[360px]">
       <article class="bg-white dark:bg-[#323232] rounded-lg overflow-clip transition-all shadow-md relative">
         <%!-- Display and play behavior is defined in assets/js/card_media.js --%>
-        <div class="h-[228px] relative" data-card-media>
+        <div class="aspect-[3/2] relative" data-card-media>
           <img
             src={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
             width="360"
             height="228"
-            class="h-[228px] sm:w-full bg-cover bg-center"
+            class="sm:w-full bg-cover bg-center"
           />
-          <video width="360" height="228" loop muted class="hidden">
+          <video width="360" height="228" loop muted class="hidden w-full">
             <source
               src={"https://github.com/#{@project.full_name}/raw/main/preview.webm"}
               type="video/webm"

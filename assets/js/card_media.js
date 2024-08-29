@@ -1,63 +1,97 @@
 // TODO: Clean up and test this code
 
 const CardMedia = {
+  cardMediaElements: null,
+  debounceTime: 1500,
+
   init() {
-    const cardMediaElements = document.querySelectorAll("[data-card-media]")
-    
-    if (cardMediaElements.length === 0) return
+    // Delay the initialization of the card media elements to ensure that the
+    // onscroll event listener is not triggered during, or just after, the
+    // initial page load.
 
-    const mediaQuery = window.matchMedia("(max-width: 500px)")
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        this.cardMediaElements = document.querySelectorAll("[data-card-media]")
+        
+        if (this.cardMediaElements.length === 0) return
 
-    if (mediaQuery.matches) {
-      // On scroll check if a thumbnail of thumbnail is in the center of the viewport
-      // If it is, play the video
-      let debounceTimeout
+        const mediaQuery = window.matchMedia("(max-width: 500px)")
 
-      window.addEventListener("scroll", () => {
+        if (mediaQuery.matches) {
+          this.playPreviewOnScroll()
+        } else {
+          this.playPreviewOnHover()
+        }
 
-        clearTimeout(debounceTimeout)
+        // TODO: Instead of viewport size, let user agent type decide what triggers
+        // video playback
 
-        cardMediaElements.forEach((cardMediaElement) => {
-          const img = cardMediaElement.querySelector("img")
-          const video = cardMediaElement.querySelector("video")
+        window.addEventListener("resize", () => {
+          this.resetAllProjectCards()
 
-          if (img.hasBrokenSrc) return
-
-          const rect = cardMediaElement.getBoundingClientRect()
-          const windowHeight = window.innerHeight || document.documentElement.clientHeight
           const windowWidth = window.innerWidth || document.documentElement.clientWidth
 
-          const verticalMargin = (windowHeight - rect.height) / 2 * 0.66
-
-          const isElementInViewport = (
-            rect.top >= verticalMargin &&
-            rect.left >= 0 &&
-            rect.bottom <= windowHeight - verticalMargin &&
-            rect.right <= windowWidth
-          )
-
-          if (isElementInViewport) {
-            debounceTimeout = setTimeout(() => {
-              img.style.display = "none"
-              video.style.display = "block"
-              video.play()
-            }, 2000)
+          if (windowWidth < 500) {
+            this.playPreviewOnScroll()
           } else {
-            img.style.display = "block"
-            video.style.display = "none"
-            video.pause()
-            video.currentTime = 0
-          }
-
-          video.onended = () => {
-            img.style.display = "block"
-            video.style.display = "none"
+            this.playPreviewOnHover()
           }
         })
+      }, 500)
+    })
+  },
+
+  playPreviewOnScroll() {
+    // On scroll check if a thumbnail of thumbnail is in the center of the viewport
+    // If it is, play the video
+    let debounceTimeout
+
+    window.addEventListener("scroll", () => {
+      clearTimeout(debounceTimeout)
+
+      this.cardMediaElements.forEach((cardMediaElement) => {
+        const img = cardMediaElement.querySelector("img")
+        const video = cardMediaElement.querySelector("video")
+
+        if (img.hasBrokenSrc) return
+
+        const rect = cardMediaElement.getBoundingClientRect()
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight
+        const windowWidth = window.innerWidth || document.documentElement.clientWidth
+
+        const verticalMargin = (windowHeight - rect.height) / 2 * 0.60
+
+        const isElementInViewport = (
+          rect.top >= verticalMargin &&
+          rect.left >= 0 &&
+          rect.bottom <= windowHeight - verticalMargin &&
+          rect.right <= windowWidth
+        )
+
+        if (isElementInViewport) {
+          debounceTimeout = setTimeout(() => {
+            img.style.display = "none"
+            video.style.display = "block"
+            video.play()
+          }, this.debounceTime)
+        } else {
+          img.style.display = "block"
+          video.style.display = "none"
+          video.pause()
+          video.currentTime = 0
+        }
+
+        video.onended = () => {
+          img.style.display = "block"
+          video.style.display = "none"
+        }
       })
-    } else {
+    })
+  },
+
+  playPreviewOnHover() {
       // On hover, play the video
-      cardMediaElements.forEach((cardMediaElement) => {
+      this.cardMediaElements.forEach((cardMediaElement) => {
         const img = cardMediaElement.querySelector("img")
         const video = cardMediaElement.querySelector("video")
   
@@ -85,86 +119,17 @@ const CardMedia = {
           video.currentTime = 0
         }
       })
-    }
+    },
 
-    // TODO: Instead of viewport size, let user agent type decide what triggers
-    // video playback
+  resetAllProjectCards() {
+    this.cardMediaElements.forEach((cardMediaElement) => {
+      const img = cardMediaElement.querySelector("img")
+      const video = cardMediaElement.querySelector("video")
 
-    window.addEventListener("resize", () => {
-
-      cardMediaElements.forEach((cardMediaElement) => {
-        const img = cardMediaElement.querySelector("img")
-        const video = cardMediaElement.querySelector("video")
-
-        img.style.display = "block"
-        video.style.display = "none"
-        video.pause()
-        video.currentTime = 0
-      })
-
-      const windowWidth = window.innerWidth || document.documentElement.clientWidth
-
-      if (windowWidth < 500) {
-        window.addEventListener("scroll", () => {
-          clearTimeout(debounceTimeout)
-
-          cardMediaElements.forEach((cardMediaElement) => {
-            const img = cardMediaElement.querySelector("img")
-            const video = cardMediaElement.querySelector("video")
-
-            if (img.hasBrokenSrc) return
-
-            const rect = cardMediaElement.getBoundingClientRect()
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight
-            const windowWidth = window.innerWidth || document.documentElement.clientWidth
-
-            const verticalMargin = (windowHeight - rect.height) / 2 * 0.66
-
-            const isElementInViewport = (
-              rect.top >= verticalMargin &&
-              rect.left >= 0 &&
-              rect.bottom <= windowHeight - verticalMargin &&
-              rect.right <= windowWidth
-            )
-
-            if (isElementInViewport) {
-              debounceTimeout = setTimeout(() => {
-                img.style.display = "none"
-                video.style.display = "block"
-                video.play()
-              }, 2000)
-            } else {
-              img.style.display = "block"
-              video.style.display = "none"
-              video.pause()
-              video.currentTime = 0
-            }
-
-            video.onended = () => {
-              img.style.display = "block"
-              video.style.display = "none"
-            }
-          })
-        })
-      } else {
-        cardMediaElements.forEach((cardMediaElement) => {
-          const img = cardMediaElement.querySelector("img")
-          const video = cardMediaElement.querySelector("video")
-
-          img.onmouseenter = () => {
-            img.style.display = "none"
-            video.style.display = "block"
-            video.play()
-          }
-
-          video.onmouseleave = () => {
-            img.style.display = "block"
-            video.style.display = "none"
-            video.pause()
-            video.currentTime = 0
-          }
-        })
-      }
+      img.style.display = "block"
+      video.style.display = "none"
+      video.pause()
+      video.currentTime = 0
     })
   }
 }
