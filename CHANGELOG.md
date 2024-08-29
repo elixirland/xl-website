@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## v0.3.0 - 2024-08-29
 
 ### Added
-- Play preview video on project card on hover (mobile)
+- Play preview video on project card on scroll (mobile)
 
 ### Changed
 - Play preview video on project card on hover (desktop)
