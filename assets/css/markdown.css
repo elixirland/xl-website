@@ -31,7 +31,7 @@
     font-weight: 400;
 
     @media (max-width: 500px) {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 
@@ -73,7 +73,7 @@
     padding: 0.3rem 0.55rem;
     border-radius: 0.2rem;
     font-size: 1.15rem;
-
+    
     @media (max-width: 500px) {
       font-size: 1.05rem;
     }
@@ -94,6 +94,31 @@
     p {
       font-size: 1rem;
       margin: 0;
+    }
+
+    &:has([data-icon='note']) {
+      background-color: rgba(39, 39, 150, 0.047);
+      border-color: rgba(25, 25, 166, 0.245);
+    } 
+
+    &:has([data-icon='tip']) {
+      background-color: rgba(63, 175, 63, 0.13);
+      border-color: rgba(0, 128, 0, 0.507);
+    }
+
+    &:has([data-icon='important']) {
+      background-color: rgba(160, 39, 160, 0.042);
+      border-color: rgba(98, 21, 98, 0.153);
+    }
+
+    &:has([data-icon='warning']) {
+      background-color: rgba(255, 255, 0, 0.076);
+      border-color: rgba(195, 195, 14, 0.378);
+    }
+
+    &:has([data-icon='caution']) {
+      background-color: rgba(165, 28, 28, 0.06);
+      border-color: rgba(107, 12, 12, 0.168);
     }
 
     @media (max-width: 500px) {

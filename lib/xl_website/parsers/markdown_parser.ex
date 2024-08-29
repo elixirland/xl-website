@@ -43,6 +43,33 @@ defmodule XlWebsite.MarkdownParser do
     |> sections_to_attrs_list()
   end
 
+  @doc """
+  Replaces the markdown icon tags with HTML tags that render Heroicons icons.
+  """
+  def parse_github_icons(html) do
+    html
+    |> String.replace(
+      ~r/\[!NOTE\]/,
+      "<span data-icon='note' class='hero-information-circle-solid h-6 w-6 mr-2 text-blue-600'></span>"
+    )
+    |> String.replace(
+      ~r/\[!TIP\]/,
+      "<span data-icon='tip' class='hero-exclamation-circle-solid h-6 w-6 mr-2 text-green-700'></span>"
+    )
+    |> String.replace(
+      ~r/\[!IMPORTANT\]/,
+      "<span data-icon='important' class='hero-information-circle-solid h-6 w-6 mr-2 text-purple-700'></span>"
+    )
+    |> String.replace(
+      ~r/\[!WARNING\]/,
+      "<span data-icon='warning' class='hero-exclamation-triangle-solid h-6 w-6 mr-2 text-yellow-600'></span>"
+    )
+    |> String.replace(
+      ~r/\[!CAUTION\]/,
+      "<span data-icon='caution' class='hero-information-circle-solid h-6 w-6 mr-2 text-red-600'></span>"
+    )
+  end
+
   # Private functions
 
   defp group_by_headings(markdown) do

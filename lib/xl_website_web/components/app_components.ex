@@ -1,4 +1,5 @@
 defmodule XlWebsiteWeb.AppComponents do
+  alias XlWebsite.MarkdownParser
   use XlWebsiteWeb, :html
 
   attr :path, :list
@@ -126,6 +127,7 @@ defmodule XlWebsiteWeb.AppComponents do
       assigns.markdown
       |> Earmark.as_html!()
       |> HtmlSanitizeEx.basic_html()
+      |> MarkdownParser.parse_github_icons()
       |> raw()
 
     assigns = assign(assigns, safe_html: safe_html)
