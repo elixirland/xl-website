@@ -20,7 +20,7 @@ defmodule XlWebsiteWeb.PageController do
 
   def home(conn, _params) do
     conn
-    |> assign(:page_title, @title_prefix <> "Learn the Elixir ecosystem by building projects")
+    |> assign(:page_title, @title_prefix <> "Master the Elixir ecosystem by building projects")
     |> assign(:route, @home)
     |> render(:home)
   end

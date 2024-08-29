@@ -7,7 +7,7 @@ defmodule XlWebsiteWeb.PageControllerTest do
       conn = get(conn, "/")
       html = html_response(conn, 200)
 
-      assert html =~ "learn the Elixir ecosystem by building projects"
+      assert html =~ "master the Elixir ecosystem by building projects"
       assert html =~ "Discover projects"
       assert html =~ "Explore ecosystem"
     end
