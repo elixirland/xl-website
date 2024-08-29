@@ -1,5 +1,4 @@
 defmodule XlWebsiteWeb.AppComponents do
-  alias XlWebsite.MarkdownParser
   use XlWebsiteWeb, :html
 
   attr :markdown, :string, required: true
