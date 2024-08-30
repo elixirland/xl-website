@@ -48,7 +48,7 @@
   li {
     font-size: 1.15rem;
     padding-left: 0.5rem;
-    margin-left: 46px;
+    margin-left: 36px;
 
     @media (max-width: 500px) {
       margin-left: 16px;
