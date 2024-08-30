@@ -1,6 +1,8 @@
 defmodule XlWebsiteWeb.Metadata do
   use Phoenix.Component
 
+  # TODO: Test if tags are rendered correctly
+
   @main_description "Master the Elixir ecosystem by building projects."
   @domain "https://elixirland.dev"
 
@@ -35,7 +37,7 @@ defmodule XlWebsiteWeb.Metadata do
       |> Map.put(:domain, @domain)
 
     ~H"""
-    <meta name="description" content="Explore our Elixir projects." />
+    <meta name="description" content="Explore projects to build." />
     <meta property="og:title" content="Elixirland Projects" />
     <meta property="og:url" content={"#{@domain}/projects"} />
     <meta property="og:description" content={@main_description} />
