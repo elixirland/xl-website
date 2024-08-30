@@ -47,7 +47,7 @@
     
   li {
     font-size: 1.15rem;
-    padding-left: 0.5rem;
+    padding-left: 0.2rem;
     margin-left: 36px;
 
     @media (max-width: 500px) {
