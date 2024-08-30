@@ -84,6 +84,7 @@
   }
 
   blockquote {
+    position: relative;
     padding: 1.25rem;
     background-color: #bda3e20b;
     margin-block: 30px;
@@ -98,27 +99,87 @@
 
     &:has([data-icon='note']) {
       background-color: rgba(39, 39, 150, 0.047);
-      border-color: rgba(25, 25, 166, 0.245);
+      border-color: rgba(25, 25, 166, 0.359);
+
+      &::after {
+        content: 'Note';
+        position: absolute;
+        top: 0px;
+        right: 8px;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        font-weight: 600;
+        color: rgba(25, 25, 166, 0.887);
+        margin-top: 0.5rem;
+      }
     } 
 
     &:has([data-icon='tip']) {
       background-color: rgba(63, 175, 63, 0.13);
       border-color: rgba(0, 128, 0, 0.507);
+
+      &::after {
+        content: 'Tip';
+        position: absolute;
+        top: 0px;
+        right: 8px;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        font-weight: 600;
+        color: rgba(0, 128, 0, 0.91);
+        margin-top: 0.5rem;
+      }
     }
 
     &:has([data-icon='important']) {
       background-color: rgba(160, 39, 160, 0.042);
-      border-color: rgba(98, 21, 98, 0.153);
+      border-color: rgba(98, 21, 98, 0.477);
+
+      &::after {
+        content: 'Important!';
+        position: absolute;
+        top: 0px;
+        right: 8px;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        font-weight: 600;
+        color: rgba(98, 21, 98, 0.927);
+        margin-top: 0.5rem;
+      }
     }
 
     &:has([data-icon='warning']) {
-      background-color: rgba(255, 255, 0, 0.076);
-      border-color: rgba(195, 195, 14, 0.378);
+      background-color: rgba(255, 191, 0, 0.117);
+      border-color: rgba(191, 136, 25, 0.508);
+
+      &::after {
+        content: 'Warning!';
+        position: absolute;
+        top: 0px;
+        right: 8px;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        font-weight: 600;
+        color: rgb(205, 145, 34);
+        margin-top: 0.5rem;
+      }
     }
 
     &:has([data-icon='caution']) {
-      background-color: rgba(165, 28, 28, 0.06);
-      border-color: rgba(107, 12, 12, 0.168);
+      background-color: rgba(199, 0, 0, 0.069);
+      border-color: rgba(212, 26, 26, 0.482);
+
+      &::after {
+        content: 'Caution!';
+        position: absolute;
+        top: 0px;
+        right: 8px;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        font-weight: 600;
+        color: rgba(173, 16, 16, 0.929);
+        margin-top: 0.5rem;
+      }
     }
 
     @media (max-width: 500px) {

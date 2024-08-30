@@ -144,11 +144,11 @@ defmodule XlWebsiteWeb.AppComponents do
     )
     |> String.replace(
       ~r/\[!TIP\]/,
-      "<span data-icon='tip' class='hero-exclamation-circle-solid h-6 w-6 mr-2 text-green-700'></span>"
+      "<span data-icon='tip' class='hero-information-circle-solid h-6 w-6 mr-2 text-green-700'></span>"
     )
     |> String.replace(
       ~r/\[!IMPORTANT\]/,
-      "<span data-icon='important' class='hero-information-circle-solid h-6 w-6 mr-2 text-purple-700'></span>"
+      "<span data-icon='important' class='hero-exclamation-circle-solid h-6 w-6 mr-2 text-purple-700'></span>"
     )
     |> String.replace(
       ~r/\[!WARNING\]/,

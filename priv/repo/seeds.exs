@@ -45,8 +45,20 @@ readme =
   - Another requirement
   - Yet another requirement
 
+  > [!NOTE]
+  > Some note.
+
   > [!TIP]
   > Some tip.
+
+  > [!IMPORTANT]
+  > Something important.
+
+  > [!WARNING]
+  > Some warning.
+
+  > [!CAUTION]
+  > Something that requires caution.
 
   ## Assumptions
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tempus enim, quis consequat nisl congue volutpat. Nunc in nisi id nisl consectetur viverra.
