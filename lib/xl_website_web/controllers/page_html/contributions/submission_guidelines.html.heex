@@ -20,51 +20,62 @@
   <p class="text-[1.1rem] tracking-wide indent-8">
     Project authors are free to design their project how they wish, but they must follow a minimal set of requirements to ensure consistency and quality. Here is an overview of the different sections that your project description must contain.
   </p>
-  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px]">
+  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px] dark:text-black">
     <h3 class="text-xl font-medium underline">Required sections</h3>
     <li class="block">
       <h4 class="text-lg font-medium pt-4">Task</h4>
       <p>
-        The task section explains what the user needs to do to solve the project. This section is mandatory and should be clear and concise to avoid confusion.
+        The Task section describes what the user is expected to build in one, or a few, sentences. The task description is likely to leave out a lot of details about the requirements of the project. These details are covered in the requirements section. The purpose of the task description is to give the user a high-level overview of what they are expected to build.
+      </p>
+      <p class="indent-8">
+        Importantly, the task description should also specify what resources from the Elixir ecosystem the user is expected to use. This could be a specific library, a particular feature of Elixir, or a combination of both. This information is important because it helps users understand what area of the ecosystem they are expected to learn by solving the project.
+      </p>
+      <p class="pt-4">
+        <b>Example:</b>
+        <br />
+        <quote class="italic">
+          Create an API for listing a book club's books, along with the last page that was read.<br /><br />
+          When implementing the project, you must use:<br /> - Phoenix<br /> - Ecto<br />
+        </quote>
       </p>
     </li>
     <li class="block">
       <h4 class="text-lg font-medium pt-4">Requirements</h4>
       <p>
-        The requirements list any constraints or conditions that the implementation must satisfy. This section is mandatory and should be specific to avoid ambiguity.
+        The Requirements section lists any requirements and constraints the implementation must satisfy. Together with the task description, the requirements section should give the user a clear understanding of what they are expected to build and how they should build it.
       </p>
     </li>
   </ul>
   <p class="text-[1.1rem] tracking-wide indent-8">
-    The task description and requirements are the core of your project and should appear in the given order and consecutively. However, these sections do not have to be placed at the beginning of your project description. You can add other sections before or after these two sections, as long as they are clearly separated from the task description and requirements and the overall structure follows a logical order.
+    The Task and Requirements sections are the core of your project and should appear in the given order and consecutively. However, these sections do not have to be placed at the beginning of your project description. You can add other sections before or after these two sections, as long as they are clearly separated from the task description and requirements and the overall structure follows a logical order.
   </p>
   <p class="text-[1.1rem] tracking-wide indent-8">
     Here is a list of suggested sections that you can include in your project to help users understand and solve the project. These sections are optional, but they can be very helpful for users who need more context or guidance.
   </p>
-  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px]">
+  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px] dark:text-black">
     <h3 class="text-xl font-medium underline">Suggested sections</h3>
     <li class="block">
-      <h4 class="list-item text-lg font-medium pt-4">Learning Objectives (optional)</h4>
+      <h4 class="list-item text-lg font-medium pt-4">Learning Objectives</h4>
       <p>
         The learning objectives describe what users can expect to learn by solving the project. This section is optional but can be helpful for users who want to know what they will gain from solving the task.
       </p>
       <p class="indent-8">
-        If you add this section, please position it after the introductory section, or at the beginning of the project if there is no introduction.
+        If you add this section, please position it at the very beginning of the project description.
       </p>
     </li>
     <li class="block">
-      <h4 class="list-item text-lg font-medium pt-4">Introduction (optional)</h4>
+      <h4 class="list-item text-lg font-medium pt-4">Introduction</h4>
       <p>
         The introduction provides some background information about the task and sets the context for the project. This section is optional but can be useful for users who want to understand the problem domain better.
       </p>
       <p class="indent-8">
-        The name of this section can be "Introduction" or any other name that you think is appropriate.
+        The name of this section can be "Introduction" or any other name that you think is appropriate. Another option is to use the format "Introduction: [subtitle]", for example: "Introduction: Help a Book Club Keep Track of Their Reading!".
       </p>
     </li>
     <li class="block">
-      <h4 class="text-lg font-medium pt-4">Taking It Further (optional)</h4>
+      <h4 class="text-lg font-medium pt-4">Taking It Further</h4>
       <p>
-        The Taking It Further section lists features that the user could implement, in addition to the required features, as an extra challenge. This section is optional but can be useful for users who want to extend the project.
+        The Taking It Further section lists features that the user could implement, in addition to the required features, as an extra challenge. This section is optional but can be useful for users who want to extend the project. The features listed in this section should not be implemented in the example implementation that you provide.
       </p>
     </li>
   </ul>
@@ -74,7 +85,7 @@
   <p class="text-[1.1rem] tracking-wide indent-8">
     You might wish to add information about how users can get started with their implementation of your project or a reference to your example implementation. This information is, however, automatically added to your project when it is published on Elixirland. Have a look at any of the existing projects on Elixirland to see how this information is presented, so you can decide what to include in your project and what to leave out.
   </p>
-  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px]">
+  <ul class="text-[1.1rem] p-6 bg-slate-100 border border-slate-200 rounded-md my-6 -mx-[2px] dark:text-black">
     <h3 class="text-xl font-medium underline">Automatically added sections</h3>
     <li class="block">
       <h3 class="list-item text-lg font-medium pt-4">How to get started?</h3>
