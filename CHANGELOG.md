@@ -4,6 +4,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## Unreleased - yyyy-mm-dd
 
+### Changed
+- Updated Submission Guidelines
+
 ## v0.3.0 - 2024-08-29
 
 ### Added
