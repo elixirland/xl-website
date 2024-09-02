@@ -59,22 +59,31 @@ const CardMedia = {
         const windowHeight = window.innerHeight || document.documentElement.clientHeight
         const windowWidth = window.innerWidth || document.documentElement.clientWidth
 
-        const verticalMargin = (windowHeight - rect.height) / 2 * 0.60
+        let verticalMargin
 
-        const isElementInViewport = (
+        verticalMargin = (windowHeight - rect.height) / 2 * 0.60
+        
+        const isElementInPlayZone = (
           rect.top >= verticalMargin &&
-          rect.left >= 0 &&
-          rect.bottom <= windowHeight - verticalMargin &&
-          rect.right <= windowWidth
+          rect.bottom <= windowHeight - verticalMargin
         )
 
-        if (isElementInViewport) {
+        verticalMargin = (windowHeight - rect.height) / 2 * 0.40
+
+        const isElementInResetZone = (
+          rect.top <= verticalMargin ||
+          rect.bottom >= windowHeight - verticalMargin
+        )
+
+        if (isElementInPlayZone) {
           debounceTimeout = setTimeout(() => {
             img.style.display = "none"
             video.style.display = "block"
             video.play()
           }, this.debounceTime)
-        } else {
+        }
+        
+        if (isElementInResetZone) {
           img.style.display = "block"
           video.style.display = "none"
           video.pause()
