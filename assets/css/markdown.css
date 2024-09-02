@@ -193,5 +193,23 @@ html.dark {
     code {
       background-color: #585858;
     }
+
+    blockquote:has([data-icon='important']) {
+      background-color: rgba(205, 16, 205, 0.072);
+      border-color: rgba(198, 17, 198, 0.477);
+
+      &::after {
+        color: rgba(241, 16, 241, 0.927);
+      }
+    }
+
+    blockquote:has([data-icon='note']) {
+      background-color: rgba(10, 10, 113, 0.171);
+      border-color: rgba(10, 10, 231, 0.884);
+
+      &::after {
+        color: rgba(0, 0, 255, 0.984);
+      }
+    } 
   }
 }
