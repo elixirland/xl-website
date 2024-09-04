@@ -78,7 +78,8 @@ defmodule XlWebsiteWeb.AppComponents do
         <%!-- Display and play behavior is defined in assets/js/card_media.js --%>
         <div class="aspect-[3/2] relative" data-card-media>
           <img
-            src={"https://github.com/#{@project.full_name}/raw/main/thumbnail.webp"}
+            src={"https://github.com/#{@project.full_name}/raw/main/thumbnail_small.webp"}
+            onerror={"this.onerror=null;this.src='https://github.com/#{@project.full_name}/raw/main/thumbnail_small.webp'"}
             width="360"
             height="240"
             class="sm:w-full bg-cover bg-center"
